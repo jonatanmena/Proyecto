@@ -1,5 +1,5 @@
 <?php
-    namespace DAOS;
+    namespace Daos\Interfaces;
 
     Use Model\Calendar as Calendar;
 

@@ -24,11 +24,7 @@ namespace Config;
 
             $objeto = "Controller\\". $controlador;
             $controlador = new $objeto();
-
-
-
-
-
+            
             if(!isset($parametros))
 
             {

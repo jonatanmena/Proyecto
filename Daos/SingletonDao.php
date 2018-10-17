@@ -1,17 +1,19 @@
-<?php namespace Daos;
+<?php
 
-class SingletonDao
-{
-    private static $instance=array();
+    namespace Daos;
 
-    public static function getInstance()
+    class SingletonDao
     {
-        $miclase=get_called_class();
-        if (!isset(self::$instance[$miclase])) {
-            self::$instance[$miclase]=new $miclase;
+        private static $instance=array();
+
+        public static function getInstance()
+        {
+            $miclase=get_called_class();
+            if (!isset(self::$instance[$miclase])) {
+                self::$instance[$miclase]=new $miclase;
+            }
+
+
+            return self::$instance[$miclase];
         }
-
-
-        return self::$instance[$miclase];
     }
-}
