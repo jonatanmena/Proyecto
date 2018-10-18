@@ -2,7 +2,7 @@
     namespace Controller;
 
     use Model\Artist as Artist;
-    use Daos\ListArtistDao as ArtistList;
+    use Daos\PDOs\ArtistDaoPdo as ArtisDaoPdo;
 
     class ArtistController
     {
@@ -10,7 +10,7 @@
 
         public function __construct()
         {
-            $this->ArtistData=ArtistList::getInstance();
+            $this->ArtistData = new ArtisDaoPdo();
         }
         public function newArtist()
         {
@@ -19,7 +19,7 @@
         public function addArtist($Name, $Description, $Gender, $Portrait)
         {
             $ArtistObject=new Artist($Name, $Description, $Gender, $Portrait);
-            $this->ArtistData->add($ArtistObject);            
+            $this->ArtistData->add($ArtistObject);
             $this->listArtists();
         }
         public function listArtists()

@@ -3,9 +3,8 @@
 
     use Daos\Interfaces\ICalendarDao as ICalendarDao;
     use Model\Calendar as Calendar;
-
-    //use \Exception as Exception;
-    //use Daos\Connection as Connection;
+    use Daos\Connection as Connection;
+    use \Exception as Exception;
 
     class CalendarDaoPdo implements ICalendarDao
     {

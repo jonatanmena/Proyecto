@@ -3,9 +3,8 @@
 
     use Daos\Interfaces\IArtistDao as IArtistDao;
     use Model\Artist as Artist;
-
-    //use \Exception as Exception;
-    //use Daos\Connection as Connection;
+    use Daos\Connection as Connection;
+    use \Exception as Exception;
 
     class ArtistDaoPdo implements IArtistDao
     {

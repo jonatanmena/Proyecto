@@ -3,9 +3,8 @@
 
     use Daos\Interfaces\IEventDao as IEventDao;
     use Model\Event as Event;
-
-    //use \Exception as Exception;
-    //use Daos\Connection as Connection;
+    use Daos\Connection as Connection;
+    use \Exception as Exception;
 
     class EventDaoPdo implements IEventDao
     {

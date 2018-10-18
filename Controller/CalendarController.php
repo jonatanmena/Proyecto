@@ -2,9 +2,7 @@
     namespace Controller;
 
     use Model\Calendar as Calendar;
-    //use Daos\Lists\ListCalendarDao as CalendarList;
-
-    use Daos\PDOs\CalendarDaoPdo as CalendarList;
+    use Daos\PDOs\CalendarDaoPdo as CalendarDaoPdo;
 
     class CalendarController
     {
@@ -12,15 +10,15 @@
 
         public function __construct()
         {
-            $this->CalendarData=CalendarList::getInstance();
+            $this->CalendarData = new CalendarDaoPdo();
         }
         public function newCalendar()
         {
             require_once("View/newCalendar.php");
         }
-        public function addCalendar($Date,$CalendarCode)
+        public function addCalendar($Date)
         {
-            $CalendarObject=new Calendar($Date,$CalendarCode);
+            $CalendarObject=new Calendar($Date);
             $this->CalendarData->add($CalendarObject);
             $this->listCalendars();
         }

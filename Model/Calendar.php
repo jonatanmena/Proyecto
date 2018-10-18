@@ -6,7 +6,7 @@
         private $date;
         private $ID;
 
-        public function __construct($date,$ID)
+        public function __construct($date,$ID = 0)
         {
             $this->setDate($date);
             $this->setId($ID);

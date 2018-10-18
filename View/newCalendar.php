@@ -9,8 +9,7 @@
      <table>
        <tr>
          <td>
-           <label for="CalendarDate">Fecha: </label><input type="date" name="CalendarDate" value=""><br>
-           <label for="CalendarCode">Codigo: </label><input type="number" name="CalendarCode" value=""><br>
+           <label for="CalendarDate">Fecha: </label><input type="date" name="CalendarDate" value=""><br>           
            <input type="submit" name="Enviar" value="Enviar">
            <input type="reset" name="Restablecer" value="Restablecer">
          </td>

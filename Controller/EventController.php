@@ -2,7 +2,7 @@
     namespace Controller;
 
     use Model\Event as Event;
-    use Daos\ListEventDao as EventList;
+    use Daos\PDOs\EventDaoPdo As EventDaoPdo;
 
     class EventController
     {
@@ -10,7 +10,7 @@
 
       function __construct()
       {
-        $this->EventData=EventList::getInstance();
+        $this->EventData = new EventDaoPdo();
       }
       public function newEvent()
       {

@@ -1,5 +1,5 @@
 <?php
-    namespace DAOS;
+    namespace DAOS\Interfaces;
 
     Use Model\Artist as Artist;
 
@@ -10,5 +10,5 @@
       function GetByArtistCode($ArtistCode);
       function getAll();
     }
-    
+
  ?>
