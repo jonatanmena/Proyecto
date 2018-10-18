@@ -20,11 +20,11 @@
         {
             $UserObject = new User($User, $Password, $Privilege);
             $this->UserData->add($UserObject);
-            $this->listUsers();            
+            $this->listUsers();
         }
         public function listUsers()
         {
-            foreach ($this->UserData->listUsers() as $User) {
+            foreach ($this->UserData->getAll() as $User) {
 
                 echo "<br>";
                 echo "Usuario:".$User->getUser()."<br>";

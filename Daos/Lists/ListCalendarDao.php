@@ -1,6 +1,9 @@
 <?php
-    namespace Daos;
-    
+    namespace Daos\Lists;
+
+    use Daos\Interfaces\ICalendarDao as ICalendarDao;
+    use Daos\SingletonDao as SingletonDao;
+
     class ListCalendarDao extends SingletonDao implements ICalendarDao
     {
       private $CalendarList;

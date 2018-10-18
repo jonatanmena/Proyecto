@@ -2,7 +2,9 @@
     namespace Controller;
 
     use Model\Calendar as Calendar;
-    use Daos\Lists\ListCalendarDao as CalendarList;
+    //use Daos\Lists\ListCalendarDao as CalendarList;
+
+    use Daos\PDOs\CalendarDaoPdo as CalendarList;
 
     class CalendarController
     {
@@ -24,7 +26,8 @@
         }
         public function listCalendars()
         {
-            foreach ($this->CalendarData->listCalendars() as $Calendar) {
+            foreach ($this->CalendarData->getAll() as $Calendar)
+            {
                 echo "<br>";
                 echo "Fecha:".$Calendar->getDate()."<br>";
                 echo "Codigo:".$Calendar->getID()."<br>";

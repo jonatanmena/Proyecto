@@ -19,12 +19,12 @@
         public function addArtist($Name, $Description, $Gender, $Portrait)
         {
             $ArtistObject=new Artist($Name, $Description, $Gender, $Portrait);
-            $this->ArtistData->add($ArtistObject);
+            $this->ArtistData->add($ArtistObject);            
             $this->listArtists();
         }
         public function listArtists()
         {
-            foreach ($this->ArtistData->listArtists() as $Artist) {
+            foreach ($this->ArtistData->getAll() as $Artist) {
                 echo "<br>";
                 echo "Nombre:".$Artist->getName()."<br>";
                 echo "Descripcion:".$Artist->getDescription()."<br>";
