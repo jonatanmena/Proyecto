@@ -6,9 +6,9 @@
     define("CSS_PATH",VIEWS_PATH . "css/");
 
     define("DB_HOST", "localhost");
-    define("DB_NAME", "ticket");
+    define("DB_NAME", "eventos");
     define("DB_USER", "root");
-    define("DB_PASS", "");
+    define("DB_PASS", "123581321");
 
     class Autoload
     {

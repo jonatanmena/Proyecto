@@ -1,24 +1,22 @@
 <?php
     namespace Daos\PDOs ;
 
-    use Daos\Interfaces\IClientDao as IClientDao;
-    use Model\Client as Client;
+    use Daos\Interfaces\ISquare_KindDao as ISquare_kindDao;
+    use Model\Square_kind as Square_kind;
     use Daos\Connection as Connection;
     use \Exception as Exception;
 
-    class ClientDaoPdo implements IClientDao
+    class Square_kindDaoPdo implements ISquare_kindDao
     {
         private $connection;
-        private $tableName = "Clients";
+        private $tableName = "Square_kinds";
 
-        public function Add(Client $Client)
+        public function Add(Square_kind $Square_kind)
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (name,Surname,DNI) VALUES (:Name,:Surname,:DNI);";
-                $parameters["Name"] = $Client->getName();
-                $parameters["Surname"] = $Client->getSurname();
-                $parameters["DNI"] = $Client->getDNI();
+                $query = "INSERT INTO ".$this->tableName." (Description) VALUES (:Description);";
+                $parameters["Description"] = $Square_kind->getDescription();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
             }
@@ -31,49 +29,49 @@
         {
             try
             {
-                $ClientList = array();
+                $Square_kindList = array();
                 $query = "SELECT * FROM ".$this->tableName;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $ClientObject = new Client($row["Name"],$row["Surname"],$row["DNI"],$row["ID_Client"]);
-                    array_push($ClientList, $ClientObject);
+                    $Square_kindObject = new Square_kind($row["Description"],$row["ID_Square_kind"]);
+                    array_push($Square_kindList, $Square_kindObject);
                 }
-                return $ClientList;
+                return $Square_kindList;
             }
             catch (Exception $ex)
             {
                 throw $ex;
             }
         }
-        public function GetByClientCode($ClientCode)
+        public function GetBySquare_kindCode($Square_kindCode)
         {
             try
             {
-                $ClientObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Client = :ClientCode";
-                $parameters["ID_Client"] = $ClientCode;
+                $Square_kindObject = null;
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Square_kind = :Square_kindCode";
+                $parameters["ID_Square_kind"] = $Square_kindCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $ClientObject = new Client($row["Name"],$row["Surname"],$row["DNI"],$row["ID_Client"]);
+                    $Square_kindObject = new Square_kind($row["Description"],$row["ID_Square_kind"]);
                 }
 
-                return $ClientObject;
+                return $Square_kindObject;
             }
             catch (Exception $ex)
             {
                 throw $ex;
             }
         }
-        public function Delete($ClientCode)
+        public function Delete($Square_kindCode)
         {
             try
             {
-                $query = "DELETE FROM ".$this->tableName." WHERE ID_Client = :ClientCode";
-                $parameters["ID_Client"] = $ClientCode;
+                $query = "DELETE FROM ".$this->tableName." WHERE ID_Square_kind = :Square_kindCode";
+                $parameters["ID_Square_kind"] = $Square_kindCode;
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
             }

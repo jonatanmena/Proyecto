@@ -24,13 +24,12 @@
       }
       public function listEvents()
       {
-          foreach ($this->EventData->listEvents() as $Event) {
+          foreach ($this->EventData->GetAll() as $Event) {
               echo "<br>";
               echo "Titulo:".$Event->getTitle()."<br>";
               echo "ID::".$Event->getID()."<br>";
           }
           echo '<a href="../Event/newEvent"> Boton </a>';
-          echo ROOT;
       }
     }
 

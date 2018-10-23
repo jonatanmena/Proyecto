@@ -1,5 +1,5 @@
 <?php
-    namespace DAOS;
+    namespace DAOS\Interfaces;
 
     Use Model\Square_kind as Square_kind;
 
