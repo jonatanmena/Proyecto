@@ -7,6 +7,7 @@
     class ClientController
     {
         private $ClientData;
+        private $TestGit;
 
         public function __construct()
         {
