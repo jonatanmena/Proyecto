@@ -9,8 +9,12 @@
       private $DNI;
 
 
-      function __construct($ID)
+      function __construct($Name, $Surname, $DNI, $ID = 0)
       {
+        
+        $this->setName($Name);
+        $this->setSurname($Surname);
+        $this->setDNI($DNI);
         $this->setID($ID);
       }
 
