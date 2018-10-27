@@ -1,13 +1,13 @@
 <?php
-    namespace DAOS;
+    namespace DAOS\Interfaces;
 
-    Use Model\Place_event as Place_event;
+    Use Model\Place_Event as Place_Event;
 
-    interface IPlace_eventDao
+    interface IPlace_EventDao
     {
-      function Add(Place_event $Place_event);
-      function Delete($Place_eventCode);
-      function GetByPlace_eventCode($Place_eventCode);
+      function Add(Place_Event $Place_Event);
+      function Delete($Place_EventCode);
+      function GetByPlace_EventCode($Place_EventCode);
       function getAll();
     }
 

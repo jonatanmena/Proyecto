@@ -1,7 +1,7 @@
 <?php
     namespace Model;
 
-    class Place_event
+    class Place_Event
     {
         private $Quantity;
         private $Description;

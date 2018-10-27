@@ -1,13 +1,13 @@
 <?php
-    namespace DAOS;
+    namespace DAOS\Interfaces;
 
-    Use Model\Purchase_lines as Purchase_lines;
+    Use Model\Purchase_Lines as Purchase_Lines;
 
-    interface IPurchase_linesDao
+    interface IPurchase_LinesDao
     {
-      function Add(Purchase_lines $Purchase_lines);
-      function Delete($Purchase_linesCode);
-      function GetByPurchase_linesCode($Purchase_linesCode);
+      function Add(Purchase_Lines $Purchase_Lines);
+      function Delete($Purchase_LinesCode);
+      function GetByPurchase_LinesCode($Purchase_LinesCode);
       function getAll();
     }
 

@@ -1,5 +1,5 @@
 <?php
-    namespace DAOS;
+    namespace DAOS\Interfaces;
 
     Use Model\User as User;
 

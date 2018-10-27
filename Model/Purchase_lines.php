@@ -1,7 +1,7 @@
 <?php
     namespace Model;
 
-    class Purchase_lines
+    class Purchase_Lines
     {
         private $Quantity;
         private $Price;

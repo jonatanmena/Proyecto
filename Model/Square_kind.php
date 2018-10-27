@@ -1,7 +1,7 @@
 <?php
     namespace Model;
 
-    class Square_kind
+    class Square_Kind
     {
         private $Description;
         private $ID;

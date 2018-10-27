@@ -7,9 +7,8 @@
         private $Remainder;
         private $Quantity_available;
         private $ID;
-        private $squareType;
 
-        public function __construct($Price, $Remainder, $Quantity_available,$ID)
+        public function __construct($Price, $Remainder, $Quantity_available,$ID = 0)
         {
           $this->setPrice($Price);
           $this->setRemainder($Remainder);

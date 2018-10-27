@@ -1,13 +1,13 @@
 <?php
-    namespace DAOS;
+    namespace DAOS\Interfaces;
 
-    Use Model\Square_event as Square_event;
+    Use Model\Square_Event as Square_Event;
 
-    interface ISquare_eventDao
+    interface ISquare_EventDao
     {
-      function Add(Square_event $Square_event);
-      function Delete($Square_eventCode);
-      function GetBySquare_eventCode($Square_eventCode);
+      function Add(Square_Event $Square_Event);
+      function Delete($Square_EventCode);
+      function GetBySquare_EventCode($Square_EventCode);
       function getAll();
     }
 

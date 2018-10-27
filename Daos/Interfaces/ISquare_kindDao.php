@@ -1,13 +1,13 @@
 <?php
     namespace DAOS\Interfaces;
 
-    Use Model\Square_kind as Square_kind;
+    Use Model\Square_Kind as Square_Kind;
 
-    interface ISquare_kindDao
+    interface ISquare_KindDao
     {
-      function Add(Square_kind $Square_kind);
-      function Delete($Square_kindCode);
-      function GetBySquare_kindCode($Square_kindCode);
+      function Add(Square_Kind $Square_Kind);
+      function Delete($Square_KindCode);
+      function GetBySquare_KindCode($Square_KindCode);
       function getAll();
     }
 
