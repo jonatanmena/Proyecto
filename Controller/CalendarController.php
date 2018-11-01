@@ -28,7 +28,7 @@
             {
                 echo "<br>";
                 echo "Fecha:".$Calendar->getDate()."<br>";
-                echo "Codigo:".$Calendar->getID()."<br>";
+                echo "ID:".$Calendar->getID()."<br>";
             }
         }
     }

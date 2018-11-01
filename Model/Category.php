@@ -6,10 +6,10 @@
         private $Description;
         private $ID;
 
-        public function __construct($Description, $ID)
+        public function __construct($Description)
         {
             $this->setDescription($Description);
-            $this->setId($ID);
+            
         }
         public function setDescription($Description)
         {

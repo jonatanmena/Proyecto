@@ -30,6 +30,7 @@
                 echo "Descripcion:".$Artist->getDescription()."<br>";
                 echo "Genero:".$Artist->getGender()."<br>";
                 echo "Portada:".$Artist->getPortrait()."<br>";
+                echo "ID:".$Artist->getID()."<br>";
             }
         }
     }

@@ -5,11 +5,11 @@
      <title></title>
    </head>
    <body>
-     <form class="" action="/Proyecto/Calendar/addCalendar" method="post">
+     <form class="" action="<?php echo FRONT_ROOT;?>Calendar/addCalendar" method="post">
      <table>
        <tr>
          <td>
-           <label for="CalendarDate">Fecha: </label><input type="date" name="CalendarDate" value=""><br>           
+           <label for="CalendarDate">Fecha: </label><input type="date" name="CalendarDate" value=""><br>
            <input type="submit" name="Enviar" value="Enviar">
            <input type="reset" name="Restablecer" value="Restablecer">
          </td>

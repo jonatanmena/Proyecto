@@ -5,11 +5,11 @@
      <title></title>
    </head>
    <body>
-     <form class="" action="/Proyecto/Square_kind/addSquare_kind" method="post">
+     <form class="" action="<?php echo FRONT_ROOT;?>Square_kind/addSquare_kind" method="post">
      <table>
        <tr>
          <td>
-           <label for="Description">Descripcion: </label><input type="text" name="Square_kindDescription" value=""><br>
+           <label for="SquareKindDescription">Descripcion: </label><input type="text" name="SquareKindDescription" value=""><br>
            <input type="submit" name="Enviar" value="Enviar">
            <input type="reset" name="Restablecer" value="Restablecer">
          </td>

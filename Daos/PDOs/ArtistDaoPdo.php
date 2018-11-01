@@ -38,7 +38,8 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $ArtistObject = new Artist($row["Name"],$row["Description"],$row["Gender"],$row["Portrait"],$row["ID_Artist"]);
+                    $ArtistObject = new Artist($row["Name"],$row["Description"],$row["Gender"],$row["Portrait"]);
+                    $ArtistObject->setID($row["ID_Artist"]);
                     array_push($ArtistList, $ArtistObject);
                 }
                 return $ArtistList;
@@ -59,7 +60,8 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $ArtistObject = new Artist($row["Name"],$row["Description"],$row["Gender"],$row["Portrait"],$row["ID_Artist"]);
+                    $ArtistObject = new Artist($row["Name"],$row["Description"],$row["Gender"],$row["Portrait"]);
+                    $ArtistObject->setID($row["ID_Artist"]);
                 }
 
                 return $ArtistObject;

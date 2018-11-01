@@ -30,6 +30,7 @@
                 echo "Nombre:".$Client->getName()."<br>";
                 echo "Apellido:".$Client->getSurname()."<br>";
                 echo "DNI:".$Client->getDNI()."<br>";
+                echo "ID:".$Client->getID()."<br>";
             }
         }
     }

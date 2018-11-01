@@ -6,10 +6,9 @@
       private $title;
       private $ID;
 
-      public function __construct($title,$ID = 0)
+      public function __construct($title)
       {
           $this->setTitle($title);
-          $this->setID($ID);
       }
 
       public function setTitle($title)

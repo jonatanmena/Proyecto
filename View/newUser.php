@@ -5,13 +5,13 @@
      <title></title>
    </head>
    <body>
-     <form class="" action="addUser" method="post">
+     <form class="" action="<?php echo FRONT_ROOT;?>User/addUser" method="post">
      <table>
        <tr>
          <td>
            <label for="User">Usuario: </label><input type="text" name="User" value=""><br>
-           <label for="Password">Password: </label><input type="text" name="Password" value=""><br>
-           <label for="Privilege">Privilegios: </label><input type="text" name="Privilege" value=""><br>
+           <label for="UserPassword">Password: </label><input type="text" name="UserPassword" value=""><br>
+           <label for="UserPrivilege">Privilegios: </label><input type="text" name="UserPrivilege" value=""><br>
            <input type="submit" name="Enviar" value="Enviar">
            <input type="reset" name="Restablecer" value="Restablecer">
          </td>

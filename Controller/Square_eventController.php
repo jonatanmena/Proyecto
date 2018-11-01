@@ -27,9 +27,9 @@
           foreach ($this->Square_EventData->getAll() as $Square_Event) {
               echo "<br>";
               echo "Precio:".$Square_Event->getPrice()."<br>";
-              echo "ID:".$Square_Event->getID()."<br>";
               echo "Remanente:".$Square_Event->getRemainder()."<br>";
               echo "Cantidad disponible:".$Square_Event->getQuantityAvailable()."<br>";
+              echo "ID:".$Square_Event->getID()."<br>";
           }
       }
     }

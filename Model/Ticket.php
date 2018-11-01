@@ -7,11 +7,10 @@
         private $QR;
         private $ID;
 
-        public function __construct($Number, $QR ,$ID)
+        public function __construct($Number, $QR)
         {
           $this->setNumber($Number);
-          $this->setQR($QR);
-          $this->setID($ID);
+          $this->setQR($QR);          
         }
         public function setNumber($Number)
         {
@@ -46,6 +45,6 @@
         {
             return $this->ID;
         }
- 
+
 }
 ?>

@@ -37,7 +37,8 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $ClientObject = new Client($row["Name"],$row["Surname"],$row["DNI"],$row["ID_Client"]);
+                    $ClientObject = new Client($row["Name"],$row["Surname"],$row["DNI"]);
+                    $ClientObject->setID($row["ID_Client"]);
                     array_push($ClientList, $ClientObject);
                 }
                 return $ClientList;
@@ -58,9 +59,10 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $ClientObject = new Client($row["Name"],$row["Surname"],$row["DNI"],$row["ID_Client"]);
-                }
+                    $ClientObject = new Client($row["Name"],$row["Surname"],$row["DNI"]);
+                    $ClientObject->setID($row["ID_Client"]);
 
+                  }
                 return $ClientObject;
             }
             catch (Exception $ex)

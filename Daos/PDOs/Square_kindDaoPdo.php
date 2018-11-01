@@ -35,7 +35,8 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $Square_kindObject = new Square_kind($row["Description"],$row["ID_Square_kind"]);
+                    $Square_kindObject = new Square_kind($row["Description"]);
+                    $Square_kindObject->setID($row["ID_Square_kind"]);
                     array_push($Square_kindList, $Square_kindObject);
                 }
                 return $Square_kindList;
@@ -56,7 +57,8 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $Square_kindObject = new Square_kind($row["Description"],$row["ID_Square_kind"]);
+                    $Square_kindObject = new Square_kind($row["Description"]);
+                    $Square_kindObject->setID($row["ID_Square_kind"]);
                 }
 
                 return $Square_kindObject;

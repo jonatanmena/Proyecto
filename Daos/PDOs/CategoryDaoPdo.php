@@ -35,7 +35,8 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $CategoryObject = new Category($row["ID_Category"], $row["Description"]);
+                    $CategoryObject = new Category($row["Description"]);
+                    $CategoryObject->setID($row["ID_Category"]);
                     array_push($CategoryList, $CategoryObject);
                 }
                 return $CategoryList;
@@ -56,7 +57,8 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $CategoryObject = new Category($row["ID_Category"], $row["Description"]);
+                    $CategoryObject = new Category($row["Description"]);
+                    $CategoryObject->setID($row["ID_Category"]);
                 }
 
                 return $CategoryObject;

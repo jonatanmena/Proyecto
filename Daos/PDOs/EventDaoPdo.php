@@ -35,7 +35,8 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $EventObject = new Event($row["Title"],$row["ID_Event"]);
+                    $EventObject = new Event($row["Title"]);
+                    $EventObject->setID($row["ID_Event"]);
                     array_push($EventList, $EventObject);
                 }
                 return $EventList;
@@ -56,7 +57,8 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $EventObject = new Event($row["Title"],$row["ID_Event"]);
+                    $EventObject = new Event($row["Title"]);
+                    $EventObject->setID($row["ID_Event"]);
                 }
 
                 return $EventObject;

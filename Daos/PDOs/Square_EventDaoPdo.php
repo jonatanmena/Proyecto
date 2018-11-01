@@ -37,7 +37,8 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $Square_EventObject = new Square_Event($row["Price"],$row["Remainder"],$row["Quantity_available"],$row["ID_Square_Event"]);
+                    $Square_EventObject = new Square_Event($row["Price"],$row["Remainder"],$row["Quantity_available"]);
+                    $Square_EventObject->setID($row["ID_Square_Event"]);
                     array_push($Square_EventList, $Square_EventObject);
                 }
                 return $Square_EventList;
@@ -58,7 +59,8 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $Square_EventObject = new Square_Event($row["Price"],$row["Remainder"],$row["Quantity_available"],$row["ID_Square_Event"]);
+                    $Square_EventObject = new Square_Event($row["Price"],$row["Remainder"],$row["Quantity_available"]);
+                    $Square_EventObject->setID($row["ID_Square_Event"]);
                 }
 
                 return $Square_EventObject;

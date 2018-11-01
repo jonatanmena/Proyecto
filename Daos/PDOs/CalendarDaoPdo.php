@@ -35,7 +35,8 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $calendarObject = new Calendar($row["Date"],$row["ID_Calendar"]);
+                    $calendarObject = new Calendar($row["Date"]);
+                    $calendarObject->setID($row["ID_Calendar"]);
                     array_push($CalendarList, $calendarObject);
                 }
                 return $CalendarList;
@@ -56,7 +57,8 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $calendarObject = new Calendar($row["Date"],$row["ID_Calendar"]);
+                    $calendarObject = new Calendar($row["Date"]);
+                    $calendarObject->setID($row["ID_Calendar"]);
                 }
 
                 return $calendarObject;

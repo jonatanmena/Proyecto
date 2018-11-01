@@ -16,9 +16,9 @@
       {
           require_once("View/newSquare_kind.php");
       }
-      public function addSquare_kind($title,$ID)
+      public function addSquare_kind($title)
       {
-          $Square_kindObject=new Square_kind($title,$ID);
+          $Square_kindObject=new Square_kind($title);
           $this->Square_kindData->add($Square_kindObject);
           $this->listSquare_kinds();
       }
@@ -27,7 +27,7 @@
           foreach ($this->Square_kindData->getAll() as $Square_kind) {
               echo "<br>";
               echo "Descripcion:".$Square_kind->getDescription()."<br>";
-              echo "ID::".$Square_kind->getID()."<br>";
+              echo "ID:".$Square_kind->getID()."<br>";
           }
       }
     }

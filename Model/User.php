@@ -8,12 +8,11 @@
         private $Privilege;
         private $ID;
 
-        public function __construct($User, $Password, $Privilege, $ID)
+        public function __construct($User, $Password, $Privilege)
         {
             $this->setPassword($Password);
             $this->setUser($User);
-            $this->setPrivilege($Privilege);
-            $this->setID($ID);
+            $this->setPrivilege($Privilege);            
         }
         public function setUser($User)
         {

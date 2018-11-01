@@ -5,11 +5,11 @@
      <title></title>
    </head>
    <body>
-     <form class="" action="/Proyecto/Event/addEvent" method="post">
+     <form class="" action="<?php echo FRONT_ROOT;?>Event/addEvent" method="post">
      <table>
        <tr>
          <td>
-           <label for="Title">Titulo: </label><input type="text" name="EventName" value=""><br>           
+           <label for="EventTitle">Titulo: </label><input type="text" name="EventTitle" value=""><br>
            <input type="submit" name="Enviar" value="Enviar">
            <input type="reset" name="Restablecer" value="Restablecer">
          </td>

@@ -6,10 +6,10 @@
         private $Date;
         private $ID;
 
-        function __construct($Date,$ID)
+        function __construct($Date)
         {
           $this->setDate($Date);
-          $this->setID($ID);
+
         }
 
         public function setDate($Date)

@@ -8,12 +8,12 @@
         private $Quantity_available;
         private $ID;
 
-        public function __construct($Price, $Remainder, $Quantity_available,$ID = 0)
+        public function __construct($Price, $Remainder, $Quantity_available)
         {
           $this->setPrice($Price);
           $this->setRemainder($Remainder);
           $this->setQuantityAvailable($Quantity_available);
-          $this->setID($ID);
+          
         }
 
         public function setPrice($Price)

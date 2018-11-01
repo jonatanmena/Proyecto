@@ -9,13 +9,12 @@
       private $Portrait;
       private $ID;
 
-      public function __construct($Name, $Description, $Gender, $Portrait, $ID = 0)
+      public function __construct($Name, $Description, $Gender, $Portrait)
       {
           $this->setName($Name);
           $this->setDescription($Description);
           $this->setGender($Gender);
           $this->setPortrait($Portrait);
-          $this->setID($ID);
       }
       public function setName($Name)
       {

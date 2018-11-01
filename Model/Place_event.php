@@ -7,11 +7,10 @@
         private $Description;
         private $ID;
 
-        function __construct($Quantity,$Description,$ID)
+        function __construct($Quantity,$Description)
         {
           $this->setQuantity($Quantity);
           $this->setDescription($Description);
-          $this->setId($ID);
         }
         public function setQuantity($Quantity)
         {

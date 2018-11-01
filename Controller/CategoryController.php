@@ -28,6 +28,7 @@
             {
                 echo "<br>";
                 echo "Descripción:".$Category->getDescription()."<br>";
+                echo "ID:".$Category->getID()."<br>";
             }
         }
     }

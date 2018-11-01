@@ -1,3 +1,8 @@
+<?php
+    include_once('header.php');
+    include_once('nav-bar.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -6,21 +11,18 @@
     <title></title>
   </head>
   <body>
-  <div class="Center">
-      <table>
-        <tr>
-          <td>
-            <form class="" action="User/newUser" method="post">
-              <input type="submit" name="button" value="Agregar Usuario">
-              <input type="submit" name="button" formaction="Artist/newArtist" value="Agregar Artista">
-              <input type="submit" name="button" formaction="Event/newEvent" value="Agregar Evento">
-              <input type="submit" name="button" formaction="Calendar/newCalendar" value="Agregar Calendario">
-              <input type="submit" name="button" formaction="Square_kind/newSquare_kind" value="Agregar tipoEvento"><br>
-              <br><input type="submit" name="button" formaction="Square_Event/newSquare_Event" value="Agregar Plaza Evento">
-            </form>
-          </td>
-        </tr>
-      </table>
+
+  <div id="pageintro" class="hoc clear">
+    <article class="center">
+      <h3 class="heading underline">Agregar alguna Descripción o algo aca.</h3>
+      <p>Aca tambien mandar chamuyo o insertar una imagen etc.</p>
+      <footer><a class="btn" href="#">Soy un boton</a></footer>
+    </article>
   </div>
+
   </body>
 </html>
+
+<?php
+  include_once('footer.php');
+?>

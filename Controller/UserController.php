@@ -2,7 +2,7 @@
     namespace Controller;
 
     use Model\User as User;
-    use Daos\ListUserDao as UserList;
+    use Daos\PDOs\UserDaoPdo as UserDaoPdo;
 
     class UserController
     {
@@ -10,7 +10,7 @@
 
         public function __construct()
         {
-            $this->UserData=UserList::getInstance();
+            $this->UserData= new UserDaoPdo();
         }
         public function newUser()
         {
@@ -30,6 +30,8 @@
                 echo "Usuario:".$User->getUser()."<br>";
                 echo "Password:".$User->getPassword()."<br>";
                 echo "Privilegio:".$User->getPrivilege()."<br>";
+                echo "ID:".$User->getID()."<br>";
+
             }
         }
     }

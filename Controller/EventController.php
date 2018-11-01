@@ -16,9 +16,9 @@
       {
           require_once("View/newEvent.php");
       }
-      public function addEvent($title,$ID)
+      public function addEvent($title)
       {
-          $EventObject=new Event($title,$ID);
+          $EventObject=new Event($title);
           $this->EventData->add($EventObject);
           $this->listEvents();
       }
