@@ -9,8 +9,8 @@
     define("IMG_PATH", FRONT_ROOT.VIEWS_PATH ."img/");
 
     define("DB_HOST", "localhost");
-    define("DB_NAME", "eventos");
+    define("DB_NAME", "GoToEvent");
     define("DB_USER", "root");
-    define("DB_PASS", "123581321");
+    define("DB_PASS", "");
 
 ?>
