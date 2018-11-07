@@ -9,6 +9,9 @@
       private $Portrait;
       private $ID;
 
+
+      /* Boca La concha de tu madre */
+      
       public function __construct($Name, $Description, $Gender, $Portrait)
       {
           $this->setName($Name);
