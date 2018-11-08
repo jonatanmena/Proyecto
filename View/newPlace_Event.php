@@ -21,18 +21,18 @@
              <table>
                <thead>
                  <tr>
-                   <th>Descripcion</th>
                    <th>Cantidad</th>
+                   <th>Descripción</th>
                  </tr>
                </thead>
                <tbody align="center">
                  <tr>
                    <td>
-                    <input type="text" name="Place_EventDescription" value="" required><br>
+                    <input type="text" name="Place_EventQuantity" value="" required><br>
                    </td>
 
                    <td>
-                    <input type="number" name="Place_EventQuantity" value="" required><br>
+                    <input type="text" name="Place_EventDescription" value="" required><br>
                   </td>
                  </tr>
                </tbody>

@@ -24,11 +24,14 @@
       }
       public function listSquare_kinds()
       {
-          foreach ($this->Square_kindData->getAll() as $Square_kind) {
+
+        require_once("View/listSquare_kinds.php");
+
+        /*  foreach ($this->Square_kindData->getAll() as $Square_kind) {
               echo "<br>";
               echo "Descripcion:".$Square_kind->getDescription()."<br>";
               echo "ID:".$Square_kind->getID()."<br>";
-          }
+          }*/
       }
     }
 

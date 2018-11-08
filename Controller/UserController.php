@@ -24,7 +24,9 @@
         }
         public function listUsers()
         {
-            foreach ($this->UserData->getAll() as $User) {
+            require_once("View/listUsers.php");
+
+          /*  foreach ($this->UserData->getAll() as $User) {
 
                 echo "<br>";
                 echo "Usuario:".$User->getUser()."<br>";
@@ -32,6 +34,6 @@
                 echo "Privilegio:".$User->getPrivilege()."<br>";
                 echo "ID:".$User->getID()."<br>";
 
-            }
+            }*/
         }
     }

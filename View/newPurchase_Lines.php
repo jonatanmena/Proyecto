@@ -28,11 +28,11 @@
                <tbody align="center">
                  <tr>
                    <td>
-                    <input type="number" name="Purchase_LinesQuantity" value="" required><br>
+                    <input type="text" name="Purchase_LinesQuantity" value="" required><br>
                    </td>
 
                    <td>
-                    <input type="number" name="Purchase_LinesPrice" value="" required><br>
+                    <input type="text" name="Purchase_LinesPrice" value="" required><br>
                   </td>
                  </tr>
                </tbody>

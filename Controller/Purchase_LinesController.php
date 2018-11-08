@@ -24,6 +24,9 @@
       }
       public function listPurchase_Lines()
       {
+
+        require_once("View/listPurchase_Lines.php");
+/*
           foreach ($this->Purchase_LinesData->GetAll() as $Purchase_Lines) {
               echo "<br>";
               echo "Cantidad:".$Purchase_Lines->getQuantity()."<br>";
@@ -31,6 +34,8 @@
               echo "ID:".$Purchase_Lines->getID()."<br>";
           }
           echo '<a href="../Purchase_Lines/newPurchase_Lines"> Boton </a>';
+
+*/
       }
     }
 

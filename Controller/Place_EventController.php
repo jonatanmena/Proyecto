@@ -24,14 +24,17 @@
       }
       public function listPlace_Events()
       {
-          foreach ($this->Place_EventData->GetAll() as $Place_Event) {
+          require_once("View/listPlace_Events.php");
+
+        /*  foreach ($this->Place_EventData->GetAll() as $Place_Event) {
               echo "<br>";
               echo "Cantidad:".$Place_Event->getQuantity()."<br>";
               echo "Descripcion:".$Place_Event->getDescription()."<br>";
               echo "ID:".$Place_Event->getID()."<br>";
           }
           echo '<a href="../Place_Event/newPlace_Event"> Boton </a>';
-      }
+      }*/
+    }
     }
 
  ?>

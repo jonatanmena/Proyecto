@@ -35,6 +35,8 @@
       }
       public function listEvents()
       {
+
+        require_once("View/listEvents.php");
           /*
           foreach ($this->EventData->GetAll() as $Event)
           {

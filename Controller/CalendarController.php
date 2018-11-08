@@ -14,7 +14,6 @@
         }
         public function newCalendar()
         {
-
             require_once("View/newCalendar.php");
         }
         public function addCalendar($Date)
@@ -25,11 +24,16 @@
         }
         public function listCalendars()
         {
+
+            require_once("View/listCalendars.php");
+    /*       
             foreach ($this->CalendarData->getAll() as $Calendar)
             {
                 echo "<br>";
                 echo "Fecha:".$Calendar->getDate()."<br>";
                 echo "ID:".$Calendar->getID()."<br>";
             }
+
+            */
         }
     }

@@ -24,13 +24,15 @@
       }
       public function listSquare_Events()
       {
-          foreach ($this->Square_EventData->getAll() as $Square_Event) {
+        require_once("View/listSquare_Events.php");
+
+          /*foreach ($this->Square_EventData->getAll() as $Square_Event) {
               echo "<br>";
               echo "Precio:".$Square_Event->getPrice()."<br>";
               echo "Remanente:".$Square_Event->getRemainder()."<br>";
               echo "Cantidad disponible:".$Square_Event->getQuantityAvailable()."<br>";
               echo "ID:".$Square_Event->getID()."<br>";
-          }
+          }*/
       }
     }
 

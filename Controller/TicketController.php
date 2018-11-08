@@ -24,13 +24,15 @@
       }
       public function listTickets()
       {
-          foreach ($this->TicketData->GetAll() as $Ticket) {
+          require_once("View/listTickets.php");
+
+        /*  foreach ($this->TicketData->GetAll() as $Ticket) {
               echo "<br>";
               echo "Number:".$Ticket->getNumber()."<br>";
               echo "QR:".$Ticket->getQR()."<br>";
               echo "ID:".$Ticket->getID()."<br>";
           }
-          echo '<a href="../Ticket/newTicket"> Boton </a>';
+          echo '<a href="../Ticket/newTicket"> Boton </a>';*/
       }
     }
 

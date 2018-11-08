@@ -24,12 +24,14 @@
       }
       public function listPurchases()
       {
-          foreach ($this->PurchaseData->GetAll() as $Purchase) {
+        require_once("View/listPurchases.php");
+
+        /*  foreach ($this->PurchaseData->GetAll() as $Purchase) {
               echo "<br>";
               echo "Fecha:".$Purchase->getDate()."<br>";
               echo "ID:".$Purchase->getID()."<br>";
           }
-          echo '<a href="../Purchase/newPurchase"> Boton </a>';
+          echo '<a href="../Purchase/newPurchase"> Boton </a>';*/
       }
     }
 
