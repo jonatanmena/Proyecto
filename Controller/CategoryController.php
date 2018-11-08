@@ -24,11 +24,14 @@
         }
         public function listCategories()
         {
+          require_once("View/listCategories.php");
+          /*
             foreach ($this->CategoryData->getAll() as $Category)
             {
                 echo "<br>";
                 echo "Descripción:".$Category->getDescription()."<br>";
                 echo "ID:".$Category->getID()."<br>";
             }
+          */
         }
     }

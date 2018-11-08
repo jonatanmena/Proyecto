@@ -24,6 +24,8 @@
         }
         public function listClients()
         {
+            require_once("View/listClients.php");
+            /*
             foreach ($this->ClientData->getAll() as $Client)
             {
                 echo "<br>";
@@ -32,5 +34,6 @@
                 echo "DNI:".$Client->getDNI()."<br>";
                 echo "ID:".$Client->getID()."<br>";
             }
+            */
         }
     }

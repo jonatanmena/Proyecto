@@ -14,6 +14,7 @@
         }
         public function newCalendar()
         {
+
             require_once("View/newCalendar.php");
         }
         public function addCalendar($Date)

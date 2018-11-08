@@ -9,7 +9,7 @@
     class CategoryDaoPdo implements ICategoryDao
     {
         private $connection;
-        private $tableName = "categorias";
+        private $tableName = "categories";
 
         public function Add(Category $Category)
         {
