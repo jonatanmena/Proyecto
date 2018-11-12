@@ -25,15 +25,5 @@
         public function listClients()
         {
             require_once("View/listClients.php");
-            /*
-            foreach ($this->ClientData->getAll() as $Client)
-            {
-                echo "<br>";
-                echo "Nombre:".$Client->getName()."<br>";
-                echo "Apellido:".$Client->getSurname()."<br>";
-                echo "DNI:".$Client->getDNI()."<br>";
-                echo "ID:".$Client->getID()."<br>";
-            }
-            */
         }
     }

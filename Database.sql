@@ -79,15 +79,16 @@ CREATE TABLE Artists(
   Gender VARCHAR(20) NOT NULL,
   Portrait VARCHAR(50) NOT NULL,
   ID_Calendar INT NOT NULL,
-  PRIMARY KEY(ID_Artist),
-  FOREIGN KEY(ID_Calendar) REFERENCES Calendars(ID_Calendar)
+  PRIMARY KEY(ID_Artist)
 )
 */
 /*
-ALTER TABLE
-    Calendars ADD ID_Artist INT NOT NULL;
-ALTER TABLE
-    Calendars ADD CONSTRAINT ID_Artist FOREIGN KEY(ID_Artist) REFERENCES Artists(ID_Artist);
+CREATE TABLE CalendarXArtist(
+    ID_Artist INT(11) NOT NULL,
+    ID_Calendar INT(11) NOT NULL,
+    FOREIGN KEY (ID_Artist) REFERENCES artists(ID_Artist),
+    FOREIGN KEY (ID_Calendar) REFERENCES calendars(ID_Calendar)
+)
 */
 /*
 CREATE TABLE Square_Events(

@@ -25,15 +25,5 @@
         public function listUsers()
         {
             require_once("View/listUsers.php");
-
-          /*  foreach ($this->UserData->getAll() as $User) {
-
-                echo "<br>";
-                echo "Usuario:".$User->getUser()."<br>";
-                echo "Password:".$User->getPassword()."<br>";
-                echo "Privilegio:".$User->getPrivilege()."<br>";
-                echo "ID:".$User->getID()."<br>";
-
-            }*/
         }
     }

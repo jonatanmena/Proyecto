@@ -92,6 +92,12 @@
                 <li><a href="<?php echo FRONT_ROOT ?>Ticket/listTickets">Ver Listado</a></li>
             </ul>
             </li>
+            <li><a class="drop" href="">Calendario X Artista</a>
+            <ul>
+                <li><a href="<?php echo FRONT_ROOT ?>CalendarXArtist/newCalendarXArtist">Agregar</a></li>
+                <li><a href="<?php echo FRONT_ROOT ?>CalendarXArtist/listCalendarXArtists">Ver Listado</a></li>
+            </ul>
+            </li>
         </ul>
     </nav>
     </header>

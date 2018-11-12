@@ -24,16 +24,6 @@
         }
         public function listArtists()
         {
-          require_once("View/listArtists.php");
-          /*
-            foreach ($this->ArtistData->getAll() as $Artist) {
-                echo "<br>";
-                echo "Nombre:".$Artist->getName()."<br>";
-                echo "Descripcion:".$Artist->getDescription()."<br>";
-                echo "Genero:".$Artist->getGender()."<br>";
-                echo "Portada:".$Artist->getPortrait()."<br>";
-                echo "ID:".$Artist->getID()."<br>";
-            }
-          */
+            require_once("View/listArtists.php");
         }
     }

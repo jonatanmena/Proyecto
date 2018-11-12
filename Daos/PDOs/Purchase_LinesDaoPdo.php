@@ -9,7 +9,7 @@
     class Purchase_LinesDaoPdo implements IPurchase_LinesDao
     {
         private $connection;
-        private $tableName = "Purchase_Liness";
+        private $tableName = "Purchase_Lines";
 
         public function Add(Purchase_Lines $Purchase_Lines)
         {
