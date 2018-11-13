@@ -9,14 +9,6 @@
       private $Portrait;
       private $ID;
 
-
-      public function __construct($Name, $Description, $Gender, $Portrait)
-      {
-          $this->setName($Name);
-          $this->setDescription($Description);
-          $this->setGender($Gender);
-          $this->setPortrait($Portrait);
-      }
       public function setName($Name)
       {
           $this->Name = $Name;

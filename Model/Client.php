@@ -8,15 +8,6 @@
       private $Surname;
       private $DNI;
 
-
-      function __construct($Name, $Surname, $DNI)
-      {
-
-        $this->setName($Name);
-        $this->setSurname($Surname);
-        $this->setDNI($DNI);
-      }
-
       public function setID($ID)
       {
           $this->ID = $ID;

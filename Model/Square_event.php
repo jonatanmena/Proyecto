@@ -1,20 +1,17 @@
 <?php
     namespace Model;
 
+    use Model\Square_Kind as Square_Kind;
+    use Model\Calendar as Calendar;
+
     class Square_event
     {
         private $Price;
         private $Remainder;
         private $Quantity_available;
         private $ID;
-
-        public function __construct($Price, $Remainder, $Quantity_available)
-        {
-          $this->setPrice($Price);
-          $this->setRemainder($Remainder);
-          $this->setQuantityAvailable($Quantity_available);
-          
-        }
+        private $Square_Kind;
+        private $Calendar;
 
         public function setPrice($Price)
         {
@@ -59,5 +56,28 @@
             return $this->ID;
         }
 
-}
-?>
+
+        public function setSquareKind(Square_Kind $Square_Kind)
+        {
+            $this->Square_Kind = $Square_Kind;
+
+            return $this;
+        }
+
+        public function getSquareKind()
+        {
+            return $this->Square_Kind;
+        }
+
+        public function setCalendar($Calendar)
+        {
+            $this->Calendar = $Calendar;
+
+            return $this;
+        }
+
+        public function getCalendar()
+        {
+            return $this->Calendar;
+        }
+    }

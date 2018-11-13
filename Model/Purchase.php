@@ -1,16 +1,13 @@
 <?php
     namespace Model;
 
+    use Model\Client as Client;
+
     class Purchase
     {
         private $Date;
         private $ID;
-
-        function __construct($Date)
-        {
-          $this->setDate($Date);
-
-        }
+        private $Client;
 
         public function setDate($Date)
         {
@@ -35,5 +32,16 @@
             return $this->ID;
         }
 
-}
-?>
+
+        public function setClient(Client $Client)
+        {
+            $this->Client = $Client;
+
+            return $this;
+        }
+
+        public function getClient()
+        {
+            return $this->Client;
+        }
+    }

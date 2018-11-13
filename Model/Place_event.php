@@ -1,17 +1,12 @@
 <?php
     namespace Model;
-
+    // TODO: Entidad Ciudad
     class Place_Event
     {
         private $Quantity;
         private $Description;
         private $ID;
 
-        function __construct($Quantity,$Description)
-        {
-          $this->setQuantity($Quantity);
-          $this->setDescription($Description);
-        }
         public function setQuantity($Quantity)
         {
             $this->Quantity = $Quantity;

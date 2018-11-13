@@ -7,11 +7,6 @@
         private $QR;
         private $ID;
 
-        public function __construct($Number, $QR)
-        {
-          $this->setNumber($Number);
-          $this->setQR($QR);          
-        }
         public function setNumber($Number)
         {
             $this->Number = $Number;

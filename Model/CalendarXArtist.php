@@ -1,42 +1,39 @@
 <?php
     namespace Model;
 
+    use Model\Artist as Artist;
+    use Model\Calendar as Calendar;
+
     class CalendarXArtist
     {
-      private $ID_Artist;
-      private $ID_Calendar;
+      private $Artist;
+      private $Calendar;
 
-      function __construct($ID_Artist,$ID_Calendar)
+      public function setArtist(Artist $Artist)
       {
-          $this->setIDArtist($ID_Artist);
-          $this->setIDCalendar($ID_Calendar);
-      }
-
-      public function setIDArtist($ID_Artist)
-      {
-          $this->ID_Artist = $ID_Artist;
+          $this->Artist = $Artist;
 
           return $this;
       }
 
-      public function getIDArtist()
+      public function getArtist()
       {
-          return $this->ID_Artist;
+          return $this->Artist;
       }
 
-      public function setIDCalendar($ID_Calendar)
+      public function setCalendar(Calendar $Calendar)
       {
-          $this->ID_Calendar = $ID_Calendar;
+          $this->Calendar = $Calendar;
 
           return $this;
       }
 
-      public function getIDCalendar()
+      public function getCalendar()
       {
-          return $this->ID_Calendar;
+          return $this->Calendar;
       }
 
-      }
+    }
 
 
 

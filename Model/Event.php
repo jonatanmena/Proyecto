@@ -1,15 +1,13 @@
 <?php
     namespace Model;
 
+    use Model\Category as Category;
+
     class Event
     {
       private $title;
       private $ID;
-
-      public function __construct($title)
-      {
-          $this->setTitle($title);
-      }
+      private $category;
 
       public function setTitle($title)
       {
@@ -33,6 +31,18 @@
       public function getID()
       {
           return $this->ID;
+      }
+
+      public function setCategory(Category $category)
+      {
+          $this->category = $category;
+
+          return $this;
+      }
+
+      public function getCategory()
+      {
+          return $this->category;
       }
 
 }

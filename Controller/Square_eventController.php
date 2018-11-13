@@ -23,9 +23,9 @@
         }
         public function newSquare_Event()
         {
-          // TODO: Arreglar Esta Dependencia no deberia ir a newCalendar
             if (empty($this->CalendarData->getAll())) {
-                require_once("View/newCalendar.php");
+                echo "<script> alert('No hay calendarios cargados!');</script>";                
+                require_once("View/main.php");
             } elseif (empty($this->Square_KindData->getAll())) {
                 require_once("View/newSquare_Kind.php");
             }
