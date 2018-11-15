@@ -24,9 +24,9 @@
             }
             require_once("View/newEvent.php");
         }
-        public function addEvent($title)
+        public function addEvent($title, $category)
         {
-            $EventObject=new Event($title);
+            $EventObject=new Event($title, $this->CategoryData->GetByCategoryCode($category));
             $this->EventData->add($EventObject);
             $this->listEvents();
         }

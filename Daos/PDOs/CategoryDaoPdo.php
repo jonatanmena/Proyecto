@@ -51,7 +51,7 @@
             try
             {
                 $CategoryObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Category = :CategoryCode";
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Category = :ID_Category";
                 $parameters["ID_Category"] = $CategoryCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
@@ -60,7 +60,6 @@
                     $CategoryObject = new Category($row["Description"]);
                     $CategoryObject->setID($row["ID_Category"]);
                 }
-
                 return $CategoryObject;
             }
             catch (Exception $ex)

@@ -6,8 +6,14 @@
     class Event
     {
       private $title;
-      private $ID;
       private $category;
+      private $ID;
+
+      public function __construct($title, $category)
+      {
+        $this->title = $title;
+        $this->category = $category;
+      }
 
       public function setTitle($title)
       {
@@ -19,6 +25,18 @@
       public function getTitle()
       {
           return $this->title;
+      }
+
+      public function setCategory(Category $category)
+      {
+          $this->category = $category;
+
+          return $this;
+      }
+
+      public function getCategory()
+      {
+          return $this->category;
       }
 
       public function setID($ID)
@@ -33,17 +51,6 @@
           return $this->ID;
       }
 
-      public function setCategory(Category $category)
-      {
-          $this->category = $category;
-
-          return $this;
-      }
-
-      public function getCategory()
-      {
-          return $this->category;
-      }
 
 }
 ?>

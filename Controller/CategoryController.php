@@ -19,7 +19,7 @@
         public function addCategory($Description)
         {
             $CategoryObject=new Category($Description);
-            $this->CategoryData->add($CategoryObject);
+            $this->CategoryData->Add($CategoryObject);
             $this->listCategories();
         }
         public function listCategories()

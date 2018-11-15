@@ -15,8 +15,9 @@
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (Title) VALUES (:Title);";
+                $query = "INSERT INTO ".$this->tableName." (Title, ID_Category) VALUES (:Title, :ID_Category);";
                 $parameters["Title"] = $Event->getTitle();
+                $parameters["ID_Category"] = $Event->getCategory()->getID();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
             }
@@ -29,13 +30,15 @@
         {
             try
             {
+
+                $CategoryData = new CategoryDaoPdo();
                 $EventList = array();
                 $query = "SELECT * FROM ".$this->tableName;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $EventObject = new Event($row["Title"]);
+                    $EventObject = new Event($row["Title"], $CategoryData->GetByCategoryCode($row["ID_Category"]));
                     $EventObject->setID($row["ID_Event"]);
                     array_push($EventList, $EventObject);
                 }

@@ -22,6 +22,7 @@
               <thead>
                 <tr>
                   <th>Nombre del Evento</th>
+                  <th>Categoria</th>
                 </tr>
               </thead>
               <tbody align="center">
@@ -30,6 +31,9 @@
                 <tr>
                   <td>
                     <?php echo $Event->getTitle(); ?>
+                  </td>
+                  <td>
+                    <?php echo $Event->getCategory()->getDescription(); ?>
                   </td>
                 </tr>
                 <?php

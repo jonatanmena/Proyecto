@@ -22,6 +22,7 @@
               <thead>
                 <tr>
                   <th>Titulo</th>
+                  <th>Categoria</th>
                 </tr>
               </thead>
               <tbody align="center">
@@ -29,6 +30,13 @@
                   <td>
                     <!--<input type="text" name="Name" id="" value="" size="22" required>-->
                     <input type="text" name="EventTitle" value="" required><br>
+                  </td>
+                  <td>
+                    <select name="Category">
+                      <?php foreach ($this->CategoryData->getAll() as $category) : ?>
+                       <option value="<?php echo $category->getID(); ?>"><?php echo $category->getDescription(); ?></option>
+                      <?php endforeach; ?>
+                    </select>
                   </td>
                 </tr>
               </tbody>
