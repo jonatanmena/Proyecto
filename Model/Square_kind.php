@@ -6,6 +6,11 @@
         private $Description;
         private $ID;
 
+        public function __construct($Description)
+      {
+        $this->Description = $Description;
+      }
+
         public function setDescription($Description)
         {
             $this->Description = $Description;

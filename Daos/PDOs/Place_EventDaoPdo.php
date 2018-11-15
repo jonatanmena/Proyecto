@@ -37,7 +37,7 @@
                 foreach ($resultSet as $row)
                 {
                     $Place_eventObject = new Place_event($row["Quantity"],$row["Description"]);
-                    $Place_eventObject->setID($row["ID_Place_event"]);
+                    $Place_eventObject->setID($row["ID_Place_Event"]);
                     array_push($Place_eventList, $Place_eventObject);
                 }
                 return $Place_eventList;

@@ -29,7 +29,7 @@
                 </tr>
               </thead>
               <tbody align="center">
-                <?php foreach ($ArtistData->getAll() as $Artist) {
+                <?php foreach ($this->ArtistData->getAll() as $Artist) {
                  ?>
                 <tr>
                   <td>

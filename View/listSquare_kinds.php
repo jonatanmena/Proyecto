@@ -25,7 +25,7 @@
                 </tr>
               </thead>
               <tbody align="center">
-                <?php foreach ($this->Square_KindData->getAll() as $Square_Kind) {
+                <?php foreach ($this->Square_kindData->getAll() as $Square_Kind) {
                  ?>
                 <tr>
                   <td>

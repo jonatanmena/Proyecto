@@ -36,7 +36,7 @@
                 foreach ($resultSet as $row)
                 {
                     $Square_kindObject = new Square_kind($row["Description"]);
-                    $Square_kindObject->setID($row["ID_Square_kind"]);
+                    $Square_kindObject->setID($row["ID_Square_Kind"]);
                     array_push($Square_kindList, $Square_kindObject);
                 }
                 return $Square_kindList;

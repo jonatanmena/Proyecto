@@ -78,7 +78,6 @@ CREATE TABLE Artists(
   Description VARCHAR(50) NOT NULL,
   Gender VARCHAR(20) NOT NULL,
   Portrait VARCHAR(50) NOT NULL,
-  ID_Calendar INT NOT NULL,
   PRIMARY KEY(ID_Artist)
 )
 */
