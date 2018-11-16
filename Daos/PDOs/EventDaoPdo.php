@@ -53,14 +53,15 @@
         {
             try
             {
+                $CategoryData = new CategoryDaoPdo();
                 $EventObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Event = :EventCode";
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Event = :ID_Event";
                 $parameters["ID_Event"] = $EventCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $EventObject = new Event($row["Title"]);
+                    $EventObject = new Event($row["Title"], $CategoryData->GetByCategoryCode($row["ID_Category"]));
                     $EventObject->setID($row["ID_Event"]);
                 }
 

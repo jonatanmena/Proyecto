@@ -52,14 +52,14 @@
             try
             {
                 $Place_eventObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Place_event = :Place_eventCode";
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Place_event = :ID_Place_event";
                 $parameters["ID_Place_event"] = $Place_eventCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
                     $Place_eventObject = new Place_event($row["Quantity"],$row["Description"]);
-                    $Place_eventObject->setID($row["ID_Place_event"]);
+                    $Place_eventObject->setID($row["ID_Place_Event"]);
                 }
 
                 return $Place_eventObject;

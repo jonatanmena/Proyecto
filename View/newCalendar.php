@@ -23,6 +23,8 @@
                <thead>
                  <tr>
                    <th>Fecha</th>
+                   <th>Evento</th>
+                   <th>Lugar</th>
                  </tr>
                </thead>
                <tbody align="center">
@@ -31,6 +33,20 @@
                      <!--<input type="text" name="Name" id="" value="" size="22" required>-->
                      <input type="date" name="CalendarDate" value="" required><br>
                    </td>
+                   <td>
+                    <select name="Event">
+                      <?php foreach ($this->EventData->getAll() as $event) : ?>
+                       <option value="<?php echo $event->getID(); ?>"><?php echo $event->getTitle(); ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="Place_Event">
+                      <?php foreach ($this->Place_EventData->getAll() as $location) : ?>
+                       <option value="<?php echo $location->getID(); ?>"><?php echo $location->getDescription(); ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </td>
                  </tr>
                </tbody>
              </table>

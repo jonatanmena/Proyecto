@@ -9,11 +9,18 @@
     class Calendar
     {
         private $date;
-        private $ID;
-        private $Artist;
-        private $Square_Event;
         private $Event;
         private $Place_Event;
+        private $Artists = array();
+        private $Square_Event = array();
+        private $ID;
+
+        public function __construct($date, $Event, $Place_Event)
+        {
+            $this->date = $date;
+            $this->Event = $Event;
+            $this->Place_Event = $Place_Event;
+        }
 
         public function setDate($date)
         {

@@ -15,8 +15,10 @@
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (Date) VALUES (:Date);";
+                $query = "INSERT INTO ".$this->tableName." (CalendarDate, ID_Event, ID_Place_Event) VALUES (:Date, :ID_Event, :ID_Place_Event);";
                 $parameters["Date"] = $Calendar->getDate();
+                $parameters["ID_Event"] = $Calendar->getEvent()->getID();
+                $parameters["ID_Place_Event"] = $Calendar->getPlaceEvent()->getID();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
             }

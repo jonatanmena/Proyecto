@@ -69,6 +69,10 @@ CREATE TABLE Calendars(
   PRIMARY KEY(ID_Calendar),
   FOREIGN KEY (ID_Event) REFERENCES Events(ID_Event)
 );
+
+ALTER TABLE `gotoevent`.`calendars` 
+ADD COLUMN `ID_Place_Event` INT(11) NOT NULL AFTER `ID_Event`;
+
 */
 
 /*
