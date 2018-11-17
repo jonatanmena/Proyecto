@@ -22,6 +22,8 @@
               <thead>
                 <tr>
                   <th>Fecha</th>
+                  <th>Evento</th>
+                  <th>Lugar</th>
                 </tr>
               </thead>
               <tbody align="center">
@@ -30,6 +32,12 @@
                 <tr>
                   <td>
                     <?php echo $Calendar->getDate(); ?>
+                  </td>
+                  <td>
+                    <?php echo $Calendar->getEvent()->getTitle(); ?>
+                  </td>
+                  <td>
+                    <?php echo $Calendar->getPlaceEvent()->getDescription(); ?>
                   </td>
                 </tr>
                 <?php
