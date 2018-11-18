@@ -28,7 +28,7 @@
     /*require_once(VIEWS_PATH."header.php");*/
 
     Autoload::start();
-    //session_start();
+    session_start();
     Router::direccionar(new Request());
 
     /*require_once(VIEWS_PATH."footer.php");*/
