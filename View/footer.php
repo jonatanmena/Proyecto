@@ -30,6 +30,6 @@
 <!-- JAVASCRIPTS -->
 <script src="<?php echo JS_PATH ?>jquery.min.js"></script>
 <script src="<?php echo JS_PATH ?>jquery.backtotop.js"></script>
-<script src="<?php echo JS_PATH ?>/jquery.mobilemenu.js"></script>
+<script src="<?php echo JS_PATH ?>jquery.mobilemenu.js"></script>
 </body>
 </html>
