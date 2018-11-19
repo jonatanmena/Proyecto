@@ -15,7 +15,7 @@
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (Date,ID_Client) VALUES (:Date,:ID_Client);";
+                $query = "INSERT INTO ".$this->tableName." (PurchaseDate,ID_Client) VALUES (:Date,:ID_Client);";
                 $parameters["Date"] = $Purchase->getDate();
                 $parameters["ID_Client"] = $Purchase->getClient()->getID();
                 $this->connection = Connection::GetInstance();
@@ -37,8 +37,8 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $PurchaseObject = new Purchase( $row["Date"],
-                                                    $ClientData->getByClientCode($row["ID_Client"]));
+                    $PurchaseObject = new Purchase( $row["PurchaseDate"],
+                    $ClientData->getByClientCode($row["ID_Client"]));
                     $PurchaseObject->setID($row["ID_Purchase"]);
                     array_push($PurchaseList, $PurchaseObject);
                 }
