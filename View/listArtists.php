@@ -46,7 +46,7 @@
                   </td>
                   <td>
                       <!--<input type="text" name="ArtistPortrait" value=""><br>-->
-                      <?php echo $Artist->getPortrait(); ?>
+                    <img src="<?php echo 'FRONT_ROOT'.  $Artist->getPortrait(); ?>">
                   </td>
                 </tr>
                 <?php

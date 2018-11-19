@@ -15,9 +15,10 @@
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (Title, ID_Category) VALUES (:Title, :ID_Category);";
+                $query = "INSERT INTO ".$this->tableName." (Title, ID_Category, image) VALUES (:Title, :ID_Category, :image);";
                 $parameters["Title"] = $Event->getTitle();
                 $parameters["ID_Category"] = $Event->getCategory()->getID();
+                $parameters["image"] = $Event->getImage();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
             }
@@ -37,9 +38,10 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $EventObject = new Event( $row["Title"],
-                                              $CategoryData->GetByCategoryCode($row["ID_Category"]));
+                    $EventObject = new Event($row["Title"],
+                    $CategoryData->GetByCategoryCode($row["ID_Category"]));
                     $EventObject->setID($row["ID_Event"]);
+                    $EventObject->setImage($row["image"]);
                     array_push($EventList, $EventObject);
                 }
                 return $EventList;
@@ -62,8 +64,9 @@
                 foreach ($resultSet as $row)
                 {
                     $EventObject = new Event( $row["Title"],
-                                              $CategoryData->GetByCategoryCode($row["ID_Category"]));
+                    $CategoryData->GetByCategoryCode($row["ID_Category"]));
                     $EventObject->setID($row["ID_Event"]);
+                    $EventObject->setImage($row["image"]);
                 }
 
                 return $EventObject;

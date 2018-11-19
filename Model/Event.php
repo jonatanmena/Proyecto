@@ -8,6 +8,7 @@
       private $title;
       private $category;
       private $ID;
+      private $image;
 
       public function __construct($title, $category)
       {
@@ -49,6 +50,16 @@
       public function getID()
       {
           return $this->ID;
+      }
+
+      public function getImage()
+      {
+        return $this->image;
+      }
+
+      public function setImage($image)
+      {
+        $this->image = $image;
       }
 
 

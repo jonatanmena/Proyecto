@@ -17,7 +17,7 @@
       <div class="content" >
         <div id="comments" style="align-items:center;">
           <h2>Ingresar Artista</h2>
-          <form action="<?php echo FRONT_ROOT;?>Artist/addArtist" method="post"  style="background-color: #EAEDED;padding: 2rem !important;">
+          <form action="<?php echo FRONT_ROOT;?>Artist/addArtist" method="post" enctype="multipart/form-data" style="background-color: #EAEDED;padding: 2rem !important;">
             <table>
               <thead>
                 <tr>
@@ -40,7 +40,7 @@
                       <input type="text" name="ArtistGender" value=""><br>
                   </td>
                   <td>
-                      <input type="text" name="ArtistPortrait" value=""><br>
+                      <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png"><br>
                   </td>
                 </tr>
               </tbody>

@@ -62,6 +62,9 @@ CREATE TABLE Events(
   FOREIGN KEY (ID_Category) REFERENCES Categories(ID_Category)
 );
 
+ALTER TABLE events
+ADD image varchar(30);
+
 CREATE TABLE Calendars(
   ID_Calendar INT AUTO_INCREMENT,
   CalendarDate DATE NOT NULL,

@@ -23,6 +23,7 @@
                 <tr>
                   <th>Nombre del Evento</th>
                   <th>Categoria</th>
+                  <th>Imagen</th>
                 </tr>
               </thead>
               <tbody align="center">
@@ -34,6 +35,9 @@
                   </td>
                   <td>
                     <?php echo $Event->getCategory()->getDescription(); ?>
+                  </td>
+                  <td>
+                    
                   </td>
                 </tr>
                 <?php
