@@ -50,8 +50,11 @@
                 $resultSet = $this->connection->Execute($query);
                   foreach ($resultSet as $row)
                   {
-                    $calendarObject = new Calendar($row["CalendarDate"], $EventData->GetByEventCode($row["ID_Event"]), $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"]));
+                    $calendarObject = new Calendar( $row["CalendarDate"],
+                                                    $EventData->GetByEventCode($row["ID_Event"]),
+                                                    $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"]));
                     $calendarObject->setID($row["ID_Calendar"]);
+
                     $ArtistCodeArray=$CalendarXArtistData->allArtistByCalendarCode($calendarObject->getID());
                     $Square_EventCodeArray=$Square_EventData->allSquareEventByCalendarcode($calendarObject->getID());
                     foreach($ArtistCodeArray as $ArtistCode){
@@ -75,7 +78,7 @@
         {
             try
             {
-                
+
                 $Place_EventData = new Place_EventDaoPdo();
                 $EventData = new EventDaoPdo();
                 $CalendarXArtistData = new CalendarXArtistDaoPdo();
@@ -89,9 +92,23 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    /*$calendarObject = new Calendar($row["CalendarDate"],$row["ID_Event"],$row["ID_Place_Event"]);*/
-                    $calendarObject = new Calendar($row["CalendarDate"], $EventData->GetByEventCode($row["ID_Event"]), $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"]));
+
+                    $calendarObject = new Calendar( $row["CalendarDate"],
+                                                    $EventData->GetByEventCode($row["ID_Event"]),
+                                                    $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"]));
                     $calendarObject->setID($row["ID_Calendar"]);
+
+                    $ArtistCodeArray=$CalendarXArtistData->allArtistByCalendarCode($calendarObject->getID());
+                    $Square_EventCodeArray=$Square_EventData->allSquareEventByCalendarcode($calendarObject->getID());
+
+                    foreach($ArtistCodeArray as $ArtistCode){
+
+                    $calendarObject->setArtist($ArtistData->GetByArtistCode($ArtistCode));
+                    }
+                    foreach($Square_EventCodeArray as $Square_EventCode){
+
+                    $calendarObject->setSquareEvent($Square_EventData->GetBySquare_EventCode($Square_EventCode));
+                    }
                 }
 
                 return $calendarObject;

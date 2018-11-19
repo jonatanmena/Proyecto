@@ -37,7 +37,8 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $PurchaseObject = new Purchase($row["Date"],$ClientData->getByClientCode($row["ID_Client"]));
+                    $PurchaseObject = new Purchase( $row["Date"],
+                                                    $ClientData->getByClientCode($row["ID_Client"]));
                     $PurchaseObject->setID($row["ID_Purchase"]);
                     array_push($PurchaseList, $PurchaseObject);
                 }
@@ -60,7 +61,8 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $PurchaseObject = new Purchase($row["Date"],$ClientData->getByClientCode($row["ID_Client"]));
+                    $PurchaseObject = new Purchase( $row["Date"],
+                                                    $ClientData->getByClientCode($row["ID_Client"]));
                     $PurchaseObject->setID($row["ID_Purchase"]);
                 }
 

@@ -39,7 +39,9 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $Purchase_LinesObject = new Purchase_Lines($row["Quantity"],$row["Price"],$PurchaseData->GetByPurchaseCode($row["ID_Purchase"]));
+                    $Purchase_LinesObject = new Purchase_Lines( $row["Quantity"],
+                                                                $row["Price"],
+                                                                $PurchaseData->GetByPurchaseCode($row["ID_Purchase"]));
                     $Purchase_LinesObject->setID($row["ID_Purchase_Line"]);
                     array_push($Purchase_LinesList, $Purchase_LinesObject);
                 }
@@ -54,6 +56,7 @@
         {
             try
             {
+                $PurchaseData = new PurchaseDaoPdo();
                 $Purchase_LinesObject = null;
                 $query = "SELECT * FROM ".$this->tableName." WHERE ID_Purchase_Lines = :ID_Purchase_Lines";
                 $parameters["ID_Purchase_Lines"] = $Purchase_LinesCode;
@@ -61,7 +64,9 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $Purchase_LinesObject = new Purchase_Lines($row["Quantity"],$row["Price"]);
+                    $Purchase_LinesObject = new Purchase_Lines( $row["Quantity"],
+                                                                $row["Price"],
+                                                                $PurchaseData->GetByPurchaseCode($row["ID_Purchase"]));
                     $Purchase_LinesObject->setID($row["ID_Purchase_Lines"]);
                 }
 

@@ -47,11 +47,36 @@
                     $Square_EventObject = new Square_Event( $row["Price"],$row["Remainder"],$row["Quantity_available"],
                                                             $Square_KindData->GetBySquare_kindCode($row["ID_Square_Kind"]),
                                                             $CalendarData->GetByCalendarCode($row["ID_Calendar"]));
-                                                            
+
                     $Square_EventObject->setID($row["ID_Square_Event"]);
                     array_push($Square_EventList, $Square_EventObject);
                 }
                 return $Square_EventList;
+            }
+            catch (Exception $ex)
+            {
+                throw $ex;
+            }
+        }
+        public function GetBySquare_EventCode($Square_EventCode)
+        {
+            try
+            {
+                $Square_EventObject = null;
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Square_Event = :ID_Square_Event";
+                $parameters["ID_Square_Event"] = $Square_EventCode;
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query, $parameters);
+                foreach ($resultSet as $row)
+                {
+                    $Square_EventObject = new Square_Event( $row["Price"],$row["Remainder"],$row["Quantity_available"],
+                                                            $Square_KindData->GetBySquare_kindCode($row["ID_Square_Kind"]),
+                                                            $CalendarData->GetByCalendarCode($row["ID_Calendar"]));
+
+                    $Square_EventObject->setID($row["ID_Square_Event"]);
+                }
+                var_dump($Square_EventObject);
+                return $Square_EventObject;
             }
             catch (Exception $ex)
             {
@@ -72,28 +97,6 @@
                 }
                 return $Square_EventCodeArray;
             } catch (Exception $ex) {
-                throw $ex;
-            }
-        }
-        public function GetBySquare_EventCode($Square_EventCode)
-        {
-            try
-            {
-                $Square_EventObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Square_Event = :ID_Square_Event";
-                $parameters["ID_Square_Event"] = $Square_EventCode;
-                $this->connection = Connection::GetInstance();
-                $resultSet = $this->connection->Execute($query, $parameters);
-                foreach ($resultSet as $row)
-                {
-                    $Square_EventObject = new Square_Event($row["Price"],$row["Remainder"],$row["Quantity_available"]);
-                    $Square_EventObject->setID($row["ID_Square_Event"]);
-                }
-                var_dump($Square_EventObject);
-                return $Square_EventObject;
-            }
-            catch (Exception $ex)
-            {
                 throw $ex;
             }
         }

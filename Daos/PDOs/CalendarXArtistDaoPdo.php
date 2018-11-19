@@ -15,7 +15,6 @@
         {
             try {
                 $query = "INSERT INTO ".$this->tableName." (ID_Artist,ID_Calendar) VALUES (:ID_Artist,:ID_Calendar);";
-                $Artist = new ArtistDaoPdo();
                 $parameters["ID_Artist"] = $CalendarXArtist->getArtist()->getID();
                 $parameters["ID_Calendar"] = $CalendarXArtist->getCalendar()->getID();
                 $this->connection = Connection::GetInstance();
@@ -43,6 +42,26 @@
                 throw $ex;
             }
         }
+        public function GetByCalendarXArtistCode($ArtistCode, $CalendarCode)
+        {
+            try {
+                $ArtistData = new ArtistDaoPdo();
+                $CalendarData = new CalendarDaoPdo();
+                $CalendarXArtistObject = null;
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Artist = :ArtistCode AND ID_Calendar = :ID_CalendarCode";
+                $parameters["ID_Artist"] = $ArtistCode;
+                $parameters["ID_Calendar"] = $CalendarCode;
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query, $parameters);
+                foreach ($resultSet as $row) {
+                    $CalendarXArtistObject = new CalendarXArtist( $ArtistData->GetByArtistCode($row["ID_Artist"]),
+                                                                  $CalendarData->getByCalendarCode($row["ID_Calendar"]));
+                }
+                return $CalendarXArtistObject;
+            } catch (Exception $ex) {
+                throw $ex;
+            }
+        }
         public function allArtistByCalendarCode($CalendarCode)
         {
             try {
@@ -60,20 +79,20 @@
                 throw $ex;
             }
         }
-        public function GetByCalendarXArtistCode($ArtistCode, $CalendarCode)
+
+        public function allCalendarByArtistCode($ArtistCode)
         {
             try {
-                $CalendarXArtistObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Artist = :ArtistCode AND ID_Calendar = :ID_CalendarCode";
+                $CalendarCodeArray= array();
+
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Artist = :ID_Artist";
                 $parameters["ID_Artist"] = $ArtistCode;
-                $parameters["ID_Calendar"] = $CalendarCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) {
-                    $CalendarXArtistObject = new CalendarXArtist($row["ID_Artist"], $row["ID_calendar"]);
-                    $CalendarXArtistObject->setIDArtist($row["ID_Artist"])->setIDCalendar($row["ID_Calendar"]);
+                    array_push($CalendarCodeArray,$row["ID_Artist"]);
                 }
-                return $CalendarXArtistObject;
+                return $CalendarCodeArray;
             } catch (Exception $ex) {
                 throw $ex;
             }
@@ -81,7 +100,7 @@
         public function Delete($ArtistCode, $CalendarCode)
         {
             try {
-                $query = "DELETE FROM ".$this->tableName." WHERE ID_Artist = :ArtistCode AND ID_Calendar = :ID_CalendarCode";
+                $query = "DELETE FROM ".$this->tableName." WHERE ID_Artist = :ID_Artist AND ID_Calendar = :ID_Calendar";
                 $parameters["ID_Artist"] = $ArtistCode;
                 $parameters["ID_Calendar"] = $CalendarCode;
                 $this->connection = Connection::GetInstance();
