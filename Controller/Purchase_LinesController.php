@@ -23,9 +23,9 @@
             }
             require_once("View/newPurchase_Lines.php");
         }
-        public function addPurchase_Lines($Quantity, $Price)
+        public function addPurchase_Lines($Quantity, $Price,$Purchase)
         {
-            $Purchase_LinesObject=new Purchase_Lines($Quantity, $Price);
+            $Purchase_LinesObject=new Purchase_Lines($Quantity, $Price,$this->PurchaseData->getByPurchaseCode($Purchase));
             $this->Purchase_LinesData->add($Purchase_LinesObject);
             $this->listPurchase_Lines();
         }

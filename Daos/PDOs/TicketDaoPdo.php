@@ -52,7 +52,7 @@
             try
             {
                 $TicketObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Ticket = :TicketCode";
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Ticket = :ID_Ticket";
                 $parameters["ID_Ticket"] = $TicketCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
@@ -73,7 +73,7 @@
         {
             try
             {
-                $query = "DELETE FROM ".$this->tableName." WHERE ID_Ticket = :TicketCode";
+                $query = "DELETE FROM ".$this->tableName." WHERE ID_Ticket = :ID_Ticket";
                 $parameters["ID_Ticket"] = $TicketCode;
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);

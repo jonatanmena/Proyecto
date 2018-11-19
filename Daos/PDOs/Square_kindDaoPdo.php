@@ -50,15 +50,17 @@
         {
             try
             {
+
                 $Square_kindObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Square_kind = :Square_kindCode";
-                $parameters["ID_Square_kind"] = $Square_kindCode;
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Square_kind = :ID_Square_Kind";
+                $parameters["ID_Square_Kind"] = $Square_kindCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
+
                     $Square_kindObject = new Square_kind($row["Description"]);
-                    $Square_kindObject->setID($row["ID_Square_kind"]);
+                    $Square_kindObject->setID($row["ID_Square_Kind"]);
                 }
 
                 return $Square_kindObject;

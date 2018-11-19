@@ -2,8 +2,10 @@
     namespace Controller;
 
     use Model\Purchase as Purchase;
+    
     use Daos\PDOs\PurchaseDaoPdo as PurchaseDaoPdo;
     use Daos\PDOs\ClientDaoPdo as ClientDaoPdo;
+
 
     class PurchaseController
     {
@@ -23,9 +25,9 @@
             }
             require_once("View/newPurchase.php");
         }
-        public function addPurchase($Date)
+        public function addPurchase($Date,$Client)
         {
-            $PurchaseObject=new Purchase($Date);
+            $PurchaseObject=new Purchase($Date,$this->ClientData->GetByClientCode($Client));
             $this->PurchaseData->add($PurchaseObject);
             $this->listPurchases();
         }

@@ -8,6 +8,12 @@
       private $Surname;
       private $DNI;
 
+      public function __construct($Name,$Surname,$DNI)
+      {
+        $this->Name = $Name;
+        $this->Surname = $Surname;
+        $this->DNI = $DNI;
+      }
       public function setID($ID)
       {
           $this->ID = $ID;

@@ -30,7 +30,6 @@
         {
             try
             {
-
                 $CategoryData = new CategoryDaoPdo();
                 $EventList = array();
                 $query = "SELECT * FROM ".$this->tableName;

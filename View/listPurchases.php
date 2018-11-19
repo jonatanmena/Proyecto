@@ -22,6 +22,7 @@
               <thead>
                 <tr>
                   <th>Fecha de compra</th>
+                  <th>Cliente</th>
                 </tr>
               </thead>
               <tbody align="center">
@@ -30,6 +31,9 @@
                 <tr>
                   <td>
                     <?php echo $Purchase->getDate(); ?>
+                  </td>
+                  <td>
+                    <?php echo $Purchase->getClient()->getName(); ?>
                   </td>
                 </tr>
                 <?php

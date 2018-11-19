@@ -23,6 +23,7 @@
                 <tr>
                   <th>Cantidad</th>
                   <th>Precio</th>
+                  <th>Cliente</th>
                 </tr>
               </thead>
               <tbody align="center">
@@ -34,6 +35,9 @@
                   </td>
                   <td>
                       <?php echo $Purchase_Lines->getPrice(); ?>
+                  </td>
+                  <td>
+                      <?php echo $Purchase_Lines->getPurchase()->getClient()->getName(); ?>
                   </td>
                 </tr>
                 <?php

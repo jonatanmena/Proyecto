@@ -15,7 +15,7 @@
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (name,Surname,DNI) VALUES (:Name,:Surname,:DNI);";
+                $query = "INSERT INTO ".$this->tableName." (Name,Surname,DNI) VALUES (:Name,:Surname,:DNI);";
                 $parameters["Name"] = $Client->getName();
                 $parameters["Surname"] = $Client->getSurname();
                 $parameters["DNI"] = $Client->getDNI();
@@ -53,7 +53,7 @@
             try
             {
                 $ClientObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Client = :ClientCode";
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Client = :ID_Client";
                 $parameters["ID_Client"] = $ClientCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
@@ -74,7 +74,7 @@
         {
             try
             {
-                $query = "DELETE FROM ".$this->tableName." WHERE ID_Client = :ClientCode";
+                $query = "DELETE FROM ".$this->tableName." WHERE ID_Client = :ID_Client";
                 $parameters["ID_Client"] = $ClientCode;
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);

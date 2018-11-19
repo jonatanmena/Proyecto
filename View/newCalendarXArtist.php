@@ -22,18 +22,26 @@
             <table>
               <thead>
                 <tr>
-                  <th>ID_Artista</th>
-                  <th>ID_Calendario</th>
+                  <th>Artista</th>
+                  <th>Calendario</th>
                 </tr>
               </thead>
               <tbody align="center">
                 <tr>
-                  <td>
-                    <input type="ID_Artist" name="ArtistCode" value="" required><br>
-                  </td>
-                  <td>
-                    <input type="ID_Calendar" name="CalendarCode" value="" required><br>
-                  </td>
+                   <td>
+                     <select name="Artist">
+                       <?php foreach ($this->ArtistData->getAll() as $Artist) : ?>
+                        <option value="<?php echo $Artist->getID(); ?>"><?php echo $Artist->getName(); ?></option>
+                       <?php endforeach; ?>
+                     </select>
+                   </td>
+                   <td>
+                     <select name="Calendar">
+                       <?php foreach ($this->CalendarData->getAll() as $Calendar) : ?>
+                         <option value="<?php echo $Calendar->getID(); ?>"><?php echo $Calendar->getDate(); ?></option>
+                       <?php endforeach; ?>
+                      </select>
+                    </td>
                 </tr>
               </tbody>
             </table>

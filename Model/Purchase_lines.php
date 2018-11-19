@@ -11,9 +11,15 @@
         private $Price;
         private $ID;
         private $Purchase;
-        private $Ticket;
         private $Square_Event;
+        private $Ticket;
 
+        public function __construct($Quantity,$Price,$Purchase)
+        {
+          $this->Quantity = $Quantity;
+          $this->Price = $Price;
+          $this->Purchase = $Purchase;
+        }
         public function setQuantity($Quantity)
         {
             $this->Quantity = $Quantity;
@@ -51,7 +57,7 @@
 
         public function setPurchase(Purchase $Purchase)
         {
-            $this->Purchase = $Purchase;
+            $this->Purchase=$Purchase;
 
             return $this;
         }

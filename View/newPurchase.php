@@ -22,12 +22,22 @@
                <thead>
                  <tr>
                    <th>Fecha</th>
+                   <th>Cliente</th>
                  </tr>
                </thead>
                <tbody align="center">
                  <tr>
                    <td>
                     <input type="date" name="PurchaseDate" value="" required><br>
+                   </td>
+                   <td>
+                     <select name="Client">
+
+                       <?php foreach ($this->ClientData->getAll() as $Client) : ?>
+
+                        <option value="<?php echo $Client->getID(); ?>"><?php echo $Client->getName(); ?></option>
+                       <?php endforeach; ?>
+                     </select>
                    </td>
                  </tr>
                </tbody>

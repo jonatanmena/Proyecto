@@ -9,6 +9,11 @@
         private $ID;
         private $Client;
 
+        public function __construct($Date,$Client)
+        {
+          $this->Date = $Date;
+          $this->Client = $Client;
+        }
         public function setDate($Date)
         {
             $this->Date = $Date;

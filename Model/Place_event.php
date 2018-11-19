@@ -8,10 +8,10 @@
         private $ID;
 
         public function __construct($Quantity, $Description)
-      {
+        {
         $this->Quantity = $Quantity;
         $this->Description = $Description;
-      }
+        }
 
         public function setQuantity($Quantity)
         {

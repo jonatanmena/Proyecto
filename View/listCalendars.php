@@ -24,6 +24,8 @@
                   <th>Fecha</th>
                   <th>Evento</th>
                   <th>Lugar</th>
+                  <th>Artistas</th>
+                  <!--<th>Plaza Evento Remanente</th>-->
                 </tr>
               </thead>
               <tbody align="center">
@@ -39,6 +41,23 @@
                   <td>
                     <?php echo $Calendar->getPlaceEvent()->getDescription(); ?>
                   </td>
+                  <td>
+                    <?php
+                    foreach ($Calendar->getArtist() as $Artist) {
+                    echo $Artist->getName()."<br>";
+                    }
+                    ?>
+                  </td>
+                  <!--
+                  <td>
+                    <?php
+                    foreach ($Calendar->getSquareEvent() as $Square_Event) {
+                    echo $Square_Event->getRemainder()."<br>";
+                    }
+                    ?>
+                  </td>
+                  -->
+
                 </tr>
                 <?php
                 }

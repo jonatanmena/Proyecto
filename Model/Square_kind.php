@@ -7,9 +7,9 @@
         private $ID;
 
         public function __construct($Description)
-      {
+        {
         $this->Description = $Description;
-      }
+        }
 
         public function setDescription($Description)
         {

@@ -6,12 +6,17 @@
     use Daos\Connection as Connection;
     use \Exception as Exception;
     use Daos\PDOs\EventDaoPdo as EventDaoPdo;
+    use Daos\PDOs\ArtistDaoPdo as ArtistDaoPdo;
     use Daos\PDOs\Place_EventDaoPdo as Place_EventDaoPdo;
+    use Daos\PDOs\CalendarXArtistDaoPdo as CalendarXArtistDaoPdo;
+    use Daos\PDOs\Square_EventDaoPdo as Square_EventDaoPdo;
 
     class CalendarDaoPdo implements ICalendarDao
     {
         private $connection;
         private $tableName = "Calendars";
+        private $CalendarXArtistsTable = "calendarxartist";
+
 
         public function Add(Calendar $Calendar)
         {
@@ -35,16 +40,30 @@
             {
                 $Place_EventData = new Place_EventDaoPdo();
                 $EventData = new EventDaoPdo();
+                $CalendarXArtistData = new CalendarXArtistDaoPdo();
+                $ArtistData = new ArtistDaoPdo();
+                $Square_EventData = new Square_EventDaoPdo();
+
                 $CalendarList = array();
                 $query = "SELECT * FROM ".$this->tableName;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
-                foreach ($resultSet as $row)
-                {
+                  foreach ($resultSet as $row)
+                  {
                     $calendarObject = new Calendar($row["CalendarDate"], $EventData->GetByEventCode($row["ID_Event"]), $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"]));
                     $calendarObject->setID($row["ID_Calendar"]);
+                    $ArtistCodeArray=$CalendarXArtistData->allArtistByCalendarCode($calendarObject->getID());
+                    $Square_EventCodeArray=$Square_EventData->allSquareEventByCalendarcode($calendarObject->getID());
+                    foreach($ArtistCodeArray as $ArtistCode){
+
+                    $calendarObject->setArtist($ArtistData->GetByArtistCode($ArtistCode));
+                    }
+                    foreach($Square_EventCodeArray as $Square_EventCode){
+
+                    $calendarObject->setSquareEvent($Square_EventData->GetBySquare_EventCode($Square_EventCode));
+                    }
                     array_push($CalendarList, $calendarObject);
-                }
+                  }
                 return $CalendarList;
             }
             catch (Exception $ex)
@@ -56,14 +75,22 @@
         {
             try
             {
-                $CalendarObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Calendar = :CalendarCode";
+                
+                $Place_EventData = new Place_EventDaoPdo();
+                $EventData = new EventDaoPdo();
+                $CalendarXArtistData = new CalendarXArtistDaoPdo();
+                $ArtistData = new ArtistDaoPdo();
+                $Square_EventData = new Square_EventDaoPdo();
+
+                $calendarObject = null;
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Calendar = :ID_Calendar";
                 $parameters["ID_Calendar"] = $CalendarCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $calendarObject = new Calendar($row["CalendarDate"]);
+                    /*$calendarObject = new Calendar($row["CalendarDate"],$row["ID_Event"],$row["ID_Place_Event"]);*/
+                    $calendarObject = new Calendar($row["CalendarDate"], $EventData->GetByEventCode($row["ID_Event"]), $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"]));
                     $calendarObject->setID($row["ID_Calendar"]);
                 }
 

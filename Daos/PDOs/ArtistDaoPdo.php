@@ -54,7 +54,7 @@
             try
             {
                 $ArtistObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Artist = :ArtistCode";
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Artist = :ID_Artist";
                 $parameters["ID_Artist"] = $ArtistCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);

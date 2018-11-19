@@ -15,8 +15,9 @@
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (Date) VALUES (:Date);";
+                $query = "INSERT INTO ".$this->tableName." (Date,ID_Client) VALUES (:Date,:ID_Client);";
                 $parameters["Date"] = $Purchase->getDate();
+                $parameters["ID_Client"] = $Purchase->getClient()->getID();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
             }
@@ -29,13 +30,14 @@
         {
             try
             {
+                $ClientData = new ClientDaoPdo();
                 $PurchaseList = array();
                 $query = "SELECT * FROM ".$this->tableName;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $PurchaseObject = new Purchase($row["Date"]);
+                    $PurchaseObject = new Purchase($row["Date"],$ClientData->getByClientCode($row["ID_Client"]));
                     $PurchaseObject->setID($row["ID_Purchase"]);
                     array_push($PurchaseList, $PurchaseObject);
                 }
@@ -50,14 +52,15 @@
         {
             try
             {
+                $ClientData = new ClientDaoPdo();
                 $PurchaseObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Purchase = :PurchaseCode";
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Purchase = :ID_Purchase";
                 $parameters["ID_Purchase"] = $PurchaseCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $PurchaseObject = new Purchase($row["Date"]);
+                    $PurchaseObject = new Purchase($row["Date"],$ClientData->getByClientCode($row["ID_Client"]));
                     $PurchaseObject->setID($row["ID_Purchase"]);
                 }
 
@@ -72,7 +75,7 @@
         {
             try
             {
-                $query = "DELETE FROM ".$this->tableName." WHERE ID_Purchase = :PurchaseCode";
+                $query = "DELETE FROM ".$this->tableName." WHERE ID_Purchase = :ID_Purchase";
                 $parameters["ID_Purchase"] = $PurchaseCode;
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);

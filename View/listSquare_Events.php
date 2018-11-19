@@ -24,10 +24,13 @@
                   <th>Precio</th>
                   <th>Remanente</th>
                   <th>Cantidad Disponible</th>
+                  <th>Descripcion tipo de plaza</th>
+                  <th>Lugar de Evento</th>
+
                 </tr>
               </thead>
               <tbody align="center">
-                <?php foreach ($this->Square_eventData->getAll() as $Square_event) {
+                <?php foreach ($this->Square_EventData->getAll() as $Square_event) {
                  ?>
                 <tr>
                   <td>
@@ -38,6 +41,12 @@
                   </td>
                   <td>
                       <?php echo $Square_event->getQuantityAvailable(); ?>
+                  </td>
+                  <td>
+                      <?php echo $Square_event->getSquareKind()->getDescription(); ?>
+                  </td>
+                  <td>
+                      <?php echo $Square_event->getCalendar()->getPlaceEvent()->getDescription(); ?>
                   </td>
                 </tr>
                 <?php

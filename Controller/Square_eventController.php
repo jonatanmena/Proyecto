@@ -24,16 +24,18 @@
         public function newSquare_Event()
         {
             if (empty($this->CalendarData->getAll())) {
-                echo "<script> alert('No hay calendarios cargados!');</script>";                
+                echo "<script> alert('No hay calendarios cargados!');</script>";
                 require_once("View/main.php");
             } elseif (empty($this->Square_KindData->getAll())) {
                 require_once("View/newSquare_Kind.php");
             }
             require_once("View/newSquare_Event.php");
         }
-        public function addSquare_Event($Price, $Remainder, $Quantity_available)
+        public function addSquare_Event($Price, $Remainder, $Quantity_available, $Square_KindCode, $CalendarCode)
         {
-            $Square_EventObject=new Square_Event($Price, $Remainder, $Quantity_available);
+            $Square_EventObject=new Square_Event( $Price,$Remainder,$Quantity_available,
+                                                  $this->Square_KindData->GetBySquare_kindCode($Square_KindCode),
+                                                  $this->CalendarData->GetByCalendarCode($CalendarCode));            
             $this->Square_EventData->add($Square_EventObject);
             $this->listSquare_Events();
         }

@@ -48,19 +48,20 @@
 
         public function setArtist(Artist $Artist)
         {
-            $this->Artist = $Artist;
+
+            array_push($this->Artists,$Artist);
 
             return $this;
         }
 
         public function getArtist()
         {
-            return $this->Artist;
+            return $this->Artists;
         }
 
         public function setSquareEvent(Square_Event $Square_Event)
         {
-            $this->Square_Event = $Square_Event;
+            array_push($this->Square_Event,$Square_Event);
 
             return $this;
         }

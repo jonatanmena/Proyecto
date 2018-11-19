@@ -24,6 +24,8 @@
                    <th>Precio</th>
                    <th>Remanente</th>
                    <th>Cantidad Disponible</th>
+                   <th>Tipo de Plaza</th>
+                   <th>Calendario</th>
                  </tr>
                </thead>
                <tbody align="center">
@@ -36,6 +38,20 @@
                    </td>
                    <td>
                        <input type="number" name="Square_eventQuantityAvailable" value="" required><br>
+                   </td>
+                   <td>
+                     <select name="Square_Kind">
+                       <?php foreach ($this->Square_KindData->getAll() as $Square_Kind) : ?>
+                        <option value="<?php echo $Square_Kind->getID(); ?>"><?php echo $Square_Kind->getDescription(); ?></option>
+                       <?php endforeach; ?>
+                     </select>
+                   </td>
+                   <td>
+                     <select name="Calendar">
+                       <?php foreach ($this->CalendarData->getAll() as $Calendar) : ?>
+                        <option value="<?php echo $Calendar->getID(); ?>"><?php echo $Calendar->getDate(); ?></option>
+                       <?php endforeach; ?>
+                     </select>
                    </td>
                  </tr>
                </tbody>

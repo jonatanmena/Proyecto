@@ -70,12 +70,9 @@ CREATE TABLE Calendars(
   FOREIGN KEY (ID_Event) REFERENCES Events(ID_Event)
 );
 
-ALTER TABLE `gotoevent`.`calendars` 
+ALTER TABLE `gotoevent`.`calendars`
 ADD COLUMN `ID_Place_Event` INT(11) NOT NULL AFTER `ID_Event`;
 
-*/
-
-/*
 CREATE TABLE Artists(
   ID_Artist INT AUTO_INCREMENT,
   Name VARCHAR(20) NOT NULL,
@@ -84,16 +81,15 @@ CREATE TABLE Artists(
   Portrait VARCHAR(50) NOT NULL,
   PRIMARY KEY(ID_Artist)
 )
-*/
-/*
+
+
 CREATE TABLE CalendarXArtist(
     ID_Artist INT(11) NOT NULL,
     ID_Calendar INT(11) NOT NULL,
     FOREIGN KEY (ID_Artist) REFERENCES artists(ID_Artist),
     FOREIGN KEY (ID_Calendar) REFERENCES calendars(ID_Calendar)
 )
-*/
-/*
+
 CREATE TABLE Square_Events(
   ID_Square_Event INT AUTO_INCREMENT,
   Remainder VARCHAR(30) NOT NULL,
@@ -103,16 +99,14 @@ CREATE TABLE Square_Events(
   PRIMARY KEY (ID_Square_Event),
   FOREIGN KEY (ID_Square_Kind) REFERENCES Square_Kinds(ID_Square_Kind)
 );
-*/
-/*
+
 ALTER TABLE
     square_events ADD ID_Calendar INT NOT NULL;
 
 ALTER TABLE
     square_events ADD CONSTRAINT ID_Calendar FOREIGN KEY(ID_Calendar) REFERENCES calendars(ID_Calendar)
-*/
 
-/*
+
 CREATE TABLE Users(
   ID_User INT AUTO_INCREMENT,
   User varchar(30) NOT NULL,

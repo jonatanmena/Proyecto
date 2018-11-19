@@ -13,6 +13,14 @@
         private $Square_Kind;
         private $Calendar;
 
+        public function __construct($Price,$Remainder,$Quantity_available,$Square_Kind,$Calendar)
+        {
+          $this->Price = $Price;
+          $this->Remainder = $Remainder;
+          $this->Quantity_available = $Quantity_available;
+          $this->Square_Kind = $Square_Kind;
+          $this->Calendar = $Calendar;
+        }
         public function setPrice($Price)
         {
             $this->Price = $Price;

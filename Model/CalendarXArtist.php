@@ -9,6 +9,11 @@
       private $Artist;
       private $Calendar;
 
+      public function __construct($Artist,$Calendar)
+      {
+        $this->Artist = $Artist;
+        $this->Calendar = $Calendar;
+      }
       public function setArtist(Artist $Artist)
       {
           $this->Artist = $Artist;
@@ -34,8 +39,5 @@
       }
 
     }
-
-
-
 
  ?>

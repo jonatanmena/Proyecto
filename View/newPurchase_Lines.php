@@ -23,6 +23,7 @@
                  <tr>
                    <th>Cantidad</th>
                    <th>Precio</th>
+                   <th>Cliente de la compra</th>
                  </tr>
                </thead>
                <tbody align="center">
@@ -30,9 +31,15 @@
                    <td>
                     <input type="text" name="Purchase_LinesQuantity" value="" required><br>
                    </td>
-
                    <td>
                     <input type="text" name="Purchase_LinesPrice" value="" required><br>
+                  </td>
+                  <td>
+                    <select name="Square_Kind">
+                      <?php foreach ($this->PurchaseData->getAll() as $Purchase) : ?>
+                       <option value="<?php echo $Purchase->getID(); ?>"><?php echo $Purchase->getClient()->getName(); ?></option>
+                      <?php endforeach; ?>
+                    </select>
                   </td>
                  </tr>
                </tbody>

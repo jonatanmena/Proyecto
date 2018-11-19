@@ -9,6 +9,7 @@
       private $Portrait;
       private $ID;
 
+
       public function __construct($Name, $Description, $Gender, $Portrait)
       {
         $this->Name = $Name;
@@ -16,7 +17,7 @@
         $this->Gender = $Gender;
         $this->Portrait = $Portrait;
       }
-
+      
       public function setName($Name)
       {
           $this->Name = $Name;

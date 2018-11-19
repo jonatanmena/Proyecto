@@ -25,6 +25,8 @@
                    <th>Fecha</th>
                    <th>Evento</th>
                    <th>Lugar</th>
+                   <th>Artista</th>
+                   <!--<th>Plaza Evento ID</th>-->
                  </tr>
                </thead>
                <tbody align="center">
@@ -47,6 +49,24 @@
                       <?php endforeach; ?>
                     </select>
                   </td>
+                  <td>
+                    <select name="Artist">
+                      <?php foreach ($this->ArtistData->getAll() as $Artist) : ?>
+                       <option value="<?php echo $Artist->getID(); ?>"><?php echo $Artist->getName(); ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </td>
+                  <!--
+                  <td>
+                    <select name="Square_Event">
+                    
+                      <?php foreach ($this->Square_EventData->getAll() as $Square_Event) : ?>
+                       <option value="<?php echo $Square_Event->getID(); ?>"><?php echo $Square_Event->getID(); ?></option>
+                      <?php endforeach; ?>
+
+                    </select>
+                  </td>
+                  -->
                  </tr>
                </tbody>
              </table>
