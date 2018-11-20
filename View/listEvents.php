@@ -31,13 +31,13 @@
                  ?>
                 <tr>
                   <td>
-                    <?php echo $Event->getTitle(); ?>
+                    <br><br> <?php echo $Event->getTitle(); ?>
                   </td>
                   <td>
-                    <?php echo $Event->getCategory()->getDescription(); ?>
+                  <br><br>  <?php echo $Event->getCategory()->getDescription(); ?>
                   </td>
                   <td>
-                    
+              <img src="<?php echo FRONT_ROOT . $Event->getImage();?>" style="max-width:125px; max-height:125px;">
                   </td>
                 </tr>
                 <?php

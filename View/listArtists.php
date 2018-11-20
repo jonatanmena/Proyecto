@@ -34,19 +34,19 @@
                 <tr>
                   <td>
                     <!-- <input type="text" name="ArtistNam" value="" required><br> -->
-                    <?php echo $Artist->getName(); ?>
+                  <br><br>  <?php echo $Artist->getName(); ?>
                   </td>
                   <td>
                     <!--<input type="text" name="ArtistDescription" value="" required><br>-->
-                      <?php echo $Artist->getDescription(); ?>
+                    <br> <br> <?php echo $Artist->getDescription(); ?>
                   </td>
                   <td>
                     <!--<input type="text" name="ArtistGender" value=""><br>-->
-                      <?php echo $Artist->getGender(); ?>
+                    <br><br>  <?php echo $Artist->getGender(); ?>
                   </td>
                   <td>
                       <!--<input type="text" name="ArtistPortrait" value=""><br>-->
-                    <img src="<?php echo 'FRONT_ROOT'.  $Artist->getPortrait(); ?>">
+                    <img src="<?php echo FRONT_ROOT . $Artist->getPortrait();?>" style="max-width:175px; max-height:175px;">
                   </td>
                 </tr>
                 <?php

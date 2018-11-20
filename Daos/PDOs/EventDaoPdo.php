@@ -39,9 +39,8 @@
                 foreach ($resultSet as $row)
                 {
                     $EventObject = new Event($row["Title"],
-                    $CategoryData->GetByCategoryCode($row["ID_Category"]));
+                    $CategoryData->GetByCategoryCode($row["ID_Category"]), $row["image"]);
                     $EventObject->setID($row["ID_Event"]);
-                    $EventObject->setImage($row["image"]);
                     array_push($EventList, $EventObject);
                 }
                 return $EventList;
