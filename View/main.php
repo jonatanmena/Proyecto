@@ -40,8 +40,9 @@
   <!-- Responsive Stylesheet File -->
   <link href="<?php echo VIEWS_PATH?>css/responsive.css" rel="stylesheet">
 
-  <link href="<?php echo VIEWS_PATH?>css/login.css" rel="stylesheet">
   <link href="<?php echo VIEWS_PATH?>css/cart.css" rel="stylesheet">
+  <link href="<?php echo VIEWS_PATH?>css/login.css" rel="stylesheet">
+
 
 </head>
 
@@ -111,7 +112,7 @@
                   <li>
                     <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
                   </li>
-                  <ul class="nav navbar-nav navbar-righ">
+                  <ul id="LoginForm" class="nav navbar-nav navbar-righ">
                           <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
                   			<ul id="login-dp" class="dropdown-menu">
@@ -120,7 +121,7 @@
                   							<div class="col-md-12">
                   								Login via
                   								<div class="social-buttons">
-                  									<a href="#" class="btn btn-fb" id="botonFacebook"><i class="fa fa-facebook"></i> Facebook</a>
+                  									<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
                   									<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
                   								</div>
                                                   or
@@ -132,7 +133,7 @@
                   										<div class="form-group">
                   											 <label class="sr-only" for="exampleInputPassword2">Password</label>
                   											 <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                                               <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                                                               <div class="help-block text-right" ><a id="aColor" href=""><b>Forget the password ?</b></a></div>
                   										</div>
                   										<div class="form-group">
                   											 <button type="submit" class="btn btn-primary btn-block">Sign in</button>
@@ -145,7 +146,7 @@
                   								 </form>
                   							</div>
                   							<div class="bottom text-center">
-                  								New here ? <a href="#"><b>Join Us</b></a>
+                  								New here ? <a id="aColor" href="#"><b>Join Us</b></a>
                   							</div>
                   					 </div>
                   				</li>
