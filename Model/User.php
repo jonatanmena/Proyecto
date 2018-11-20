@@ -8,9 +8,11 @@
         private $Privilege;
         private $ID;
 
-        public function setUser($User)
+        public function setUser($User,$Password,$Privilege)
         {
             $this->User = $User;
+            $this->Password = $Password;
+            $this->Privilege = $Privilege;
 
             return $this;
         }
