@@ -123,7 +123,7 @@
                   								<div class="social-buttons">
                   									<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
                   									<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-                  								</div>
+                  								</div> 
                                                   or
                   								 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
                   										<div class="form-group">
