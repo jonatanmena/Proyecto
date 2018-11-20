@@ -15,8 +15,7 @@
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (ID_Purchase_Line,Quantity,Price,ID_Purchase) VALUES (:ID_Purchase_Line,:Quantity,:Price,:ID_Purchase);";
-                $parameters["ID_Purchase_Line"] = $Purchase_Lines->getID();
+                $query = "INSERT INTO ".$this->tableName." (Quantity,Price,ID_Purchase) VALUES (:Quantity,:Price,:ID_Purchase);";
                 $parameters["Quantity"] = $Purchase_Lines->getQuantity();
                 $parameters["Price"] = $Purchase_Lines->getPrice();
                 $parameters["ID_Purchase"] = $Purchase_Lines->getPurchase()->getID();
@@ -58,8 +57,8 @@
             {
                 $PurchaseData = new PurchaseDaoPdo();
                 $Purchase_LinesObject = null;
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Purchase_Lines = :ID_Purchase_Lines";
-                $parameters["ID_Purchase_Lines"] = $Purchase_LinesCode;
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Purchase_Line = :ID_Purchase_Line";
+                $parameters["ID_Purchase_Line"] = $Purchase_LinesCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
@@ -67,7 +66,7 @@
                     $Purchase_LinesObject = new Purchase_Lines( $row["Quantity"],
                                                                 $row["Price"],
                                                                 $PurchaseData->GetByPurchaseCode($row["ID_Purchase"]));
-                    $Purchase_LinesObject->setID($row["ID_Purchase_Lines"]);
+                    $Purchase_LinesObject->setID($row["ID_Purchase_Line"]);
                 }
 
                 return $Purchase_LinesObject;
@@ -81,8 +80,8 @@
         {
             try
             {
-                $query = "DELETE FROM ".$this->tableName." WHERE ID_Purchase_Lines = :ID_Purchase_Lines";
-                $parameters["ID_Purchase_Lines"] = $Purchase_LinesCode;
+                $query = "DELETE FROM ".$this->tableName." WHERE ID_Purchase_Line = :ID_Purchase_Line";
+                $parameters["ID_Purchase_Line"] = $Purchase_LinesCode;
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
             }

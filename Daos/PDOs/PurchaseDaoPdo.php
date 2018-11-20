@@ -15,8 +15,8 @@
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (PurchaseDate,ID_Client) VALUES (:Date,:ID_Client);";
-                $parameters["Date"] = $Purchase->getDate();
+                $query = "INSERT INTO ".$this->tableName." (PurchaseDate,ID_Client) VALUES (:PurchaseDate,:ID_Client);";
+                $parameters["PurchaseDate"] = $Purchase->getDate();
                 $parameters["ID_Client"] = $Purchase->getClient()->getID();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
@@ -61,7 +61,7 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $PurchaseObject = new Purchase( $row["Date"],
+                    $PurchaseObject = new Purchase( $row["PurchaseDate"],
                                                     $ClientData->getByClientCode($row["ID_Client"]));
                     $PurchaseObject->setID($row["ID_Purchase"]);
                 }
