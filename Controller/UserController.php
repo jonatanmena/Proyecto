@@ -11,16 +11,16 @@
         public function __construct()
         {
             $this->UserData= new UserDaoPdo();
-        }        
+        }
         public function Login($Email, $Password)
         {
             if (isset($Email) && isset($Password)) {
-                $user=$this->userData->getIfLoggedSucces($Email,$Password);
+                $user=$this->UserData->getIfLoggedSucces($Email,$Password);
                 if ($user!=null) {
                     $_SESSION["userLogged"]=$user;
-                    header("location:/Second Exam/Home/userLogged");
+                    header("location:/Proyecto/Main/userLogged");
                 } else {
-                    header("location:/Second Exam/Home/index");
+                    header("location:/Proyecto/Main/index");
                 }
             }
         }

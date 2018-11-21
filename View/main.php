@@ -1,47 +1,6 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title>eTicket Proyecto UTN</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
-
-  <!-- Favicons -->
-  <link href="<?php echo VIEWS_PATH?>img/favicon.png" rel="icon">
-  <link href="<?php echo VIEWS_PATH?>img/apple-touch-icon.png" rel="apple-touch-icon">
-
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
-
-
-  <!-- Bootstrap CSS File -->
-  <link href="<?php echo VIEWS_PATH?>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Libraries CSS Files -->
-  <link href="<?php echo VIEWS_PATH?>lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
-  <link href="<?php echo VIEWS_PATH?>lib/owlcarousel/owl.carousel.css" rel="stylesheet">
-  <link href="<?php echo VIEWS_PATH?>lib/owlcarousel/owl.transitions.css" rel="stylesheet">
-  <link href="<?php echo VIEWS_PATH?>lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="<?php echo VIEWS_PATH?>lib/animate/animate.min.css" rel="stylesheet">
-  <link href="<?php echo VIEWS_PATH?>lib/venobox/venobox.css" rel="stylesheet">
-
-  <!-- Nivo Slider Theme -->
-  <link href="<?php echo VIEWS_PATH?>css/nivo-slider-theme.css" rel="stylesheet">
-
-  <!-- Main Stylesheet File -->
-  <link href="<?php echo VIEWS_PATH?>css/style.css" rel="stylesheet">
-
-  <!-- Responsive Stylesheet File -->
-  <link href="<?php echo VIEWS_PATH?>css/responsive.css" rel="stylesheet">
-
-  <link href="<?php echo VIEWS_PATH?>css/cart.css" rel="stylesheet">
-  <link href="<?php echo VIEWS_PATH?>css/login.css" rel="stylesheet">
-
-
-</head>
+<?php
+include("header.php");
+ ?>
 
 <body data-spy="scroll" data-target="#navbar-example">
 
@@ -93,8 +52,7 @@
                       <li><a href=#>Listas de ABM</a></li>
                     </ul>
                   </li>
-                -->
-
+                -->            
                   <li>
                     <a class="page-scroll" href="#blog">Blog</a>
                   </li>
@@ -103,7 +61,7 @@
                     <a class="page-scroll" href="#contact">Contacto</a>
                   </li>
                   <?php
-                  $_SESSION["userLogged"] = "asd";
+                  //$_SESSION["userLogged"] = "asd";
                   //session_destroy();
                   if(isset($_SESSION["userLogged"]))
                   {
@@ -134,14 +92,15 @@
                                 <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
                               </div>
                               or
-                              <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+
+                              <form class="form" role="form" method="post" action="<?php echo FRONT_ROOT ?>User/Login" accept-charset="UTF-8" id="login-nav">
                                 <div class="form-group">
-                                  <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                  <label class="sr-only" for="email">Email address</label>
+                                  <input name="Email" type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
                                 </div>
                                 <div class="form-group">
-                                  <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                  <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                  <label class="sr-only" for="password">Password</label>
+                                  <input name="Password" type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
                                   <div class="help-block text-right"><a id="aColor" href=""><b>Forget the password ?</b></a></div>
                                 </div>
                                 <div class="form-group">
@@ -160,19 +119,19 @@
                           </div>
                         </li>
                       </ul>
-                  <?php
+                      <?php
                 }else {
                   ?>
-                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
-                    <ul id="login-dp" class="dropdown-menu">
-                      <li><a id="aColor" href="/user/preferences"><i class="icon-cog"></i> <b>Preferences</b></a></li>
-                      <li><a id="aColor" href="/help/support"><i class="icon-envelope"></i> <b>Contact Support</b></a></li>
-                      <li class="divider"></li>
-                      <li><a id="aColor" href="<?php echo FRONT_ROOT ?>main/logout"><i class="icon-off"></i> <b>Logout</a></b></li>
-                    </ul>
-                  </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
+                      <ul id="login-dp" class="dropdown-menu">
+                        <li><a id="aColor" href="/user/preferences"><i class="icon-cog"></i> <b>Preferences</b></a></li>
+                        <li><a id="aColor" href="/help/support"><i class="icon-envelope"></i> <b>Contact Support</b></a></li>
+                        <li class="divider"></li>
+                        <li><a id="aColor" href="<?php echo FRONT_ROOT;?>main/logout"><i class="icon-off"></i> <b>Logout</a></b></li>
+                      </ul>
+                    </li>
               </div>
-                <?php
+              <?php
                 }
                  ?>
 
@@ -218,7 +177,7 @@
                 <a href="#" class="button">Checkout</a>
               </div>
               <!--end shopping-cart -->
-            <?php
+              <?php
           }
              ?>
             </div>
@@ -235,9 +194,9 @@
   <div id="home" class="slider-area">
     <div class="bend niceties preview-2">
       <div id="ensign-nivoslider" class="slides">
-        <img src="<?php echo VIEWS_PATH?>img/slider/slider1.jpg" alt="" title="#slider-direction-1" />
-        <img src="<?php echo VIEWS_PATH?>img/slider/slider2.jpg" alt="" title="#slider-direction-2" />
-        <img src="<?php echo VIEWS_PATH?>img/slider/slider3.jpg" alt="" title="#slider-direction-3" />
+        <img src="<?php echo IMG_PATH?>slider/slider1.jpg" alt="" title="#slider-direction-1" />
+        <img src="<?php echo IMG_PATH?>slider/slider2.jpg" alt="" title="#slider-direction-2" />
+        <img src="<?php echo IMG_PATH?>slider/slider3.jpg" alt="" title="#slider-direction-3" />
       </div>
 
       <!-- direction 1 -->
@@ -334,7 +293,7 @@
           <div class="well-left">
             <div class="single-well">
               <a href="#">
-                <img src="<?php echo VIEWS_PATH?>img/about/1.jpg" alt="">
+                <img src="<?php echo IMG_PATH?>about/1.jpg" alt="">
               </a>
             </div>
           </div>
@@ -560,7 +519,7 @@
             <div class="single-team-member">
               <div class="team-img">
                 <a href="#">
-                  <img src="<?php echo VIEWS_PATH?>img/team/1.jpg" alt="">
+                  <img src="<?php echo IMG_PATH?>team/1.jpg" alt="">
                 </a>
                 <div class="team-social-icon text-center">
                   <ul>
@@ -593,7 +552,7 @@
             <div class="single-team-member">
               <div class="team-img">
                 <a href="#">
-                  <img src="<?php echo VIEWS_PATH?>img/team/2.jpg" alt="">
+                  <img src="<?php echo IMG_PATH?>team/2.jpg" alt="">
                 </a>
                 <div class="team-social-icon text-center">
                   <ul>
@@ -626,7 +585,7 @@
             <div class="single-team-member">
               <div class="team-img">
                 <a href="#">
-                  <img src="<?php echo VIEWS_PATH?>img/team/3.jpg" alt="">
+                  <img src="<?php echo IMG_PATH?>team/3.jpg" alt="">
                 </a>
                 <div class="team-social-icon text-center">
                   <ul>
@@ -698,10 +657,10 @@
           <div class="col-md-4 col-sm-4 col-xs-12 rock">
             <div class="single-awesome-project">
               <div class="awesome-img">
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/1.jpg" alt="" /></a>
+                <a href="#"><img src="<?php echo IMG_PATH?>portfolio/1.jpg" alt="" /></a>
                 <div class="add-actions text-center">
                   <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="<?php echo VIEWS_PATH?>img/portfolio/1.jpg">
+                    <a class="venobox" data-gall="myGallery" href="<?php echo IMG_PATH?>portfolio/1.jpg">
                       <h4>Artic Monkeys</h4>
                       <span>Rock</span>
                     </a>
@@ -715,10 +674,10 @@
           <div class="col-md-4 col-sm-4 col-xs-12 rock">
             <div class="single-awesome-project">
               <div class="awesome-img">
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/2.jpg" alt="" /></a>
+                <a href="#"><img src="<?php echo IMG_PATH?>portfolio/2.jpg" alt="" /></a>
                 <div class="add-actions text-center">
                   <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="<?php echo VIEWS_PATH?>img/portfolio/2.jpg">
+                    <a class="venobox" data-gall="myGallery" href="<?php echo IMG_PATH?>portfolio/2.jpg">
                       <h4>Foo Fighters</h4>
                       <span>Rock</span>
                     </a>
@@ -732,10 +691,10 @@
           <div class="col-md-4 col-sm-4 col-xs-12 indie">
             <div class="single-awesome-project">
               <div class="awesome-img">
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/3.jpg" alt="" /></a>
+                <a href="#"><img src="<?php echo IMG_PATH?>portfolio/3.jpg" alt="" /></a>
                 <div class="add-actions text-center">
                   <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="<?php echo VIEWS_PATH?>img/portfolio/3.jpg">
+                    <a class="venobox" data-gall="myGallery" href="<?php echo IMG_PATH?>portfolio/3.jpg">
                       <h4>Radiohead</h4>
                       <span>Indie</span>
                     </a>
@@ -749,10 +708,10 @@
           <div class="col-md-4 col-sm-4 col-xs-12 indie">
             <div class="single-awesome-project">
               <div class="awesome-img">
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/4.jpg" alt="" /></a>
+                <a href="#"><img src="<?php echo IMG_PATH?>portfolio/4.jpg" alt="" /></a>
                 <div class="add-actions text-center">
                   <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="<?php echo VIEWS_PATH?>img/portfolio/4.jpg">
+                    <a class="venobox" data-gall="myGallery" href="<?php echo IMG_PATH?>portfolio/4.jpg">
                       <h4>Queen of Stone Age</h4>
                       <span>Indie</span>
                     </a>
@@ -766,10 +725,10 @@
           <div class="col-md-4 col-sm-4 col-xs-12 reggaeton">
             <div class="single-awesome-project">
               <div class="awesome-img">
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/5.jpg" alt="" /></a>
+                <a href="#"><img src="<?php echo IMG_PATH?>portfolio/5.jpg" alt="" /></a>
                 <div class="add-actions text-center text-center">
                   <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="<?php echo VIEWS_PATH?>img/portfolio/5.jpg">
+                    <a class="venobox" data-gall="myGallery" href="<?php echo IMG_PATH?>portfolio/5.jpg">
                       <h4>Maluma</h4>
                       <span>Reggaeton</span>
                     </a>
@@ -783,10 +742,10 @@
           <div class="col-md-4 col-sm-4 col-xs-12 reggaeton">
             <div class="single-awesome-project">
               <div class="awesome-img">
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/6.jpg" alt="" /></a>
+                <a href="#"><img src="<?php echo IMG_PATH?>portfolio/6.jpg" alt="" /></a>
                 <div class="add-actions text-center">
                   <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="<?php echo VIEWS_PATH?>img/portfolio/6.jpg">
+                    <a class="venobox" data-gall="myGallery" href="<?php echo IMG_PATH?>portfolio/6.jpg">
                       <h4>Daddy Yankee</h4>
                       <span>Reggaeton</span>
                     </a>
@@ -869,7 +828,7 @@
             <div class="single-blog">
               <div class="single-blog-img">
                 <a href="blog.html">
-                  <img src="<?php echo VIEWS_PATH?>img/blog/1.jpg" alt="">
+                  <img src="<?php echo IMG_PATH?>blog/1.jpg" alt="">
                 </a>
               </div>
               <div class="blog-meta">
@@ -902,7 +861,7 @@
             <div class="single-blog">
               <div class="single-blog-img">
                 <a href="blog.html">
-                  <img src="<?php echo VIEWS_PATH?>img/blog/2.jpg" alt="">
+                  <img src="<?php echo IMG_PATH?>blog/2.jpg" alt="">
                 </a>
               </div>
               <div class="blog-meta">
@@ -935,7 +894,7 @@
             <div class="single-blog">
               <div class="single-blog-img">
                 <a href="blog.html">
-                  <img src="<?php echo VIEWS_PATH?>img/blog/3.jpg" alt="">
+                  <img src="<?php echo IMG_PATH?>blog/3.jpg" alt="">
                 </a>
               </div>
               <div class="blog-meta">
@@ -1063,111 +1022,6 @@
     </div>
   </div>
   <!-- End Contact Area -->
-
-  <!-- Start Footer bottom Area -->
-  <footer>
-    <div class="footer-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="footer-content">
-              <div class="footer-head">
-                <div class="footer-logo">
-                  <h2><span>e</span>Ticket</h2>
-                </div>
-                <p>Aplicacion para la compra online de Ticket de conciertos</p>
-                <div class="footer-icons">
-                  <ul>
-                    <li>
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="fa fa-google"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="fa fa-pinterest"></i></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end single footer -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="footer-content">
-              <div class="footer-head">
-                <h4>informacion</h4>
-                <p>
-                  Proyecto llevado a cabo para Laboratorio IV, Base de datos I y Metodologia de Sistemas
-                </p>
-                <div class="footer-contacts">
-                  <p><span>Tel:</span> +54 2235181256</p>
-                  <p><span>Email:</span> Mischuk.ti@gmail.com</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end single footer -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="footer-content">
-              <div class="footer-head">
-                <h4>Instagram</h4>
-                <div class="flicker-img">
-                  <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/1.jpg" alt=""></a>
-                  <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/2.jpg" alt=""></a>
-                  <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/3.jpg" alt=""></a>
-                  <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/4.jpg" alt=""></a>
-                  <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/5.jpg" alt=""></a>
-                  <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/6.jpg" alt=""></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-area-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="copyright text-center">
-              <p>
-                &copy; Copyright <strong>eTicket</strong>. All Rights Reserved
-              </p>
-            </div>
-            <div class="credits">
-              Designed by Mischuk Franco
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-  <!-- JavaScript Libraries -->
-  <script src="<?php echo VIEWS_PATH?>lib/jquery/jquery.min.js"></script>
-  <script src="<?php echo VIEWS_PATH?>lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="<?php echo VIEWS_PATH?>lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="<?php echo VIEWS_PATH?>lib/venobox/venobox.min.js"></script>
-  <script src="<?php echo VIEWS_PATH?>lib/knob/jquery.knob.js"></script>
-  <script src="<?php echo VIEWS_PATH?>lib/wow/wow.min.js"></script>
-  <script src="<?php echo VIEWS_PATH?>lib/parallax/parallax.js"></script>
-  <script src="<?php echo VIEWS_PATH?>lib/easing/easing.min.js"></script>
-  <script src="<?php echo VIEWS_PATH?>lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
-  <script src="<?php echo VIEWS_PATH?>lib/appear/jquery.appear.js"></script>
-  <script src="<?php echo VIEWS_PATH?>lib/isotope/isotope.pkgd.min.js"></script>
-
-  <script src="<?php echo VIEWS_PATH?>js/cart.js"></script>
-
-  <!-- Contact Form JavaScript File -->
-  <script src="<?php echo VIEWS_PATH?>contactform/contactform.js"></script>
-
-  <script src="<?php echo VIEWS_PATH?>js/main.js"></script>
-</body>
-
-</html>
+  <?php
+include("footer.php");
+ ?>

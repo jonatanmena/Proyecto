@@ -15,13 +15,9 @@
       }
       public function userLogged()
       {
-        /*
-        if($_SESSION["userLogged"]->getPrivilege()=="Admin"){
-          require_once("adminMain.php");
-        }elseif($_SESSION["userLogged"]->getPrivilege()=="User"){
-          require_once("userMain.php");
-        }
-        */
+
+        var_dump($_SESSION);
+
       }
 
       public function logout()

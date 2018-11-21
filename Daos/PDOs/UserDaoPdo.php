@@ -37,7 +37,9 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
                 {
-                    $UserObject = new User($row["User"],$row["Password"],$row["Privilege"]);
+                    $UserObject = new User( $row["User"],
+                                            $row["Password"],
+                                            $row["Privilege"]);
                     $UserObject->setID($row["ID_User"]);
                     array_push($UserList, $UserObject);
                 }
@@ -59,7 +61,9 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
-                    $UserObject = new User($row["User"],$row["Password"],$row["Privilege"]);
+                    $UserObject = new User( $row["User"],
+                                            $row["Password"],
+                                            $row["Privilege"]);
                     $UserObject->setID($row["ID_User"]);
                 }
 
