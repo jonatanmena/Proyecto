@@ -20,24 +20,20 @@
 
         public function Add(Calendar $Calendar)
         {
-            try
-            {
+            try {
                 $query = "INSERT INTO ".$this->tableName." (CalendarDate, ID_Event, ID_Place_Event) VALUES (:CalendarDate, :ID_Event, :ID_Place_Event);";
                 $parameters["CalendarDate"] = $Calendar->getDate();
                 $parameters["ID_Event"] = $Calendar->getEvent()->getID();
                 $parameters["ID_Place_Event"] = $Calendar->getPlaceEvent()->getID();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
-            }
-            catch (Exception $ex)
-            {
+            } catch (Exception $ex) {
                 throw $ex;
             }
         }
         public function GetAll()
         {
-            try
-            {
+            try {
                 $Place_EventData = new Place_EventDaoPdo();
                 $EventData = new EventDaoPdo();
                 $CalendarXArtistData = new CalendarXArtistDaoPdo();
@@ -48,37 +44,32 @@
                 $query = "SELECT * FROM ".$this->tableName;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
-                  foreach ($resultSet as $row)
-                  {
-                    $calendarObject = new Calendar( $row["CalendarDate"],
+                foreach ($resultSet as $row) {
+                    $calendarObject = new Calendar(
+                        $row["CalendarDate"],
                                                     $EventData->GetByEventCode($row["ID_Event"]),
-                                                    $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"]));
+                                                    $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"])
+                    );
                     $calendarObject->setID($row["ID_Calendar"]);
 
                     $ArtistCodeArray=$CalendarXArtistData->allArtistByCalendarCode($calendarObject->getID());
                     $Square_EventCodeArray=$Square_EventData->allSquareEventByCalendarcode($calendarObject->getID());
-                    foreach($ArtistCodeArray as $ArtistCode){
-
-                    $calendarObject->setArtist($ArtistData->GetByArtistCode($ArtistCode));
+                    foreach ($ArtistCodeArray as $ArtistCode) {
+                        $calendarObject->setArtist($ArtistData->GetByArtistCode($ArtistCode));
                     }
-                    foreach($Square_EventCodeArray as $Square_EventCode){
-
-                    $calendarObject->setSquareEvent($Square_EventData->GetBySquare_EventCode($Square_EventCode));
+                    foreach ($Square_EventCodeArray as $Square_EventCode) {
+                        $calendarObject->setSquareEvent($Square_EventData->GetBySquare_EventCode($Square_EventCode));
                     }
                     array_push($CalendarList, $calendarObject);
-                  }
+                }
                 return $CalendarList;
-            }
-            catch (Exception $ex)
-            {
+            } catch (Exception $ex) {
                 throw $ex;
             }
         }
         public function GetByCalendarCode($CalendarCode)
         {
-            try
-            {
-
+            try {
                 $Place_EventData = new Place_EventDaoPdo();
                 $EventData = new EventDaoPdo();
                 $CalendarXArtistData = new CalendarXArtistDaoPdo();
@@ -90,47 +81,39 @@
                 $parameters["ID_Calendar"] = $CalendarCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
-                foreach ($resultSet as $row)
-                {
-
-                    $calendarObject = new Calendar( $row["CalendarDate"],
+                foreach ($resultSet as $row) {
+                    $calendarObject = new Calendar(
+                        $row["CalendarDate"],
                                                     $EventData->GetByEventCode($row["ID_Event"]),
-                                                    $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"]));
+                                                    $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"])
+                    );
                     $calendarObject->setID($row["ID_Calendar"]);
 
                     $ArtistCodeArray=$CalendarXArtistData->allArtistByCalendarCode($calendarObject->getID());
                     $Square_EventCodeArray=$Square_EventData->allSquareEventByCalendarcode($calendarObject->getID());
 
-                    foreach($ArtistCodeArray as $ArtistCode){
-
-                    $calendarObject->setArtist($ArtistData->GetByArtistCode($ArtistCode));
+                    foreach ($ArtistCodeArray as $ArtistCode) {
+                        $calendarObject->setArtist($ArtistData->GetByArtistCode($ArtistCode));
                     }
-                    foreach($Square_EventCodeArray as $Square_EventCode){
-
-                    $calendarObject->setSquareEvent($Square_EventData->GetBySquare_EventCode($Square_EventCode));
+                    foreach ($Square_EventCodeArray as $Square_EventCode) {
+                        $calendarObject->setSquareEvent($Square_EventData->GetBySquare_EventCode($Square_EventCode));
                     }
                 }
 
                 return $calendarObject;
-            }
-            catch (Exception $ex)
-            {
+            } catch (Exception $ex) {
                 throw $ex;
             }
         }
         public function Delete($CalendarCode)
         {
-            try
-            {
+            try {
                 $query = "DELETE FROM ".$this->tableName." WHERE ID_Calendar = :CalendarCode";
                 $parameters["ID_Calendar"] = $CalendarCode;
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
-            }
-            catch (Exception $ex)
-            {
+            } catch (Exception $ex) {
                 throw $ex;
             }
         }
     }
-?>

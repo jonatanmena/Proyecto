@@ -1,5 +1,4 @@
  <?php
-     include_once('header.php');
      include_once('nav-bar.php');
  ?>
  <!DOCTYPE html>
@@ -46,5 +45,5 @@
    </body>
  </html>
  <?php
-     include_once('footer.php');
+     include_once('footerViejo.php');
   ?>

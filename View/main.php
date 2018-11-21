@@ -52,7 +52,7 @@ include("header.php");
                       <li><a href=#>Listas de ABM</a></li>
                     </ul>
                   </li>
-                -->            
+                -->
                   <li>
                     <a class="page-scroll" href="#blog">Blog</a>
                   </li>
@@ -81,7 +81,7 @@ include("header.php");
                   ?>
                   <ul id="LoginForm" class="nav navbar-nav navbar-righ">
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="border: 10px solid #fff;"><b>Login</b> <span class="caret"></span></a>
                       <ul id="login-dp" class="dropdown-menu">
                         <li>
                           <div class="row">
@@ -122,7 +122,7 @@ include("header.php");
                       <?php
                 }else {
                   ?>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
+                    <li class="dropdown"><a id="afterLinea" href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <?php echo $_SESSION["userLogged"]->getUser(); ?><b class="caret"></b></a>
                       <ul id="login-dp" class="dropdown-menu">
                         <li><a id="aColor" href="/user/preferences"><i class="icon-cog"></i> <b>Preferences</b></a></li>
                         <li><a id="aColor" href="/help/support"><i class="icon-envelope"></i> <b>Contact Support</b></a></li>

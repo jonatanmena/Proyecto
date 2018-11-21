@@ -11,11 +11,9 @@
 
 #login-dp .bottom {
   background-color: #f5f5f5;
-  border-top: 1px solid #ddd;
   clear: both;
   padding: 14px;
 }
-
 #login-dp .social-buttons {
   margin: 12px 0
 }

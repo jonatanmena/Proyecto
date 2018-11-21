@@ -86,8 +86,9 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) {
                     $userObject = new user( $row["User"],
-                                            $row["Password"]);
-                    $userObject->setUserId($row["ID_User"]);
+                                            $row["Password"],
+                                            $row["Privilege"]);
+                    $userObject->setID($row["ID_User"]);
                 }
                 return $userObject;
             } catch (Exception $ex) {

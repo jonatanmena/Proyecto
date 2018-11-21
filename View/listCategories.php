@@ -1,5 +1,4 @@
 <?php
-    include_once('header.php');
     include_once('nav-bar.php');
 ?>
 <!DOCTYPE html>
@@ -16,7 +15,7 @@
       <!-- main body -->
       <div class="content" >
         <div id="comments" style="align-items:center;">
-          <h2>Listado de Categoria</h2> 
+          <h2>Listado de Categoria</h2>
           <form action="FRONT_ROOT" method="post"  style="background-color: #EAEDED;padding: 2rem !important;">
             <table>
               <thead>
@@ -51,5 +50,5 @@
   </body>
 </html>
 <?php
-    include_once('footer.php');
+    include_once('footerViejo.php');
  ?>

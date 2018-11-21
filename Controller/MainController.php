@@ -11,13 +11,16 @@
       }
       public function index()
       {
-        require("view\main.php");
+        if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]->getPrivilege()==1){
+            $this->adminPage();
+        }else {
+          require("view\main.php");
+        }
+
       }
-      public function userLogged()
+      public function adminPage()
       {
-
-        var_dump($_SESSION);
-
+        require('view\nav-bar.php');
       }
 
       public function logout()

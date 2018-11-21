@@ -30,5 +30,6 @@
     Autoload::start();
     session_start();
     Router::direccionar(new Request());
+    //Router::Route(new Request());
 
     /*require_once(VIEWS_PATH."footer.php");*/

@@ -1,3 +1,6 @@
+<?php
+require("headerViejo.php");
+ ?>
 
 <div class="bgded overlay" style="background-image:url('<?php echo IMG_PATH; ?>page-dark.png');">
   <div class="wrapper row">

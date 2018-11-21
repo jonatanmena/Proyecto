@@ -1,5 +1,4 @@
  <?php
-     include_once('header.php');
      include_once('nav-bar.php');
  ?>
  <!DOCTYPE html>
@@ -30,15 +29,15 @@
                  <tr>
                    <td>
                      <!--<input type="text" name="Name" id="" value="" size="22" required>-->
-                     <input type="text" name="UserName" value="" required><br>
+                     <input type="text" name="User" value="" required><br>
                    </td>
                    <td>
-                       <input type="password" name="UserPassword" value="" required><br>
+                       <input type="password" name="Password" value="" required><br>
                    </td>
                    <td>
-                       <select name="UserPrivilege" value="">
-                         <option value="Admin">Administrador</option>
-                         <option value="User">Usuario</option>
+                       <select name="Privilege" value="">
+                         <option value="1">Administrador</option>
+                         <option value="0">Usuario</option>
                        </select>
                    </td>
                  </tr>
@@ -58,5 +57,5 @@
    </body>
  </html>
  <?php
-     include_once('footer.php');
+     include_once('footerViejo.php');
   ?>

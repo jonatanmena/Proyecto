@@ -1,5 +1,4 @@
  <?php
-     include_once('header.php');
      include_once('nav-bar.php');
  ?>
  <!DOCTYPE html>
@@ -59,7 +58,7 @@
                   <!--
                   <td>
                     <select name="Square_Event">
-                    
+
                       <?php foreach ($this->Square_EventData->getAll() as $Square_Event) : ?>
                        <option value="<?php echo $Square_Event->getID(); ?>"><?php echo $Square_Event->getID(); ?></option>
                       <?php endforeach; ?>
@@ -84,5 +83,5 @@
    </body>
  </html>
  <?php
-     include_once('footer.php');
+     include_once('footerViejo.php');
   ?>

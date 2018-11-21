@@ -18,8 +18,10 @@
                 $user=$this->UserData->getIfLoggedSucces($Email,$Password);
                 if ($user!=null) {
                     $_SESSION["userLogged"]=$user;
-                    header("location:/Proyecto/Main/userLogged");
+                    header("location:/Proyecto/Main/index");
                 } else {
+                    echo "<script> if(alert('Datos incorrectos!'));</script>";
+
                     header("location:/Proyecto/Main/index");
                 }
             }
@@ -30,7 +32,12 @@
         }
         public function addUser($User, $Password, $Privilege)
         {
+            echo $User;
+            echo $Password;
+            echo $Privilege;
+
             $UserObject = new User($User, $Password, $Privilege);
+            //var_dump($UserObject);
             $this->UserData->add($UserObject);
             $this->listUsers();
         }
