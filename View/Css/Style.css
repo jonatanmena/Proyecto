@@ -4,7 +4,6 @@
   Author: BootstrapMade.com
   License: https://bootstrapmade.com/license/
 */
-
 /*-----------------------------------------------------------------------------------
    CSS INDEX
   ===================
@@ -31,11 +30,9 @@
   17.Blog Details CSS
 
 -----------------------------------------------------------------------------------*/
-
 /*----------------------------------------*/
 /*  1.  Theme default CSS
 /*----------------------------------------*/
-
 html, body {
   height: 100%;
 }
@@ -254,10 +251,8 @@ div#preloader {
 }
 
 /*--------------------------------*/
-
 /*  2. Header top Area
 /*--------------------------------*/
-
 .header-area {
   position: absolute;
   top: 0;
@@ -289,7 +284,7 @@ div#preloader {
   letter-spacing: 1px;
 }
 
-.main-menu ul.navbar-nav li.active > a::after {
+.main-menu ul.navbar-nav li.active>a::after {
   border: 1px solid #fff;
   bottom: 0px;
   content: "";
@@ -378,10 +373,8 @@ div#preloader {
 }
 
 /*--------------------------------*/
-
 /* 2.1. Stick menu
 /*--------------------------------*/
-
 .header-area.stick {
   background-color: rgba(0, 0, 0, 1);
   height: 70px;
@@ -416,7 +409,8 @@ div#preloader {
 .sticky-logo h1 span {
   color: #3ec1d5;
 }
-.stick .main-menu ul.navbar-nav li.active > a::after {
+
+.stick .main-menu ul.navbar-nav li.active>a::after {
   border: 1px solid #fff;
   bottom: 0px;
   content: "";
@@ -474,7 +468,6 @@ div#preloader {
 /*------------------------------
   3. About Area
 --------------------------------*/
-
 .about-area {
   background-color: #f9f9f9;
 }
@@ -500,10 +493,8 @@ div#preloader {
 }
 
 /*--------------------------------*/
-
 /* 4.Services Area
 /*--------------------------------*/
-
 .services-icon {
   color: #444;
   display: inline-block;
@@ -547,7 +538,6 @@ div#preloader {
 /*----------------------------------------
   5.Skill Area
 ----------------------------------------*/
-
 .our-skill-area {
   position: relative;
 }
@@ -571,7 +561,6 @@ div#preloader {
 /*----------------------------------------
   6.Faq Area
 ----------------------------------------*/
-
 .faq-details .panel-heading {
   padding: 0;
 }
@@ -725,7 +714,6 @@ div#preloader {
 /*----------------------------------------
  7.Wellcome Area Css
 ----------------------------------------*/
-
 .wellcome-area {
   background: rgba(248, 248, 248, 0.8) url("../img/background/bg1.jpg");
   background-size: cover;
@@ -802,7 +790,6 @@ div#preloader {
 /*----------------------------------------
  8.Team Area Css
 ----------------------------------------*/
-
 .team-member {
   background: rgba(0, 0, 0, 0.65) none repeat scroll 0 0;
   display: block;
@@ -998,10 +985,8 @@ div#preloader {
 }
 
 /*--------------------------------*/
-
 /*  9.review Area
 /*--------------------------------*/
-
 .reviews-area {
   background: url(../img/background/bg1.jpg);
   overflow: hidden;
@@ -1067,7 +1052,6 @@ div#preloader {
 /*----------------------------------------
  10.Portfolio Area Css
 ----------------------------------------*/
-
 .pst-content {
   padding-left: 10px;
 }
@@ -1223,10 +1207,8 @@ div#preloader {
 }
 
 /*----------------------------------------*/
-
 /* 11. Pricing Area
 /*----------------------------------------*/
-
 .pricing-area {
   background: rgba(0, 0, 0, 0.02) none repeat scroll 0 0;
 }
@@ -1349,7 +1331,6 @@ div#preloader {
 /*----------------------------------------
  12.Testimonial Area Css
 ----------------------------------------*/
-
 .testimonials-area {
   background: rgba(0, 0, 0, 0) url("../img/background/slider1.jpg") no-repeat fixed center top / cover;
   height: auto;
@@ -1463,10 +1444,8 @@ div#preloader {
 }
 
 /*--------------------------------*/
-
 /*  13.Blog Area
 /*--------------------------------*/
-
 .blog-area {
   height: auto;
   width: 100%;
@@ -1578,7 +1557,6 @@ div#preloader {
 /*------------------------------
   13. Quote area
 --------------------------------*/
-
 .suscribe-area {
   background: #3EC1D5 none repeat scroll 0 0;
   padding: 30px 0;
@@ -1620,10 +1598,8 @@ div#preloader {
 }
 
 /*--------------------------------*/
-
 /*  14.Contact Area
 /*--------------------------------*/
-
 .contact-area {
   height: auto;
   width: 100%;
@@ -1649,7 +1625,7 @@ div#preloader {
   width: 100%;
 }
 
-.contact-form textarea  {
+.contact-form textarea {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: 1px solid #ccc;
   border-radius: 0;
@@ -1678,7 +1654,7 @@ div#preloader {
   background: #3EC1D5;
 }
 
-.contact-form  #sendmessage {
+.contact-form #sendmessage {
   color: #3EC1D5;
   border: 1px solid #3EC1D5;
   display: none;
@@ -1735,10 +1711,8 @@ div#preloader {
 }
 
 /*----------------------------------------*/
-
 /*  15. Footer Area
 /*----------------------------------------*/
-
 .footer-area {
   padding: 40px 0;
   background: #f9f9f9;
@@ -1866,10 +1840,8 @@ div#preloader {
 }
 
 /*----------------------------------------*/
-
 /*  16.Home Page 2  CSS
 /*----------------------------------------*/
-
 .header-bg {
   background: url(../img/slider/slider1.jpg);
   background-repeat: no-repeat;
@@ -1896,10 +1868,8 @@ div#preloader {
 }
 
 /*----------------------------------------*/
-
 /*  17.Home Page 3  CSS
 /*----------------------------------------*/
-
 .home-video {
   height: 100%;
   left: 0;
@@ -1931,7 +1901,6 @@ div#preloader {
 /*----------------------------------------
   18. Blog page
 ----------------------------------------*/
-
 .page-area {
   position: relative;
 }
@@ -2089,10 +2058,8 @@ div#preloader {
 }
 
 /*----------------------------------------*/
-
 /*  19.	Blog Details css
 /*----------------------------------------*/
-
 .post-information h2 {
   color: #363636;
   font-size: 22px;

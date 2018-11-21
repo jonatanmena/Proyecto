@@ -1,9 +1,6 @@
-<?php
-
- ?>
-
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>eTicket Proyecto UTN</title>
@@ -42,6 +39,7 @@
 
   <link href="<?php echo VIEWS_PATH?>css/cart.css" rel="stylesheet">
   <link href="<?php echo VIEWS_PATH?>css/login.css" rel="stylesheet">
+  <link href="<?php echo VIEWS_PATH?>css/account.css" rel="stylesheet">
 
 
 </head>
@@ -62,25 +60,21 @@
               <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
-										<span class="sr-only">Toggle navigation</span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-									</button>
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
                 <!-- Brand -->
                 <a class="navbar-brand page-scroll sticky-logo" href="index.html">
                   <h1><span>e</span>Ticket</h1>
                   <!-- Uncomment below if you prefer to use an image logo -->
                   <!-- <img src="img/logo.png" alt="" title=""> -->
-								</a>
+                </a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                 <ul class="nav navbar-nav navbar-right">
-
-                  <li class="active">
-                    <a class="page-scroll" href="#home">Home</a>
-                  </li>
                   <li>
                     <a class="page-scroll" href="#about">Sobre la app</a>
                   </li>
@@ -93,13 +87,14 @@
                   <li>
                     <a class="page-scroll" href="#portfolio">Recitales</a>
                   </li>
-
+                  <!--
                   <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">ABM<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href=# >Listas de ABM</a></li>
-                      <li><a href=# >Listas de ABM</a></li>
+                      <li><a href=#>Listas de ABM</a></li>
+                      <li><a href=#>Listas de ABM</a></li>
                     </ul>
                   </li>
+                -->
 
                   <li>
                     <a class="page-scroll" href="#blog">Blog</a>
@@ -108,66 +103,97 @@
                   <li>
                     <a class="page-scroll" href="#contact">Contacto</a>
                   </li>
+                  <?php
+                  $_SESSION["userLogged"] = "asd";
+                  //session_destroy();
+                  if(isset($_SESSION["userLogged"]))
+                  {
+                  ?>
 
                   <li>
                     <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
                   </li>
+                  <?php
+                  }
+                   ?>
+
+                  <?php
+
+                  if(!isset($_SESSION["userLogged"]))
+                  {
+                  ?>
                   <ul id="LoginForm" class="nav navbar-nav navbar-righ">
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-                  			<ul id="login-dp" class="dropdown-menu">
-                  				<li>
-                  					 <div class="row">
-                  							<div class="col-md-12">
-                  								Login via
-                  								<div class="social-buttons">
-                  									<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                  									<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-                  								</div> 
-                                                  or
-                  								 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                  										<div class="form-group">
-                  											 <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                  											 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                  										</div>
-                  										<div class="form-group">
-                  											 <label class="sr-only" for="exampleInputPassword2">Password</label>
-                  											 <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                                               <div class="help-block text-right" ><a id="aColor" href=""><b>Forget the password ?</b></a></div>
-                  										</div>
-                  										<div class="form-group">
-                  											 <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                  										</div>
-                  										<div class="checkbox">
-                  											 <label>
-                  											 <input type="checkbox"> keep me logged-in
-                  											 </label>
-                  										</div>
-                  								 </form>
-                  							</div>
-                  							<div class="bottom text-center">
-                  								New here ? <a id="aColor" href="#"><b>Join Us</b></a>
-                  							</div>
-                  					 </div>
-                  				</li>
-                  			</ul>
-                          </li>
-                        </ul>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                      <ul id="login-dp" class="dropdown-menu">
+                        <li>
+                          <div class="row">
+                            <div class="col-md-12">
+                              Login via
+                              <div class="social-buttons">
+                                <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                              </div>
+                              or
+                              <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                <div class="form-group">
+                                  <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                  <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                </div>
+                                <div class="form-group">
+                                  <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                  <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                  <div class="help-block text-right"><a id="aColor" href=""><b>Forget the password ?</b></a></div>
+                                </div>
+                                <div class="form-group">
+                                  <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                </div>
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox"> keep me logged-in
+                                  </label>
+                                </div>
+                              </form>
+                            </div>
+                            <div class="bottom text-center">
+                              New here ? <a id="aColor" href="#"><b>Join Us</b></a>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                  <?php
+                }else {
+                  ?>
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
+                    <ul id="login-dp" class="dropdown-menu">
+                      <li><a id="aColor" href="/user/preferences"><i class="icon-cog"></i> <b>Preferences</b></a></li>
+                      <li><a id="aColor" href="/help/support"><i class="icon-envelope"></i> <b>Contact Support</b></a></li>
+                      <li class="divider"></li>
+                      <li><a id="aColor" href="/auth/logout"><i class="icon-off"></i> <b>Logout</a></b></li>
+                    </ul>
+                  </li>
               </div>
+                <?php
+                }
+                 ?>
+
               <!-- navbar-collapse -->
             </nav>
-
+            <?php
+            if(isset($_SESSION["userLogged"]))
+            {
+             ?>
             <div class="container">
-            <div class="shopping-cart">
-              <div class="shopping-cart-header">
-                <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
-                <div class="shopping-cart-total">
-                  <span class="lighter-text">Total:</span>
-                  <span class="main-color-text">$2,229.97</span>
+              <div class="shopping-cart">
+                <div class="shopping-cart-header">
+                  <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+                  <div class="shopping-cart-total">
+                    <span class="lighter-text">Total:</span>
+                    <span class="main-color-text">$2,229.97</span>
+                  </div>
                 </div>
-              </div> <!--end shopping-cart-header -->
-
-              <ul class="shopping-cart-items">
+                <!--end shopping-cart-header -->
+                <ul class="shopping-cart-items">
                   <li class="clearfix">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
                     <span class="item-name">Sony DSC-RX100M III</span>
@@ -191,9 +217,13 @@
 
                 </ul>
                 <a href="#" class="button">Checkout</a>
-              </div> <!--end shopping-cart -->
-
-            </div> <!--end container -->
+              </div>
+              <!--end shopping-cart -->
+            <?php
+          }
+             ?>
+            </div>
+            <!--end container -->
             <!-- END: Navigation -->
           </div>
         </div>
@@ -202,7 +232,6 @@
     <!-- header-area end -->
   </header>
   <!-- header end -->
-
   <!-- Start Slider Area -->
   <div id="home" class="slider-area">
     <div class="bend niceties preview-2">
@@ -306,8 +335,8 @@
           <div class="well-left">
             <div class="single-well">
               <a href="#">
-								  <img src="<?php echo VIEWS_PATH?>img/about/1.jpg" alt="">
-								</a>
+                <img src="<?php echo VIEWS_PATH?>img/about/1.jpg" alt="">
+              </a>
             </div>
           </div>
         </div>
@@ -359,8 +388,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-											<i class="fa fa-code"></i>
-										</a>
+                    <i class="fa fa-code"></i>
+                  </a>
                   <h4>Expert Coder</h4>
                   <p>
                     Nunca en nuestra vida documentamos una linea de codigo.
@@ -375,8 +404,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-											<i class="fa fa-camera-retro"></i>
-										</a>
+                    <i class="fa fa-camera-retro"></i>
+                  </a>
                   <h4>Creative Designer</h4>
                   <p>
                     Somos programadores no de interiorismo.
@@ -392,8 +421,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-											<i class="fa fa-wordpress"></i>
-										</a>
+                    <i class="fa fa-wordpress"></i>
+                  </a>
                   <h4>Wordpress Developer</h4>
                   <p>
                     Nos aseguramos que el prototipo sea igual que el producto final.
@@ -409,8 +438,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-											<i class="fa fa-camera-retro"></i>
-										</a>
+                    <i class="fa fa-camera-retro"></i>
+                  </a>
                   <h4>Subimos boludeces</h4>
                   <p>
                     En nuestras redes sociales.
@@ -427,8 +456,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-											<i class="fa fa-bar-chart"></i>
-										</a>
+                    <i class="fa fa-bar-chart"></i>
+                  </a>
                   <h4>Estadisticas</h4>
                   <p>
                     Nuestra calculadora es un ábaco.
@@ -445,8 +474,8 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-											<i class="fa fa-ticket"></i>
-										</a>
+                    <i class="fa fa-ticket"></i>
+                  </a>
                   <h4>24/7 Soporte</h4>
                   <p>
                     Si tenemos datos.
@@ -532,24 +561,24 @@
             <div class="single-team-member">
               <div class="team-img">
                 <a href="#">
-										<img src="<?php echo VIEWS_PATH?>img/team/1.jpg" alt="">
-									</a>
+                  <img src="<?php echo VIEWS_PATH?>img/team/1.jpg" alt="">
+                </a>
                 <div class="team-social-icon text-center">
                   <ul>
                     <li>
                       <a href="#">
-													<i class="fa fa-facebook"></i>
-												</a>
+                        <i class="fa fa-facebook"></i>
+                      </a>
                     </li>
                     <li>
                       <a href="#">
-													<i class="fa fa-twitter"></i>
-												</a>
+                        <i class="fa fa-twitter"></i>
+                      </a>
                     </li>
                     <li>
                       <a href="#">
-													<i class="fa fa-instagram"></i>
-												</a>
+                        <i class="fa fa-instagram"></i>
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -565,24 +594,24 @@
             <div class="single-team-member">
               <div class="team-img">
                 <a href="#">
-										<img src="<?php echo VIEWS_PATH?>img/team/2.jpg" alt="">
-									</a>
+                  <img src="<?php echo VIEWS_PATH?>img/team/2.jpg" alt="">
+                </a>
                 <div class="team-social-icon text-center">
                   <ul>
                     <li>
                       <a href="#">
-													<i class="fa fa-facebook"></i>
-												</a>
+                        <i class="fa fa-facebook"></i>
+                      </a>
                     </li>
                     <li>
                       <a href="#">
-													<i class="fa fa-twitter"></i>
-												</a>
+                        <i class="fa fa-twitter"></i>
+                      </a>
                     </li>
                     <li>
                       <a href="#">
-													<i class="fa fa-instagram"></i>
-												</a>
+                        <i class="fa fa-instagram"></i>
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -598,24 +627,24 @@
             <div class="single-team-member">
               <div class="team-img">
                 <a href="#">
-										<img src="<?php echo VIEWS_PATH?>img/team/3.jpg" alt="">
-									</a>
+                  <img src="<?php echo VIEWS_PATH?>img/team/3.jpg" alt="">
+                </a>
                 <div class="team-social-icon text-center">
                   <ul>
                     <li>
                       <a href="#">
-													<i class="fa fa-facebook"></i>
-												</a>
+                        <i class="fa fa-facebook"></i>
+                      </a>
                     </li>
                     <li>
                       <a href="#">
-													<i class="fa fa-twitter"></i>
-												</a>
+                        <i class="fa fa-twitter"></i>
+                      </a>
                     </li>
                     <li>
                       <a href="#">
-													<i class="fa fa-instagram"></i>
-												</a>
+                        <i class="fa fa-instagram"></i>
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -841,29 +870,30 @@
             <div class="single-blog">
               <div class="single-blog-img">
                 <a href="blog.html">
-										<img src="<?php echo VIEWS_PATH?>img/blog/1.jpg" alt="">
-									</a>
+                  <img src="<?php echo VIEWS_PATH?>img/blog/1.jpg" alt="">
+                </a>
               </div>
               <div class="blog-meta">
                 <span class="comments-type">
-										<i class="fa fa-comment-o"></i>
-										<a href="#">13 comentarios</a>
-									</span>
+                  <i class="fa fa-comment-o"></i>
+                  <a href="#">13 comentarios</a>
+                </span>
                 <span class="date-type">
-										<i class="fa fa-calendar"></i>17-11-2018
-									</span>
+                  <i class="fa fa-calendar"></i>17-11-2018
+                </span>
               </div>
               <div class="blog-text">
                 <h4>
-                                        <a href="blog.html">Rock & Pop con Blondie en Argentina</a>
-									</h4>
+                  <a href="blog.html">Rock & Pop con Blondie en Argentina</a>
+                </h4>
                 <p>
-                  Vuelve el Rock & Pop con Blondie, The Vamps, Azealia Banks y The Magic Numbers en Argentina. Sí, un line up increíble al que se suman los locales Octafonic y Eruca Sativa. La cita es el 17 de noviembre en el Estadio Obras y la venta está disponible por TopShow.
+                  Vuelve el Rock & Pop con Blondie, The Vamps, Azealia Banks y The Magic Numbers en Argentina. Sí, un line up increíble al que se suman los locales Octafonic y Eruca Sativa. La cita es el 17 de noviembre en el Estadio Obras y la
+                  venta está disponible por TopShow.
                 </p>
               </div>
               <span>
-									<a href="blog.html" class="ready-btn">Leer mas</a>
-								</span>
+                <a href="blog.html" class="ready-btn">Leer mas</a>
+              </span>
             </div>
             <!-- Start single blog -->
           </div>
@@ -873,29 +903,30 @@
             <div class="single-blog">
               <div class="single-blog-img">
                 <a href="blog.html">
-										<img src="<?php echo VIEWS_PATH?>img/blog/2.jpg" alt="">
-									</a>
+                  <img src="<?php echo VIEWS_PATH?>img/blog/2.jpg" alt="">
+                </a>
               </div>
               <div class="blog-meta">
                 <span class="comments-type">
-										<i class="fa fa-comment-o"></i>
-										<a href="#">130 comments</a>
-									</span>
+                  <i class="fa fa-comment-o"></i>
+                  <a href="#">130 comments</a>
+                </span>
                 <span class="date-type">
-										<i class="fa fa-calendar"></i>17-11-2018
-									</span>
+                  <i class="fa fa-calendar"></i>17-11-2018
+                </span>
               </div>
               <div class="blog-text">
                 <h4>
-                                        <a href="blog.html">Die Toten Hosen en Argentina.</a>
-									</h4>
+                  <a href="blog.html">Die Toten Hosen en Argentina.</a>
+                </h4>
                 <p>
-                  Die Toten Hosen llegan a la Argentina en el marco de su festival Hosen Fest. La magia sucederá en el Club Ciudad de Buenos Aires y la banda alemana se encargará junto a bandas invitadas como Attaque 77 y Cadena Perpetua, de dar una serie de shows en vivo. Early Bird tickets en venta a través de sistema Tu Entrada.
+                  Die Toten Hosen llegan a la Argentina en el marco de su festival Hosen Fest. La magia sucederá en el Club Ciudad de Buenos Aires y la banda alemana se encargará junto a bandas invitadas como Attaque 77 y Cadena Perpetua, de dar una
+                  serie de shows en vivo. Early Bird tickets en venta a través de sistema Tu Entrada.
                 </p>
               </div>
               <span>
-									<a href="blog.html" class="ready-btn">Leer mas</a>
-								</span>
+                <a href="blog.html" class="ready-btn">Leer mas</a>
+              </span>
             </div>
             <!-- Start single blog -->
           </div>
@@ -905,29 +936,30 @@
             <div class="single-blog">
               <div class="single-blog-img">
                 <a href="blog.html">
-										<img src="<?php echo VIEWS_PATH?>img/blog/3.jpg" alt="">
-									</a>
+                  <img src="<?php echo VIEWS_PATH?>img/blog/3.jpg" alt="">
+                </a>
               </div>
               <div class="blog-meta">
                 <span class="comments-type">
-										<i class="fa fa-comment-o"></i>
-										<a href="#">10 comentarios</a>
-									</span>
+                  <i class="fa fa-comment-o"></i>
+                  <a href="#">10 comentarios</a>
+                </span>
                 <span class="date-type">
-										<i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
-									</span>
+                  <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
+                </span>
               </div>
               <div class="blog-text">
                 <h4>
-                                        <a href="blog.html">Festival La Nueva Generación</a>
-									</h4>
+                  <a href="blog.html">Festival La Nueva Generación</a>
+                </h4>
                 <p>
-                  El Festival La Nueva Generación en Córdoba una de las frutillas de este año. Tocan Los Espíritus, Nathy Peluso, El Kuelgue, Emmanuel Horvilleur, Marilina Bertoldi, Sara Hebe, Juan Ingaramo, Perras On the Beach, Francisca y les Exploradores, Lo' Pibitos, Hipnótica, Morbo y Mambo y seguro se funde absolutamente todo. El Festival será en el Óvalo del Hipódromo de Córdoba el 18 de noviembre. Entradas a la venta por Alpogo.
+                  El Festival La Nueva Generación en Córdoba una de las frutillas de este año. Tocan Los Espíritus, Nathy Peluso, El Kuelgue, Emmanuel Horvilleur, Marilina Bertoldi, Sara Hebe, Juan Ingaramo, Perras On the Beach, Francisca y les
+                  Exploradores, Lo' Pibitos, Hipnótica, Morbo y Mambo y seguro se funde absolutamente todo. El Festival será en el Óvalo del Hipódromo de Córdoba el 18 de noviembre. Entradas a la venta por Alpogo.
                 </p>
               </div>
               <span>
-									<a href="blog.html" class="ready-btn">Leer mas</a>
-								</span>
+                <a href="blog.html" class="ready-btn">Leer mas</a>
+              </span>
             </div>
           </div>
           <!-- End Right Blog-->
@@ -1136,5 +1168,7 @@
   <!-- Contact Form JavaScript File -->
   <script src="<?php echo VIEWS_PATH?>contactform/contactform.js"></script>
 
-  <script src="<?php echo VIEWS_PATH?>js/main.js"></script></body>
+  <script src="<?php echo VIEWS_PATH?>js/main.js"></script>
+</body>
+
 </html>
