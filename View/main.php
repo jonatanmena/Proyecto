@@ -81,7 +81,7 @@ include("header.php");
                   ?>
                   <ul id="LoginForm" class="nav navbar-nav navbar-righ">
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="border: 10px solid #fff;"><b>Login</b> <span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
                       <ul id="login-dp" class="dropdown-menu">
                         <li>
                           <div class="row">
