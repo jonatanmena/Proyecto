@@ -39,7 +39,6 @@
 
   <link href="<?php echo VIEWS_PATH?>css/cart.css" rel="stylesheet">
   <link href="<?php echo VIEWS_PATH?>css/login.css" rel="stylesheet">
-  <link href="<?php echo VIEWS_PATH?>css/account.css" rel="stylesheet">
 
 
 </head>
@@ -169,7 +168,7 @@
                       <li><a id="aColor" href="/user/preferences"><i class="icon-cog"></i> <b>Preferences</b></a></li>
                       <li><a id="aColor" href="/help/support"><i class="icon-envelope"></i> <b>Contact Support</b></a></li>
                       <li class="divider"></li>
-                      <li><a id="aColor" href="/auth/logout"><i class="icon-off"></i> <b>Logout</a></b></li>
+                      <li><a id="aColor" href="<?php echo FRONT_ROOT ?>main/logout"><i class="icon-off"></i> <b>Logout</a></b></li>
                     </ul>
                   </li>
               </div>
