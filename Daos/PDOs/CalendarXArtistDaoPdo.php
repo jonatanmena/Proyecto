@@ -5,6 +5,7 @@
     use Model\CalendarXArtist as CalendarXArtist;
     use Daos\Connection as Connection;
     use \Exception as Exception;
+    use \DateTime as DateTime;
 
     class CalendarXArtistDaoPdo implements ICalendarXArtistDao
     {
@@ -33,8 +34,10 @@
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row) {
-                    $CalendarXArtistObject = new CalendarXArtist( $ArtistData->GetByArtistCode($row["ID_Artist"]),
-                                                                  $CalendarData->getByCalendarCode($row["ID_Calendar"]));
+                    $CalendarXArtistObject = new CalendarXArtist(
+                        $ArtistData->GetByArtistCode($row["ID_Artist"]),
+                                                                  $CalendarData->getByCalendarCode($row["ID_Calendar"])
+                    );
                     array_push($CalendarXArtistList, $CalendarXArtistObject);
                 }
                 return $CalendarXArtistList;
@@ -54,8 +57,9 @@
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) {
-                    $CalendarXArtistObject = new CalendarXArtist( $ArtistData->GetByArtistCode($row["ID_Artist"]),
-                                                                  $CalendarData->getByCalendarCode($row["ID_Calendar"]));
+                    $CalendarXArtistObject = new CalendarXArtist( $ArtistData->GetByArtistCode( $row["ID_Artist"]),
+                                                                  $CalendarData->getByCalendarCode($row["ID_Calendar"])
+                    );
                 }
                 return $CalendarXArtistObject;
             } catch (Exception $ex) {
@@ -72,7 +76,7 @@
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) {
-                    array_push($ArtistsCodeArray,$row["ID_Artist"]);
+                    array_push($ArtistsCodeArray, $row["ID_Artist"]);
                 }
                 return $ArtistsCodeArray;
             } catch (Exception $ex) {
@@ -84,17 +88,39 @@
         {
             try {
                 $CalendarCodeArray= array();
-
                 $query = "SELECT * FROM ".$this->tableName." WHERE ID_Artist = :ID_Artist";
                 $parameters["ID_Artist"] = $ArtistCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) {
-                    array_push($CalendarCodeArray,$row["ID_Artist"]);
+                    array_push($CalendarCodeArray, $row["ID_Artist"]);
                 }
+
                 return $CalendarCodeArray;
             } catch (Exception $ex) {
                 throw $ex;
+            }
+        }
+        public function isSafeToDelete($ArtistCode)
+        {
+            try {
+              $CalendarData = new CalendarDaoPdo();
+              $CalendarCodeArray = $this->allCalendarByArtistCode($ArtistCode);
+              $safeToDelete = false;
+              $hoy = new DateTime("Now");
+
+              foreach($CalendarCodeArray as $CalendarCode){
+                $CalendarObject = $CalendarData->getByCalendarCode($CalendarCode);
+                $fechaCalendario = new DateTime($CalendarObject->getDate());
+                $interval = date_diff($hoy, $fechaCalendario);
+                $diferencia = $interval->format('%R%a días');
+                if(strncmp($diferencia, "-",1)===0){
+                    $safeToDelete=true;
+                  }
+                }
+              return $safeToDelete;
+            } catch (Exception $ex) {
+              throw $ex;
             }
         }
         public function Delete($ArtistCode, $CalendarCode)

@@ -37,9 +37,24 @@
         {
             require_once("View/listArtists.php");
         }
+        public function delete($ArtistCode){
+            $deleted = false;
+            $deleted = $this->ArtistData->logicalDelete($ArtistCode);            
+              if($deleted == true){
+                $this->listArtists();
+                echo '<script language="javascript">';
+                echo 'alert("Artista Eliminado Correctamente")';
+                echo '</script>';
+              }else {
+                $this->listArtists();
+                echo '<script language="javascript">';
+                echo 'alert("No se puede eliminar el Artista")';
+                echo '</script>';
+              }
+        }
 
         public function moveImage($name){
-            $imageDirectory = 'Images/Artists/';
+            $imageDirectory = VIEWS_PATH.'img/artists/';
 
             if(!file_exists($imageDirectory)){
 

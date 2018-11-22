@@ -8,11 +8,13 @@
     {
       private $Artist;
       private $Calendar;
+      private $Status;
 
-      public function __construct($Artist,$Calendar)
+      public function __construct($Artist,$Calendar,$Status = "Activo")
       {
         $this->Artist = $Artist;
         $this->Calendar = $Calendar;
+        $this->Status = $Status;
       }
       public function setArtist(Artist $Artist)
       {
@@ -38,6 +40,18 @@
           return $this->Calendar;
       }
 
-    }
+      public function getStatus()
+      {
+          return $this->Status;
+      }
+
+      public function setStatus($Status)
+      {
+          $this->Status = $Status;
+
+          return $this;
+      }
+
+}
 
  ?>

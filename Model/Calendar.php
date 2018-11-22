@@ -14,12 +14,14 @@
         private $Artists = array();
         private $Square_Event = array();
         private $ID;
+        private $Status;
 
-        public function __construct($date, $Event, $Place_Event)
+        public function __construct($date, $Event, $Place_Event,$Status = "Activo")
         {
             $this->date = $date;
             $this->Event = $Event;
             $this->Place_Event = $Place_Event;
+            $this->Status = $Status;
         }
 
         public function setDate($date)
@@ -94,4 +96,29 @@
         {
             return $this->Place_Event;
         }
-    }
+    
+        public function getArtists()
+        {
+            return $this->Artists;
+        }
+
+        public function setArtists($Artists)
+        {
+            $this->Artists = $Artists;
+
+            return $this;
+        }
+
+        public function getStatus()
+        {
+            return $this->Status;
+        }
+
+        public function setStatus($Status)
+        {
+            $this->Status = $Status;
+
+            return $this;
+        }
+
+}

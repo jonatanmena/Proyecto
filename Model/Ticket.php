@@ -6,11 +6,13 @@
         private $Number;
         private $QR;
         private $ID;
+        private $Status;
 
-        public function __construct($Number,$QR)
+        public function __construct($Number,$QR,$Status = "Activo")
         {
           $this->Number = $Number;
           $this->QR = $QR;
+          $this->Status = $Status;
         }
         public function setNumber($Number)
         {
@@ -44,6 +46,18 @@
         public function getID()
         {
             return $this->ID;
+        }
+
+        public function getStatus()
+        {
+            return $this->Status;
+        }
+
+        public function setStatus($Status)
+        {
+            $this->Status = $Status;
+
+            return $this;
         }
 
 }

@@ -7,12 +7,14 @@
       private $Name;
       private $Surname;
       private $DNI;
+      private $Status;
 
-      public function __construct($Name,$Surname,$DNI)
+      public function __construct($Name,$Surname,$DNI,$Status = "Activo")
       {
         $this->Name = $Name;
         $this->Surname = $Surname;
         $this->DNI = $DNI;
+        $this->Status = $Status;
       }
       public function setID($ID)
       {
@@ -60,6 +62,18 @@
       public function getDNI()
       {
           return $this->DNI;
+      }
+
+      public function getStatus()
+      {
+          return $this->Status;
+      }
+
+      public function setStatus($Status)
+      {
+          $this->Status = $Status;
+
+          return $this;
       }
 
 }

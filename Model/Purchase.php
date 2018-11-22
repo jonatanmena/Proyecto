@@ -8,11 +8,13 @@
         private $Date;
         private $ID;
         private $Client;
+        private $Status;
 
-        public function __construct($Date,$Client)
+        public function __construct($Date,$Client,$Status = "Activo")
         {
           $this->Date = $Date;
           $this->Client = $Client;
+          $this->Status = $Status;
         }
         public function setDate($Date)
         {
@@ -49,4 +51,17 @@
         {
             return $this->Client;
         }
-    }
+
+        public function getStatus()
+        {
+            return $this->Status;
+        }
+
+        public function setStatus($Status)
+        {
+            $this->Status = $Status;
+
+            return $this;
+        }
+
+}

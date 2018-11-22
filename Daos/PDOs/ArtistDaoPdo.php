@@ -1,7 +1,7 @@
 <?php
     namespace Daos\PDOs ;
 
-use Daos\Interfaces\IArtistDao as IArtistDao;
+    use Daos\Interfaces\IArtistDao as IArtistDao;
     use Model\Artist as Artist;
     use Daos\Connection as Connection;
     use \Exception as Exception;
@@ -14,16 +14,20 @@ use Daos\Interfaces\IArtistDao as IArtistDao;
         public function Add(Artist $Artist)
         {
             try {
-                $query = "INSERT INTO ".$this->tableName." (Name,Description,Gender,Portrait) VALUES (:Name,:Description,:Gender,:Portrait);";
+                $query = "INSERT INTO ".$this->tableName." (Name,Description,Gender,Status,Portrait) VALUES (:Name,:Description,:Gender,:Status,:Portrait);";
                 $parameters["Name"] = $Artist->getName();
                 $parameters["Description"] = $Artist->getDescription();
                 $parameters["Gender"] = $Artist->getGender();
-                  if($Artist->getPortrait()!=NULL){
-                      $parameters["Portrait"] = $Artist->getPortrait();
-                  }else {
-                      $parameters["Portrait"] = "Sin Imagen";
-                  }
-
+                if ($Artist->getStatus()!=null) {
+                    $parameters["Status"] = $Artist->getStatus();
+                } else {
+                    $parameters["Status"] = "Inactivo";
+                }
+                if ($Artist->getPortrait()!=null) {
+                    $parameters["Portrait"] = $Artist->getPortrait();
+                } else {
+                    $parameters["Portrait"] = "Sin Imagen";
+                }
 
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
@@ -40,7 +44,7 @@ use Daos\Interfaces\IArtistDao as IArtistDao;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) {
-                    $ArtistObject = new Artist($row["Name"], $row["Description"], $row["Gender"], $row["Portrait"]);
+                    $ArtistObject = new Artist($row["Name"], $row["Description"], $row["Gender"], $row["Status"], $row["Portrait"]);
                     $ArtistObject->setID($row["ID_Artist"]);
                 }
 
@@ -58,7 +62,7 @@ use Daos\Interfaces\IArtistDao as IArtistDao;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row) {
-                    $ArtistObject = new Artist($row["Name"], $row["Description"], $row["Gender"], $row["Portrait"]);
+                    $ArtistObject = new Artist($row["Name"], $row["Description"], $row["Gender"], $row["Status"], $row["Portrait"]);
                     $ArtistObject->setID($row["ID_Artist"]);
                     array_push($ArtistList, $ArtistObject);
                 }
@@ -76,11 +80,29 @@ use Daos\Interfaces\IArtistDao as IArtistDao;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) {
-                    $ArtistObject = new Artist($row["Name"], $row["Description"], $row["Gender"], $row["Portrait"]);
+                    $ArtistObject = new Artist($row["Name"], $row["Description"], $row["Gender"], $row["Status"], $row["Portrait"]);
                     $ArtistObject->setID($row["ID_Artist"]);
                 }
 
                 return $ArtistObject;
+            } catch (Exception $ex) {
+                throw $ex;
+            }
+        }
+        public function logicalDelete($ArtistCode)
+        {
+            try {
+                $CalendarXArtistObject = new CalendarXArtistDaoPdo();
+                $deleted=false;
+                if($CalendarXArtistObject->isSafeToDelete($ArtistCode)==true){
+                  $query = "UPDATE ".$this->tableName." SET Status = 'Inactivo' WHERE ID_Artist = :ID_Artist";
+                  $parameters["ID_Artist"] = $ArtistCode;
+                  $this->connection = Connection::GetInstance();
+                  $this->connection->ExecuteNonQuery($query, $parameters);
+                  $deleted=true;
+
+                }
+                return $deleted;
             } catch (Exception $ex) {
                 throw $ex;
             }

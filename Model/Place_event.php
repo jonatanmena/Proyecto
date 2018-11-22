@@ -6,11 +6,13 @@
         private $Quantity;
         private $Description;
         private $ID;
+        private $Status;
 
-        public function __construct($Quantity, $Description)
+        public function __construct($Quantity, $Description, $Status = "Activo")
         {
         $this->Quantity = $Quantity;
         $this->Description = $Description;
+        $this->Status = $Status;
         }
 
         public function setQuantity($Quantity)
@@ -43,6 +45,18 @@
         public function getID()
         {
             return $this->ID;
+        }
+        
+        public function getStatus()
+        {
+            return $this->Status;
+        }
+
+        public function setStatus($Status)
+        {
+            $this->Status = $Status;
+
+            return $this;
         }
 
 }

@@ -12,14 +12,16 @@
         private $ID;
         private $Square_Kind;
         private $Calendar;
+        private $Status;
 
-        public function __construct($Price,$Remainder,$Quantity_available,$Square_Kind,$Calendar)
+        public function __construct($Price,$Remainder,$Quantity_available,$Square_Kind,$Calendar,$Status = "Activo")
         {
           $this->Price = $Price;
           $this->Remainder = $Remainder;
           $this->Quantity_available = $Quantity_available;
           $this->Square_Kind = $Square_Kind;
           $this->Calendar = $Calendar;
+          $this->Status = $Status;
         }
         public function setPrice($Price)
         {
@@ -88,4 +90,17 @@
         {
             return $this->Calendar;
         }
-    }
+
+        public function getStatus()
+        {
+            return $this->Status;
+        }
+
+        public function setStatus($Status)
+        {
+            $this->Status = $Status;
+
+            return $this;
+        }
+
+}

@@ -5,10 +5,12 @@
     {
         private $Description;
         private $ID;
+        private $Status;
 
-        public function __construct($Description)
+        public function __construct($Description,$Status = "Activo")
         {
             $this->Description = $Description;
+            $this->Status = $Status;
         }
 
         public function setDescription($Description)

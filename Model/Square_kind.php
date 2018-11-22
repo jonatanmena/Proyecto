@@ -5,10 +5,12 @@
     {
         private $Description;
         private $ID;
+        private $Status;
 
-        public function __construct($Description)
+        public function __construct($Description,$Status = "Activo")
         {
         $this->Description = $Description;
+        $this->Status = $Status;
         }
 
         public function setDescription($Description)
@@ -32,6 +34,18 @@
         public function getID()
         {
             return $this->ID;
+        }
+        
+        public function getStatus()
+        {
+            return $this->Status;
+        }
+
+        public function setStatus($Status)
+        {
+            $this->Status = $Status;
+
+            return $this;
         }
 
 }

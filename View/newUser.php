@@ -20,7 +20,7 @@
              <table>
                <thead>
                  <tr>
-                   <th>Usuario</th>
+                   <th>Email</th>
                    <th>Password</th>
                    <th>Privilegio</th>
                  </tr>
@@ -29,7 +29,7 @@
                  <tr>
                    <td>
                      <!--<input type="text" name="Name" id="" value="" size="22" required>-->
-                     <input type="text" name="User" value="" required><br>
+                     <input type="email" name="User" value="" required><br>
                    </td>
                    <td>
                        <input type="password" name="Password" value="" required><br>

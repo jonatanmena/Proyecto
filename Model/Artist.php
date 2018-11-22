@@ -8,14 +8,16 @@
       private $Gender;
       private $Portrait;
       private $ID;
+      private $Status;
 
 
-      public function __construct($Name, $Description, $Gender, $Portrait = "Sin Imagen")
+      public function __construct($Name, $Description, $Gender, $Status = "Activo", $Portrait = "Sin Imagen")
       {
         $this->Name = $Name;
         $this->Description = $Description;
         $this->Gender = $Gender;
         $this->Portrait = $Portrait;
+        $this->Status = $Status;
       }
 
       public function setName($Name)
@@ -70,4 +72,17 @@
       {
           return $this->ID;
       }
+
+      public function getStatus()
+      {
+          return $this->Status;
+      }
+
+      public function setStatus($Status)
+      {
+          $this->Status = $Status;
+
+          return $this;
+      }
+
 }

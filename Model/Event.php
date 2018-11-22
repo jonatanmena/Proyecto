@@ -9,12 +9,14 @@
       private $category;
       private $ID;
       private $image;
+      private $Status;
 
-      public function __construct($title, $category, $image = "Sin Imagen")
+      public function __construct($title, $category, $image = "Sin Imagen", $Status = "Activo")
       {
         $this->title = $title;
         $this->category = $category;
         $this->image = $image;
+        $this->Status = $Status;
       }
 
       public function setTitle($title)
@@ -63,6 +65,17 @@
         $this->image = $image;
       }
 
+      public function getStatus()
+      {
+          return $this->Status;
+      }
+
+      public function setStatus($Status)
+      {
+          $this->Status = $Status;
+
+          return $this;
+      }
 
 }
 ?>

@@ -7,12 +7,14 @@
         private $Password;
         private $Privilege;
         private $ID;
+        private $Status;
 
-        public function __construct ($User,$Password,$Privilege)
+        public function __construct ($User,$Password,$Privilege,$Status = "Activo")
         {
             $this->User = $User;
             $this->Password = $Password;
             $this->Privilege = $Privilege;
+            $this->Status = $Status;
         }
         public function getUser()
         {
@@ -50,5 +52,25 @@
         {
             return $this->ID;
         }
-    }
+
+        public function setUser($User)
+        {
+            $this->User = $User;
+
+            return $this;
+        }
+
+        public function getStatus()
+        {
+            return $this->Status;
+        }
+
+        public function setStatus($Status)
+        {
+            $this->Status = $Status;
+
+            return $this;
+        }
+
+}
 ?>
