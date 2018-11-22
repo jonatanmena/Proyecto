@@ -34,14 +34,33 @@
         }
         public function addCalendar($Date, $EventCode, $Place_EventCode)
         {
-            $CalendarObject = new Calendar($Date,$this->EventData->GetByEventCode($EventCode),$this->Place_EventData->GetByPlace_eventCode($Place_EventCode));
-            /*
-            $CalendarObject->setDate($Date);
-            $CalendarObject->setEvent($this->EventData->GetByEventCode($EventCode));
-            $CalendarObject->setPlaceEvent($this->Place_EventData->GetByPlace_eventCode($Place_EventCode));
-            */
-            $this->CalendarData->add($CalendarObject);
-            $this->listCalendars();
+
+            $Calendar = NULL;
+            $Calendar = $this->CalendarData->ValidateCalendar($Date,$EventCode,$Place_EventCode);
+              if($Calendar == NULL)
+              {
+                $CalendarObject = new Calendar( $Date,
+                                                $this->EventData->GetByEventCode($EventCode),
+                                                $this->Place_EventData->GetByPlace_eventCode($Place_EventCode));
+
+                $this->CalendarData->add($CalendarObject);
+                $this->listCalendars();
+              }else {
+                require("view/newCalendar.php");
+                echo '<script language="javascript">';
+                echo 'alert("Ese calendario con ese ID de Evento e ID de lugar de Evento para esa fecha ya existe")';
+                echo '</script>';
+              }
+
+              /*
+              $CalendarObject = new Calendar( $Date,
+                                              $this->EventData->GetByEventCode($EventCode),
+                                              $this->Place_EventData->GetByPlace_eventCode($Place_EventCode));
+
+              $this->CalendarData->add($CalendarObject);
+              $this->listCalendars();
+              */
+
         }
         public function listCalendars()
         {

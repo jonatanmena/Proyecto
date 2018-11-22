@@ -1,6 +1,6 @@
 <?php
     namespace Daos;
-    
+
     use \PDO as PDO;
     use \Exception as Exception;
 
@@ -37,7 +37,7 @@
             try
             {
                 $this->Prepare($query);
-
+                
                 foreach($parameters as $parameterName => $value)
                 {
                     $this->pdoStatement->bindParam(":".$parameterName, $parameters[$parameterName]);

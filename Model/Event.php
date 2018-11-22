@@ -10,11 +10,11 @@
       private $ID;
       private $image;
 
-      public function __construct($title, $category, $image)
+      public function __construct($title, $category, $image = "Sin Imagen")
       {
         $this->title = $title;
         $this->category = $category;
-        $this->image = $image; 
+        $this->image = $image;
       }
 
       public function setTitle($title)

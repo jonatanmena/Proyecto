@@ -25,6 +25,26 @@
                 throw $ex;
             }
         }
+
+        public function getCategoryByDescription($Description)
+        {
+            try {
+                $CategoryObject = null;
+                $query = "SELECT * FROM ".$this->tableName." WHERE Description = :Description";
+                $parameters["Description"] = $Description;
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query, $parameters);
+                foreach ($resultSet as $row) {
+                    $CategoryObject = new Category($row["Description"]);
+                    $CategoryObject->setID($row["ID_Category"]);
+                }
+
+
+                return $CategoryObject;
+            } catch (Exception $ex) {
+                throw $ex;
+            }
+        }
         public function GetAll()
         {
             try

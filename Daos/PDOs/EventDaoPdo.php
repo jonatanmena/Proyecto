@@ -9,7 +9,7 @@
     class EventDaoPdo implements IEventDao
     {
         private $connection;
-        private $tableName = "Events";
+        private $tableName = "events";
 
         public function Add(Event $Event)
         {
@@ -18,7 +18,11 @@
                 $query = "INSERT INTO ".$this->tableName." (Title, ID_Category, image) VALUES (:Title, :ID_Category, :image);";
                 $parameters["Title"] = $Event->getTitle();
                 $parameters["ID_Category"] = $Event->getCategory()->getID();
-                $parameters["image"] = $Event->getImage();
+                if($Event->getimage()!=NULL){
+                    $parameters["image"] = $Event->getimage();
+                }else {
+                    $parameters["image"] = "Sin Imagen";
+                }                
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
             }
@@ -63,9 +67,8 @@
                 foreach ($resultSet as $row)
                 {
                     $EventObject = new Event( $row["Title"],
-                    $CategoryData->GetByCategoryCode($row["ID_Category"]));
+                    $CategoryData->GetByCategoryCode($row["ID_Category"]),$row["image"]);
                     $EventObject->setID($row["ID_Event"]);
-                    $EventObject->setImage($row["image"]);
                 }
 
                 return $EventObject;

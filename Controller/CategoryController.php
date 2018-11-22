@@ -18,12 +18,21 @@
         }
         public function addCategory($Description)
         {
-            $CategoryObject=new Category($Description);
-            $this->CategoryData->Add($CategoryObject);
-            $this->listCategories();
+            $Category = null;
+            $Category = $this->CategoryData->getCategoryByDescription($Description);
+            if ($Category == null) {
+                $CategoryObject=new Category($Description);
+                $this->CategoryData->Add($CategoryObject);
+                $this->listCategories();
+            } else {
+                require("view/newCategory.php");
+                echo '<script language="javascript">';
+                echo 'alert("Esa categoria ya existe")';
+                echo '</script>';
+            }
         }
         public function listCategories()
         {
-          require_once("View/listCategories.php");          
+            require_once("View/listCategories.php");
         }
     }

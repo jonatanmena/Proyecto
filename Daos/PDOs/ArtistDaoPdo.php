@@ -1,7 +1,7 @@
 <?php
     namespace Daos\PDOs ;
 
-    use Daos\Interfaces\IArtistDao as IArtistDao;
+use Daos\Interfaces\IArtistDao as IArtistDao;
     use Model\Artist as Artist;
     use Daos\Connection as Connection;
     use \Exception as Exception;
@@ -13,77 +13,87 @@
 
         public function Add(Artist $Artist)
         {
-            try
-            {
+            try {
                 $query = "INSERT INTO ".$this->tableName." (Name,Description,Gender,Portrait) VALUES (:Name,:Description,:Gender,:Portrait);";
                 $parameters["Name"] = $Artist->getName();
                 $parameters["Description"] = $Artist->getDescription();
                 $parameters["Gender"] = $Artist->getGender();
-                $parameters["Portrait"] = $Artist->getPortrait();
+                  if($Artist->getPortrait()!=NULL){
+                      $parameters["Portrait"] = $Artist->getPortrait();
+                  }else {
+                      $parameters["Portrait"] = "Sin Imagen";
+                  }
+
+
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
+            } catch (Exception $ex) {
+                throw $ex;
             }
-            catch (Exception $ex)
-            {
+        }
+        public function getArtistByName($Name)
+        {
+            try {
+                $ArtistObject = null;
+                $query = "SELECT * FROM ".$this->tableName." WHERE Name = :Name";
+                $parameters["Name"] = $Name;
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query, $parameters);
+                foreach ($resultSet as $row) {
+                    $ArtistObject = new Artist($row["Name"], $row["Description"], $row["Gender"], $row["Portrait"]);
+                    $ArtistObject->setID($row["ID_Artist"]);
+                }
+
+
+                return $ArtistObject;
+            } catch (Exception $ex) {
                 throw $ex;
             }
         }
         public function GetAll()
         {
-            try
-            {
+            try {
                 $ArtistList = array();
                 $query = "SELECT * FROM ".$this->tableName;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
-                foreach ($resultSet as $row)
-                {
-                    $ArtistObject = new Artist($row["Name"],$row["Description"],$row["Gender"],$row["Portrait"]);
+                foreach ($resultSet as $row) {
+                    $ArtistObject = new Artist($row["Name"], $row["Description"], $row["Gender"], $row["Portrait"]);
                     $ArtistObject->setID($row["ID_Artist"]);
                     array_push($ArtistList, $ArtistObject);
                 }
                 return $ArtistList;
-            }
-            catch (Exception $ex)
-            {
+            } catch (Exception $ex) {
                 throw $ex;
             }
         }
         public function GetByArtistCode($ArtistCode)
         {
-            try
-            {
+            try {
                 $ArtistObject = null;
                 $query = "SELECT * FROM ".$this->tableName." WHERE ID_Artist = :ID_Artist";
                 $parameters["ID_Artist"] = $ArtistCode;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
-                foreach ($resultSet as $row)
-                {
-                    $ArtistObject = new Artist($row["Name"],$row["Description"],$row["Gender"],$row["Portrait"]);
+                foreach ($resultSet as $row) {
+                    $ArtistObject = new Artist($row["Name"], $row["Description"], $row["Gender"], $row["Portrait"]);
                     $ArtistObject->setID($row["ID_Artist"]);
                 }
 
                 return $ArtistObject;
-            }
-            catch (Exception $ex)
-            {
+            } catch (Exception $ex) {
                 throw $ex;
             }
         }
         public function Delete($ArtistCode)
         {
-            try
-            {
+            try {
                 $query = "DELETE FROM ".$this->tableName." WHERE ID_Artist = :ArtistCode";
                 $parameters["ID_Artist"] = $ArtistCode;
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
-            }
-            catch (Exception $ex)
-            {
+            } catch (Exception $ex) {
                 throw $ex;
             }
         }
     }
-?>

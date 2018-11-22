@@ -16,7 +16,7 @@
       <div class="content" >
         <div id="comments" style="align-items:center;">
           <h2>Listado de Plaza Evento</h2>
-          <form action="FRONT_ROOT" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
+          <form action="<?php echo FRONT_ROOT;?>square_event/newSquare_Event" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
             <table>
               <thead>
                 <tr>
@@ -53,11 +53,10 @@
                  ?>
               </tbody>
             </table>
-            <!--
             <div>
               <input type="submit" class="btn" value="Agregar" style="background-color:#DC8E47;color:white;"/>
             </div>
-            -->
+
           </form>
         </div>
       </div>

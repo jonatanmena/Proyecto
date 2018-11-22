@@ -16,7 +16,7 @@
       <div class="content" >
         <div id="comments" style="align-items:center;">
           <h2>Listado de Eventos</h2>
-          <form action="FRONT_ROOT" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
+          <form action="<?php echo FRONT_ROOT; ?>event/newEvent" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
             <table>
               <thead>
                 <tr>
@@ -36,7 +36,7 @@
                   <br><br>  <?php echo $Event->getCategory()->getDescription(); ?>
                   </td>
                   <td>
-              <img src="<?php echo FRONT_ROOT . $Event->getImage();?>" style="max-width:125px; max-height:125px;">
+              <img src="<?php echo FRONT_ROOT . $Event->getImage();?>" style="max-width:250px; min-width:249px; max-height:150px;">
                   </td>
                 </tr>
                 <?php
@@ -44,11 +44,11 @@
                  ?>
               </tbody>
             </table>
-            <!--
+
             <div>
               <input type="submit" class="btn" value="Agregar" style="background-color:#DC8E47;color:white;"/>
             </div>
-            -->
+            
           </form>
         </div>
       </div>

@@ -16,7 +16,7 @@
       <div class="content" >
         <div id="comments" style="align-items:center;">
           <h2>Listado de Compras</h2>
-          <form action="FRONT_ROOT" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
+          <form action="<?php echo FRONT_ROOT;?>purchase/newPurchase" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
             <table>
               <thead>
                 <tr>
@@ -26,6 +26,7 @@
               </thead>
               <tbody align="center">
                 <?php foreach ($this->PurchaseData->getAll() as $Purchase) {
+                  //var_dump($Purchase);
                  ?>
                 <tr>
                   <td>
@@ -40,11 +41,11 @@
                  ?>
               </tbody>
             </table>
-            <!--
+
             <div>
               <input type="submit" class="btn" value="Agregar" style="background-color:#DC8E47;color:white;"/>
             </div>
-            -->
+            
           </form>
         </div>
       </div>

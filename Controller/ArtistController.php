@@ -18,10 +18,20 @@
         }
         public function addArtist($Name, $Description, $Gender)
         {
-            $Portrait = $this->moveImage($Name);
-            $ArtistObject=new Artist($Name, $Description, $Gender, $Portrait);
-            $this->ArtistData->add($ArtistObject);
-            $this->listArtists();
+            $Artist = NULL;
+            $Artist = $this->ArtistData->getArtistByName($Name);
+              if($Artist == NULL)
+              {
+                $Portrait = $this->moveImage($Name);
+                $ArtistObject=new Artist($Name, $Description, $Gender, $Portrait);
+                $this->ArtistData->add($ArtistObject);
+                $this->listArtists();
+              }else {
+                require("view/newArtist.php");
+                echo '<script language="javascript">';
+                echo 'alert("Ese artista ya existe")';
+                echo '</script>';
+              }
         }
         public function listArtists()
         {

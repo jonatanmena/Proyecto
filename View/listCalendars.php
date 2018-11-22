@@ -24,7 +24,7 @@
                   <th>Fecha</th>
                   <th>Evento</th>
                   <th>Lugar</th>
-                  <th>Artistas</th>
+                  <!--<th>Artistas</th>-->
                   <!--<th>Plaza Evento Remanente</th>-->
                 </tr>
               </thead>
@@ -41,13 +41,17 @@
                   <td>
                     <?php echo $Calendar->getPlaceEvent()->getDescription(); ?>
                   </td>
+                  <!--
                   <td>
                     <?php
+                    /*
                     foreach ($Calendar->getArtist() as $Artist) {
                     echo $Artist->getName()."<br>";
                     }
+                    */
                     ?>
                   </td>
+                -->
                   <!--
                   <td>
                     <?php

@@ -48,6 +48,28 @@
                 throw $ex;
             }
         }
+        public function getClientByDNI($DNI)
+        {
+          try
+          {
+              $ClientObject = null;
+              $query = "SELECT * FROM ".$this->tableName." WHERE DNI = :DNI";
+              $parameters["DNI"] = $DNI;
+              $this->connection = Connection::GetInstance();
+              $resultSet = $this->connection->Execute($query, $parameters);
+              foreach ($resultSet as $row)
+              {
+                  $ClientObject = new Client($row["Name"],$row["Surname"],$row["DNI"]);
+                  $ClientObject->setID($row["ID_Client"]);
+
+                }
+              return $ClientObject;
+          }
+          catch (Exception $ex)
+          {
+              throw $ex;
+          }
+        }
         public function GetByClientCode($ClientCode)
         {
             try

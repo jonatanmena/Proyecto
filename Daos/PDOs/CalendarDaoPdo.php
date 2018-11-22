@@ -14,7 +14,7 @@
     class CalendarDaoPdo implements ICalendarDao
     {
         private $connection;
-        private $tableName = "Calendars";
+        private $tableName = "calendars";
         private $CalendarXArtistsTable = "calendarxartist";
 
 
@@ -45,8 +45,7 @@
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row) {
-                    $calendarObject = new Calendar(
-                        $row["CalendarDate"],
+                    $calendarObject = new Calendar( $row["CalendarDate"],
                                                     $EventData->GetByEventCode($row["ID_Event"]),
                                                     $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"])
                     );
@@ -67,6 +66,53 @@
                 throw $ex;
             }
         }
+        public function ValidateCalendar($Date,$EventCode,$PlaceEventCode){
+          try {
+              $Place_EventData = new Place_EventDaoPdo();
+              $EventData = new EventDaoPdo();
+              $CalendarXArtistData = new CalendarXArtistDaoPdo();
+              $ArtistData = new ArtistDaoPdo();
+              $Square_EventData = new Square_EventDaoPdo();
+
+              $calendarObject = null;
+
+              $query = "SELECT * FROM ".$this->tableName." WHERE CalendarDate = :CalendarDate AND ID_Event = :ID_Event AND ID_Place_Event = :ID_Place_Event";
+
+              $parameters["CalendarDate"] = $Date;
+              $parameters["ID_Event"] = $EventCode;
+              $parameters["ID_Place_Event"] = $PlaceEventCode;
+              /*
+              var_dump($parameters);
+              echo "<br>";
+              var_dump($query);
+              */
+              $this->connection = Connection::GetInstance();
+              $resultSet = $this->connection->Execute($query, $parameters);
+
+              foreach ($resultSet as $row) {
+                $calendarObject = new Calendar(   $row["CalendarDate"],
+                                                  $EventData->GetByEventCode($row["ID_Event"]),
+                                                  $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"]));
+
+                  $calendarObject->setID($row["ID_Calendar"]);
+
+                  $ArtistCodeArray=$CalendarXArtistData->allArtistByCalendarCode($calendarObject->getID());
+                  $Square_EventCodeArray=$Square_EventData->allSquareEventByCalendarcode($calendarObject->getID());
+
+                  foreach ($ArtistCodeArray as $ArtistCode) {
+                      $calendarObject->setArtist($ArtistData->GetByArtistCode($ArtistCode));
+                  }
+                  foreach ($Square_EventCodeArray as $Square_EventCode) {
+                      $calendarObject->setSquareEvent($Square_EventData->GetBySquare_EventCode($Square_EventCode));
+                  }
+              }
+
+              return $calendarObject;
+
+          } catch (Exception $ex) {
+              throw $ex;
+          }
+        }
         public function GetByCalendarCode($CalendarCode)
         {
             try {
@@ -77,13 +123,14 @@
                 $Square_EventData = new Square_EventDaoPdo();
 
                 $calendarObject = null;
+
                 $query = "SELECT * FROM ".$this->tableName." WHERE ID_Calendar = :ID_Calendar";
                 $parameters["ID_Calendar"] = $CalendarCode;
+
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) {
-                    $calendarObject = new Calendar(
-                        $row["CalendarDate"],
+                    $calendarObject = new Calendar( $row["CalendarDate"],
                                                     $EventData->GetByEventCode($row["ID_Event"]),
                                                     $Place_EventData->GetByPlace_eventCode($row["ID_Place_Event"])
                     );

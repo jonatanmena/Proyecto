@@ -1,0 +1,19 @@
+Botones en listado = darle funcionamiento // Ya se corrigio
+
+Validar si no tiro foto//Se puede cargar un artista sin foto y tambien un evento
+
+Eliminación (Agregar a todo, baja lógica) Unica restricción = que no haya un evento a futuro
+
+Poder editar.
+
+Arreglar square event, agregar a Calendario en "Ingresar Plaza Evento" detalles sobre el Evento y Artistas de ese dia
+
+Hacer una grilla en Ingresar Plaza Evento
+
+Remanente no va como dato ingresado a mano, solo un cálculo para la base
+
+Copiar valor del precio en la linea de compra
+
+Cumplir todos los requisitos funcionales del carrito.
+
+

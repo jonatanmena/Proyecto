@@ -25,6 +25,7 @@
 
       public function logout()
       {
+      unset($_SESSION["userLogged"]);      
       session_destroy();
       $this->index();
       }

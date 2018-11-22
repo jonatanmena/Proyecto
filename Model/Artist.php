@@ -10,14 +10,14 @@
       private $ID;
 
 
-      public function __construct($Name, $Description, $Gender, $Portrait)
+      public function __construct($Name, $Description, $Gender, $Portrait = "Sin Imagen")
       {
         $this->Name = $Name;
         $this->Description = $Description;
         $this->Gender = $Gender;
         $this->Portrait = $Portrait;
       }
-      
+
       public function setName($Name)
       {
           $this->Name = $Name;

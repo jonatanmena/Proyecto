@@ -15,9 +15,9 @@
     <main class="container" style="width: 90%;">
       <!-- main body -->
       <div class="content" >
-        <div id="comments" style="align-items:center;">
+        <div id="comments" style="align-items:center">
           <h2>Listado de Artistas</h2>
-          <form action="<?php echo FRONT_ROOT;?>Artist/addArtist" method="post"  style="background-color: #EAEDED;padding: 2rem !important;">
+          <form action="<?php echo FRONT_ROOT;?>Artist/newArtist" method="post"  style="background-color: #EAEDED;padding: 2rem !important;">
             <table>
               <thead>
                 <tr>
@@ -33,19 +33,19 @@
                 <tr>
                   <td>
                     <!-- <input type="text" name="ArtistNam" value="" required><br> -->
-                  <br><br>  <?php echo $Artist->getName(); ?>
+                  <br><br>  <h5 style="padding-bottom:12px; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif"><?php echo $Artist->getName(); ?></h5>
                   </td>
                   <td>
                     <!--<input type="text" name="ArtistDescription" value="" required><br>-->
-                    <br> <br> <?php echo $Artist->getDescription(); ?>
+                    <br> <br> <h5 style="padding-bottom:12px; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif"><?php echo $Artist->getDescription(); ?>  </h5>
                   </td>
                   <td>
                     <!--<input type="text" name="ArtistGender" value=""><br>-->
-                    <br><br>  <?php echo $Artist->getGender(); ?>
+                    <br><br>  <h5 style="padding-bottom:12px; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif"><?php echo $Artist->getGender(); ?> </h5>
                   </td>
                   <td>
                       <!--<input type="text" name="ArtistPortrait" value=""><br>-->
-                    <img src="<?php echo FRONT_ROOT . $Artist->getPortrait();?>" style="max-width:175px; max-height:175px;">
+                    <img src="<?php echo FRONT_ROOT . $Artist->getPortrait();?>" style="max-width:250px; min-width:249px; max-height:150px;">
                   </td>
                 </tr>
                 <?php

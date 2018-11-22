@@ -18,9 +18,19 @@
         }
         public function addClient($Name, $Surname, $DNI)
         {
-            $ClientObject=new Client($Name, $Surname, $DNI);
-            $this->ClientData->add($ClientObject);
-            $this->listClients();
+            $Client = null;
+            $Client = $this->ClientData->getClientByDNI($DNI);
+
+            if ($Client == null) {
+                $ClientObject=new Client($Name, $Surname, $DNI);
+                $this->ClientData->add($ClientObject);
+                $this->listClients();
+            } else {
+                require("view/newClient.php");
+                echo '<script language="javascript">';
+                echo 'alert("Ese DNI ya existe")';
+                echo '</script>';
+            }
         }
         public function listClients()
         {

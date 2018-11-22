@@ -101,6 +101,7 @@ require("headerViejo.php");
                 <li><a href="<?php echo FRONT_ROOT ?>CalendarXArtist/listCalendarXArtists">Ver Listado</a></li>
             </ul>
             </li>
+                <li><a href="<?php echo FRONT_ROOT;?>main/logout">Logout</a></li>
         </ul>
     </nav>
     </header>
