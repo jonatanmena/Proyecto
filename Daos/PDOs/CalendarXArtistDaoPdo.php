@@ -115,9 +115,12 @@
                 $interval = date_diff($hoy, $fechaCalendario);
                 $diferencia = $interval->format('%R%a días');
                 if(strncmp($diferencia, "-",1)===0){
-                    $safeToDelete=true;
+                    $safeToDelete = true;
                   }
+                }if(count($CalendarCodeArray)==0){
+                  $safeToDelete = true;
                 }
+
               return $safeToDelete;
             } catch (Exception $ex) {
               throw $ex;

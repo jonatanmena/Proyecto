@@ -16,6 +16,9 @@
         {
             require_once("View/newArtist.php");
         }
+        public function modifyArtist(){
+            require_once("View/updateArtist.php");
+        }
         public function addArtist($Name, $Description, $Gender)
         {
             $Artist = NULL;
@@ -23,7 +26,7 @@
               if($Artist == NULL)
               {
                 $Portrait = $this->moveImage($Name);
-                $ArtistObject=new Artist($Name, $Description, $Gender, $Portrait);
+                $ArtistObject=new Artist($Name, $Description, $Gender, $Status,$Portrait);
                 $this->ArtistData->add($ArtistObject);
                 $this->listArtists();
               }else {
@@ -58,6 +61,27 @@
           echo 'alert("'.$this->ArtistData->GetByArtistCode($ArtistCode)->getName().' activado correctamente")';
           echo '</script>';
           $this->listArtists();
+        }
+        public function updateArtist($Name,$Description,$Gender,$ArtistCode,$Status = NULL,$Portrait="Sin Imagen"){
+          if(NULL === $Status){
+            $Status = "Inactivo";
+          }
+          $oldName=$this->ArtistData->GetByArtistCode($ArtistCode)->getName();
+          $Portrait = $this->moveImage($Name);
+          $Artist = new Artist($Name, $Description, $Gender,$Status,$Portrait);
+          $updated= $this->ArtistData->updateArtist($ArtistCode,$Artist);
+          if($updated == true){
+            $this->listArtists();
+            echo '<script language="javascript">';
+            echo 'alert("'.$oldName.' modificado correctamente.")';
+            echo '</script>';
+          }else {
+            $this->listArtists();
+            echo '<script language="javascript">';
+            echo 'alert("No se puede modificar '.$this->ArtistData->GetByArtistCode($ArtistCode)->getName().' tiene eventos futuros.")';
+            echo '</script>';
+          }
+
         }
         public function moveImage($name){
             $imageDirectory = VIEWS_PATH.'img/artists/';

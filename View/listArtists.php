@@ -20,6 +20,7 @@
           <form id="addForm"  action="<?php echo FRONT_ROOT;?>Artist/newArtist" method="post"  ></form>
           <form id="deleteForm" action="<?php echo FRONT_ROOT;?>Artist/deleteArtist" method="post"></form>
           <form id="activateForm" action="<?php echo FRONT_ROOT;?>Artist/activateArtist" method="post"></form>
+          <form id="updateForm" action="<?php echo FRONT_ROOT;?>Artist/modifyArtist" method="post"></form>
             <table>
               <thead>
                 <tr>
@@ -30,6 +31,7 @@
                   <th>Estado</th>
                   <th>Activar</th>
                   <th>Desactivar</th>
+                  <th>Modificar</th>
                 </tr>
               </thead>
               <tbody align="center">
@@ -81,6 +83,9 @@
                     <?php
                     }
                     ?>
+                    <td>
+                      <input type="submit" name="updateArtist" value="<?php echo $Artist->getID() ?>" form="updateForm" />
+                    </td>
 
                   </td>
                 </tr>

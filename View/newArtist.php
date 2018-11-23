@@ -29,7 +29,6 @@
               <tbody align="center">
                 <tr>
                   <td>
-                    <!--<input type="text" name="Name" id="" value="" size="22" required>-->
                     <input type="text" name="ArtistName" value="" required><br>
                   </td>
                   <td>

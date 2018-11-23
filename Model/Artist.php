@@ -11,12 +11,15 @@
       private $Status;
 
 
-      public function __construct($Name, $Description, $Gender, $Status = "Activo", $Portrait = "Sin Imagen")
+      public function __construct($Name, $Description, $Gender, $Status = NULL , $Portrait = "Sin Imagen")
       {
         $this->Name = $Name;
         $this->Description = $Description;
         $this->Gender = $Gender;
         $this->Portrait = $Portrait;
+        if(NULL === $Status){
+          $Status = "Inactivo";
+        }
         $this->Status = $Status;
       }
 

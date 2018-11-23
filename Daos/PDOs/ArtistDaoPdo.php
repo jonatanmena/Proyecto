@@ -119,6 +119,41 @@
                 throw $ex;
             }
         }
+        public function updateArtist($ArtistCode,Artist $Artist){
+            try {
+              $CalendarXArtistObject = new CalendarXArtistDaoPdo();
+              $updated=false;
+              if($CalendarXArtistObject->isSafeToDelete($ArtistCode)==true){
+                $query = "UPDATE ".$this->tableName." SET Name = :Name,
+                                                          Description = :Description,
+                                                          Gender = :Gender,
+                                                          Status = :Status,
+                                                          Portrait = :Portrait
+                                                          WHERE ID_Artist = :ID_Artist";
+                $parameters["Name"] = $Artist->getName();
+                $parameters["Description"] = $Artist->getDescription();
+                $parameters["Gender"] = $Artist->getGender();
+                $parameters["ID_Artist"] = $ArtistCode;
+                if ($Artist->getStatus()!=null) {
+                    $parameters["Status"] = $Artist->getStatus();
+                } else {
+                    $parameters["Status"] = "Inactivo";
+                }
+                if ($Artist->getPortrait()!=null) {
+                    $parameters["Portrait"] = $Artist->getPortrait();
+                } else {
+                    $parameters["Portrait"] = "Sin Imagen";
+                }
+                echo $query;
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query, $parameters);
+                $updated=true;
+              }
+              return $updated;
+          } catch (Exception $ex) {
+              throw $ex;
+          }
+        }
         public function Delete($ArtistCode)
         {
             try {

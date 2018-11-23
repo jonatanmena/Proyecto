@@ -36,7 +36,7 @@
                   <br><br>  <?php echo $Event->getCategory()->getDescription(); ?>
                   </td>
                   <td>
-              <img src="<?php echo FRONT_ROOT . $Event->getImage();?>" style="max-width:250px; min-width:249px; max-height:150px;">
+                    <img src="<?php echo FRONT_ROOT . $Event->getImage();?>" style="max-width:250px; min-width:249px; max-height:150px;">
                   </td>
                 </tr>
                 <?php
@@ -48,7 +48,7 @@
             <div>
               <input type="submit" class="btn" value="Agregar" style="background-color:#DC8E47;color:white;"/>
             </div>
-            
+
           </form>
         </div>
       </div>
