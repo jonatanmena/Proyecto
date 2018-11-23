@@ -89,6 +89,18 @@
                 throw $ex;
             }
         }
+        public function activateArtist($ArtistCode)
+        {
+          try {
+                $query = "UPDATE ".$this->tableName." SET Status = 'Activo' WHERE ID_Artist = :ID_Artist";
+                $parameters["ID_Artist"] = $ArtistCode;
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query, $parameters);
+              }
+           catch (Exception $ex) {
+              throw $ex;
+          }
+        }
         public function logicalDelete($ArtistCode)
         {
             try {

@@ -18,7 +18,8 @@
         <div id="comments" style="align-items:center">
           <h2>Listado de Artistas</h2>
           <form id="addForm"  action="<?php echo FRONT_ROOT;?>Artist/newArtist" method="post"  ></form>
-          <form id="deleteForm" action="<?php echo FRONT_ROOT;?>Artist/delete" method="post"></form>
+          <form id="deleteForm" action="<?php echo FRONT_ROOT;?>Artist/deleteArtist" method="post"></form>
+          <form id="activateForm" action="<?php echo FRONT_ROOT;?>Artist/activateArtist" method="post"></form>
             <table>
               <thead>
                 <tr>
@@ -27,12 +28,12 @@
                   <th>Genero</th>
                   <th>Portada</th>
                   <th>Estado</th>
-                  <th>Borrar</th>
+                  <th>Activar</th>
+                  <th>Desactivar</th>
                 </tr>
               </thead>
               <tbody align="center">
                 <?php foreach ($this->ArtistData->getAll() as $Artist) {
-                var_dump($Artist);
                  ?>
 
                 <tr>
@@ -52,7 +53,35 @@
                     <br><br>  <h5 style="padding-bottom:12px; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif"><?php echo $Artist->getStatus(); ?> </h5>
                   </td>
                   <td>
-                      <input type="submit" name="delete" value="<?php echo $Artist->getID();  ?>" form="deleteForm" />
+                    <?php
+                    if($Artist->getStatus()==="Activo")
+                    {
+                    ?>
+
+                      <input type="submit" name="activateArtist" disabled value="<?php echo $Artist->getID();  ?>" form="activateForm" />
+
+                    <?php
+                  }else {
+                    ?>
+                    <input type="submit" name="activateArtist" value="<?php echo $Artist->getID();  ?>" form="activateForm" />
+                  <?php
+                  }
+                  ?>
+                  </td>
+                  <td>
+                    <?php
+                    if($Artist->getStatus()==="Inactivo")
+                      {
+                    ?>
+                      <input type="submit" name="deleteArtist" disabled value="<?php echo $Artist->getID();  ?>" form="deleteForm" />
+                      <?php
+                    }else {
+                      ?>
+                      <input type="submit" name="deleteArtist" value="<?php echo $Artist->getID();  ?>" form="deleteForm" />
+                    <?php
+                    }
+                    ?>
+
                   </td>
                 </tr>
                 <?php

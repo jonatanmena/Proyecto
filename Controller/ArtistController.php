@@ -29,7 +29,7 @@
               }else {
                 require("view/newArtist.php");
                 echo '<script language="javascript">';
-                echo 'alert("Ese artista ya existe")';
+                echo 'alert("'.$Name.' ya existe en la base de datos")';
                 echo '</script>';
               }
         }
@@ -37,22 +37,28 @@
         {
             require_once("View/listArtists.php");
         }
-        public function delete($ArtistCode){
+        public function deleteArtist($ArtistCode){
             $deleted = false;
-            $deleted = $this->ArtistData->logicalDelete($ArtistCode);            
+            $deleted = $this->ArtistData->logicalDelete($ArtistCode);
               if($deleted == true){
                 $this->listArtists();
                 echo '<script language="javascript">';
-                echo 'alert("Artista Eliminado Correctamente")';
+                echo 'alert("'.$this->ArtistData->GetByArtistCode($ArtistCode)->getName().' desactivado correctamente.")';
                 echo '</script>';
               }else {
                 $this->listArtists();
                 echo '<script language="javascript">';
-                echo 'alert("No se puede eliminar el Artista")';
+                echo 'alert("No se puede desactivar '.$this->ArtistData->GetByArtistCode($ArtistCode)->getName().' tiene eventos futuros.")';
                 echo '</script>';
               }
         }
-
+        public function activateArtist($ArtistCode){
+          $this->ArtistData->activateArtist($ArtistCode);
+          echo '<script language="javascript">';
+          echo 'alert("'.$this->ArtistData->GetByArtistCode($ArtistCode)->getName().' activado correctamente")';
+          echo '</script>';
+          $this->listArtists();
+        }
         public function moveImage($name){
             $imageDirectory = VIEWS_PATH.'img/artists/';
 
