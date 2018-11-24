@@ -99,16 +99,19 @@
             }
 
             if($_FILES and $_FILES['image']['size']>0){
+              echo "primer if";
 
                 if((isset($_FILES['image'])) && ($_FILES['image']['name'] != '')){
+                  echo "segundo if";
 
                     $file = $imageDirectory . $name . "." . $this->obtenerExtensionFichero($_FILES['image']['name']);
-                    
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $file);
+                    /*
                     if(!file_exists($file)){
-
+                      echo "tercer if";
                         move_uploaded_file($_FILES["image"]["tmp_name"], $file);
                     }
-
+                    */
                     return $file;
                 }
             }else{

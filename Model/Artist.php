@@ -11,16 +11,20 @@
       private $Status;
 
 
-      public function __construct($Name, $Description, $Gender, $Status = NULL , $Portrait = "Sin Imagen")
+      public function __construct($Name, $Description, $Gender, $Status = NULL , $Portrait = NULL)
       {
         $this->Name = $Name;
         $this->Description = $Description;
         $this->Gender = $Gender;
-        $this->Portrait = $Portrait;
+
         if(NULL === $Status){
           $Status = "Activo";
         }
         $this->Status = $Status;
+        if(NULL === $Portrait){
+          $Status = "Activo";
+        }
+        $this->Portrait = $Portrait;
       }
 
       public function setName($Name)
