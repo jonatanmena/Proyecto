@@ -67,12 +67,10 @@
                     if ($Artist->getStatus()==="Activo") {
                         ?>
 
-                  <input type="submit" name="activateArtist" disabled value="<?php echo $Artist->getID(); ?>" form="activateForm" />
-
                   <?php
                     } else {
                         ?>
-                  <input type="submit" name="activateArtist" value="<?php echo $Artist->getID(); ?>" form="activateForm" />
+                  <input type="submit"  name="activateArtist" style="background:url(<?php echo FRONT_ROOT.VIEWS_PATH; ?>img/enable.png) no-repeat center;" value="<?php echo $Artist->getID(); ?>" form="activateForm" />
                   <?php
                     } ?>
                 </td>
@@ -80,15 +78,14 @@
                   <?php
                     if ($Artist->getStatus()==="Inactivo") {
                         ?>
-                  <input type="submit" name="deleteArtist" disabled value="<?php echo $Artist->getID(); ?>" form="deleteForm" />
                   <?php
                     } else {
                         ?>
-                  <input type="submit" name="deleteArtist" value="<?php echo $Artist->getID(); ?>" form="deleteForm" />
+                  <input type="submit" name="deleteArtist" style="background:url(<?php echo FRONT_ROOT.VIEWS_PATH; ?>img/disable.png) no-repeat center;"  value="<?php echo $Artist->getID(); ?>" form="deleteForm" />
                   <?php
                     } ?>
                 <td>
-                  <input type="submit" name="updateArtist" value="<?php echo $Artist->getID() ?>" form="updateForm" />
+                  <input type="submit" name="updateArtist" value="<?php echo $Artist->getID(); ?>" form="updateForm" />
                 </td>
 
                 </td>

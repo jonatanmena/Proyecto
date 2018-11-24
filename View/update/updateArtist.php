@@ -24,6 +24,7 @@
                   <th>Descripcion</th>
                   <th>Genero</th>
                   <th>ID Artista</th>
+                  <th>Estado</th>
                   <th>Portada</th>
                 </tr>
               </thead>
@@ -40,6 +41,9 @@
                   </td>
                   <td>
                     <input type="number" name="ArtistCode" value="<?php echo $Artist->getID(); ?>" required readonly="readonly"><br>
+                  </td>
+                  <td>
+                    <input type="text" name="ArtistStatus" value="<?php echo $Artist->getStatus(); ?>" required readonly="readonly"><br>
                   </td>
                   <td>
                     <img src="<?php echo FRONT_ROOT . $Artist->getPortrait();?>" style="max-width:250px; min-width:249px; max-height:150px;">
