@@ -13,15 +13,29 @@
         public function __construct()
         {
             $this->CategoryData = new CategoryDaoPdo();
-            $this->CategoryData->getAll();
+            //$this->CategoryData->getAll();
             $this->EventData = new EventDaoPdo();
         }
         public function newEvent()
         {
             if (empty($this->CategoryData->getAll())) {
-                require_once("View/newCategory.php");
+                echo '<script language="javascript">';
+                echo 'alert("No hay Categorias cargadas ingresa al menos una")';
+                echo '</script>';
+                require_once(VIEWS_PATH."nav-bar.php");
+                require_once(ADD_PATH."newCategory.php");                
+                require_once(VIEWS_PATH."footerViejo.php");
+            }else {
+                require_once(VIEWS_PATH."nav-bar.php");
+                require_once(ADD_PATH."newEvent.php");
+                require_once(VIEWS_PATH."footerViejo.php");
             }
-            require_once("View/newEvent.php");
+        }
+        public function listEvents()
+        {
+            require_once(VIEWS_PATH."nav-bar.php");
+            require_once(LIST_PATH."listEvents.php");
+            require_once(VIEWS_PATH."footerViejo.php");
         }
         public function addEvent($title, $category)
         {
@@ -31,11 +45,6 @@
             $this->listEvents();
         }
 
-        public function listEvents()
-        {
-            require_once("View/listEvents.php");
-        }
-
         public function moveImage($name){
             $imageDirectory = VIEWS_PATH.'img/events/';
 
@@ -43,8 +52,6 @@
 
                 mkdir($imageDirectory);
             }
-            //print_r($_FILES);
-            //exit;
 
             if($_FILES and $_FILES['image']['size']>0){
 

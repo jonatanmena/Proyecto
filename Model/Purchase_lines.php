@@ -15,11 +15,14 @@
         private $Ticket;
         private $Status;
 
-        public function __construct($Quantity,$Price,$Purchase,$Status = "Activo")
+        public function __construct($Quantity,$Price,$Purchase,$Status = NULL)
         {
           $this->Quantity = $Quantity;
           $this->Price = $Price;
           $this->Purchase = $Purchase;
+          if(NULL === $Status){
+            $Status = "Activo";
+          }
           $this->Status = $Status;
         }
         public function setQuantity($Quantity)
@@ -92,7 +95,7 @@
         {
             return $this->Square_Event;
         }
-            
+
         public function getStatus()
         {
             return $this->Status;

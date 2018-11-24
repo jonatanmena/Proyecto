@@ -9,11 +9,14 @@
       private $DNI;
       private $Status;
 
-      public function __construct($Name,$Surname,$DNI,$Status = "Activo")
+      public function __construct($Name,$Surname,$DNI,$Status = NULL)
       {
         $this->Name = $Name;
         $this->Surname = $Surname;
         $this->DNI = $DNI;
+        if(NULL === $Status){
+          $Status = "Activo";
+        }
         $this->Status = $Status;
       }
       public function setID($ID)

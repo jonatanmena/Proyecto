@@ -1,6 +1,5 @@
 <?php
     namespace Model;
-    // TODO: Entidad Ciudad
     class Place_Event
     {
         private $Quantity;
@@ -8,11 +7,14 @@
         private $ID;
         private $Status;
 
-        public function __construct($Quantity, $Description, $Status = "Activo")
+        public function __construct($Quantity, $Description, $Status = NULL)
         {
-        $this->Quantity = $Quantity;
-        $this->Description = $Description;
-        $this->Status = $Status;
+          $this->Quantity = $Quantity;
+          $this->Description = $Description;
+          if(NULL === $Status){
+            $Status = "Activo";
+          }
+          $this->Status = $Status;
         }
 
         public function setQuantity($Quantity)
@@ -46,7 +48,7 @@
         {
             return $this->ID;
         }
-        
+
         public function getStatus()
         {
             return $this->Status;

@@ -9,11 +9,14 @@
         private $ID;
         private $Status;
 
-        public function __construct ($User,$Password,$Privilege,$Status = "Activo")
+        public function __construct ($User,$Password,$Privilege,$Status = NULL)
         {
             $this->User = $User;
             $this->Password = $Password;
             $this->Privilege = $Privilege;
+            if(NULL === $Status){
+              $Status = "Activo";
+            }
             $this->Status = $Status;
         }
         public function getUser()

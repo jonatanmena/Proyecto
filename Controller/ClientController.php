@@ -14,7 +14,15 @@
         }
         public function newClient()
         {
-            require_once("View/newClient.php");
+            require_once(VIEWS_PATH."nav-bar.php");
+            require_once(ADD_PATH."newClient.php");
+            require_once(VIEWS_PATH."footerViejo.php");
+        }
+        public function listClients()
+        {
+            require_once(VIEWS_PATH."nav-bar.php");
+            require_once(LIST_PATH."listClients.php");
+            require_once(VIEWS_PATH."footerViejo.php");
         }
         public function addClient($Name, $Surname, $DNI)
         {
@@ -26,14 +34,10 @@
                 $this->ClientData->add($ClientObject);
                 $this->listClients();
             } else {
-                require("view/newClient.php");
                 echo '<script language="javascript">';
                 echo 'alert("Ese DNI ya existe")';
                 echo '</script>';
+                $this->newClient();                
             }
-        }
-        public function listClients()
-        {
-            require_once("View/listClients.php");
         }
     }

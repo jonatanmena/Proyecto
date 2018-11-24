@@ -8,10 +8,13 @@
         private $ID;
         private $Status;
 
-        public function __construct($Number,$QR,$Status = "Activo")
+        public function __construct($Number,$QR,$Status = NULL)
         {
           $this->Number = $Number;
           $this->QR = $QR;
+          if(NULL === $Status){
+            $Status = "Activo";
+          }
           $this->Status = $Status;
         }
         public function setNumber($Number)

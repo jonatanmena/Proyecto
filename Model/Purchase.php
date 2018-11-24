@@ -10,10 +10,13 @@
         private $Client;
         private $Status;
 
-        public function __construct($Date,$Client,$Status = "Activo")
+        public function __construct($Date,$Client,$Status = NULL)
         {
           $this->Date = $Date;
           $this->Client = $Client;
+          if(NULL === $Status){
+            $Status = "Activo";
+          }
           $this->Status = $Status;
         }
         public function setDate($Date)

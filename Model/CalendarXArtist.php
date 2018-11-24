@@ -10,10 +10,13 @@
       private $Calendar;
       private $Status;
 
-      public function __construct($Artist,$Calendar,$Status = "Activo")
+      public function __construct($Artist,$Calendar,$Status = NULL)
       {
         $this->Artist = $Artist;
         $this->Calendar = $Calendar;
+        if(NULL === $Status){
+          $Status = "Activo";
+        }
         $this->Status = $Status;
       }
       public function setArtist(Artist $Artist)

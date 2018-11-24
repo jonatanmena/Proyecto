@@ -11,11 +11,14 @@
       private $image;
       private $Status;
 
-      public function __construct($title, $category, $image = "Sin Imagen", $Status = "Activo")
+      public function __construct($title, $category, $image = "Sin Imagen", $Status = NULL)
       {
         $this->title = $title;
         $this->category = $category;
         $this->image = $image;
+        if(NULL === $Status){
+          $Status = "Activo";
+        }
         $this->Status = $Status;
       }
 

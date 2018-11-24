@@ -144,7 +144,6 @@
                 } else {
                     $parameters["Portrait"] = "Sin Imagen";
                 }
-                echo $query;
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
                 $updated=true;

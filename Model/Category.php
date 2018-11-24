@@ -7,9 +7,12 @@
         private $ID;
         private $Status;
 
-        public function __construct($Description,$Status = "Activo")
+        public function __construct($Description,$Status = NULL)
         {
             $this->Description = $Description;
+            if(NULL === $Status){
+              $Status = "Activo";
+            }
             $this->Status = $Status;
         }
 

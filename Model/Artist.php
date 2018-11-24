@@ -18,7 +18,7 @@
         $this->Gender = $Gender;
         $this->Portrait = $Portrait;
         if(NULL === $Status){
-          $Status = "Inactivo";
+          $Status = "Activo";
         }
         $this->Status = $Status;
       }

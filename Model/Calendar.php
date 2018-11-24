@@ -16,11 +16,14 @@
         private $ID;
         private $Status;
 
-        public function __construct($date, $Event, $Place_Event,$Status = "Activo")
+        public function __construct($date, $Event, $Place_Event,$Status = NULL)
         {
             $this->date = $date;
             $this->Event = $Event;
             $this->Place_Event = $Place_Event;
+            if(NULL === $Status){
+              $Status = "Activo";
+            }
             $this->Status = $Status;
         }
 
@@ -96,7 +99,7 @@
         {
             return $this->Place_Event;
         }
-    
+
         public function getArtists()
         {
             return $this->Artists;

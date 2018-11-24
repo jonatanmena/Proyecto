@@ -14,16 +14,20 @@
         }
         public function newTicket()
         {
-            require_once("View/newTicket.php");
+            require_once(VIEWS_PATH."nav-bar.php");
+            require_once(ADD_PATH."newTicket.php");
+            require_once(VIEWS_PATH."footerViejo.php");
+        }
+        public function listTickets()
+        {            
+            require_once(VIEWS_PATH."nav-bar.php");
+            require_once(LIST_PATH."listTickets.php");
+            require_once(VIEWS_PATH."footerViejo.php");
         }
         public function addTicket($Number, $QR)
         {
             $TicketObject=new Ticket($Number, $QR);
             $this->TicketData->add($TicketObject);
             $this->listTickets();
-        }
-        public function listTickets()
-        {
-            require_once("View/listTickets.php");
         }
     }

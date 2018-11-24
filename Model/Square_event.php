@@ -14,13 +14,16 @@
         private $Calendar;
         private $Status;
 
-        public function __construct($Price,$Remainder,$Quantity_available,$Square_Kind,$Calendar,$Status = "Activo")
+        public function __construct($Price,$Remainder,$Quantity_available,$Square_Kind,$Calendar,$Status = NULL)
         {
           $this->Price = $Price;
           $this->Remainder = $Remainder;
           $this->Quantity_available = $Quantity_available;
           $this->Square_Kind = $Square_Kind;
           $this->Calendar = $Calendar;
+          if(NULL === $Status){
+            $Status = "Activo";
+          }
           $this->Status = $Status;
         }
         public function setPrice($Price)

@@ -14,10 +14,21 @@
         }
         public function newArtist()
         {
-            require_once("View/newArtist.php");
+            require_once(VIEWS_PATH."nav-bar.php");
+            require_once(ADD_PATH."newArtist.php");
+            require_once(VIEWS_PATH."footerViejo.php");
         }
         public function modifyArtist(){
-            require_once("View/updateArtist.php");
+
+            require_once(VIEWS_PATH."nav-bar.php");
+            require_once(UPDATE_PATH."updateArtist.php");
+            require_once(VIEWS_PATH."footerViejo.php");
+        }
+        public function listArtists()
+        {
+            require_once(VIEWS_PATH."nav-bar.php");
+            require_once(LIST_PATH."listArtists.php");
+            require_once(VIEWS_PATH."footerViejo.php");
         }
         public function addArtist($Name, $Description, $Gender)
         {
@@ -26,33 +37,29 @@
               if($Artist == NULL)
               {
                 $Portrait = $this->moveImage($Name);
-                $ArtistObject=new Artist($Name, $Description, $Gender, $Status,$Portrait);
+                $ArtistObject=new Artist($Name, $Description, $Gender, $Status = NULL,$Portrait);
                 $this->ArtistData->add($ArtistObject);
                 $this->listArtists();
               }else {
-                require("view/newArtist.php");
                 echo '<script language="javascript">';
                 echo 'alert("'.$Name.' ya existe en la base de datos")';
                 echo '</script>';
+                $this->newArtist();
               }
-        }
-        public function listArtists()
-        {
-            require_once("View/listArtists.php");
         }
         public function deleteArtist($ArtistCode){
             $deleted = false;
             $deleted = $this->ArtistData->logicalDelete($ArtistCode);
               if($deleted == true){
-                $this->listArtists();
                 echo '<script language="javascript">';
                 echo 'alert("'.$this->ArtistData->GetByArtistCode($ArtistCode)->getName().' desactivado correctamente.")';
                 echo '</script>';
-              }else {
                 $this->listArtists();
+              }else {
                 echo '<script language="javascript">';
                 echo 'alert("No se puede desactivar '.$this->ArtistData->GetByArtistCode($ArtistCode)->getName().' tiene eventos futuros.")';
                 echo '</script>';
+                $this->listArtists();
               }
         }
         public function activateArtist($ArtistCode){
@@ -71,15 +78,15 @@
           $Artist = new Artist($Name, $Description, $Gender,$Status,$Portrait);
           $updated= $this->ArtistData->updateArtist($ArtistCode,$Artist);
           if($updated == true){
-            $this->listArtists();
             echo '<script language="javascript">';
             echo 'alert("'.$oldName.' modificado correctamente.")';
             echo '</script>';
-          }else {
             $this->listArtists();
+          }else {
             echo '<script language="javascript">';
             echo 'alert("No se puede modificar '.$this->ArtistData->GetByArtistCode($ArtistCode)->getName().' tiene eventos futuros.")';
             echo '</script>';
+            $this->listArtists();
           }
 
         }
@@ -90,15 +97,13 @@
 
                 mkdir($imageDirectory);
             }
-            //print_r($_FILES);
-            //exit;
 
             if($_FILES and $_FILES['image']['size']>0){
 
                 if((isset($_FILES['image'])) && ($_FILES['image']['name'] != '')){
 
                     $file = $imageDirectory . $name . "." . $this->obtenerExtensionFichero($_FILES['image']['name']);
-
+                    
                     if(!file_exists($file)){
 
                         move_uploaded_file($_FILES["image"]["tmp_name"], $file);

@@ -14,7 +14,15 @@
         }
         public function newCategory()
         {
-            require_once("View/newCategory.php");
+            require_once(VIEWS_PATH."nav-bar.php");
+            require_once(ADD_PATH."newCategory.php");
+            require_once(VIEWS_PATH."footerViejo.php");
+        }
+        public function listCategories()
+        {
+            require_once(VIEWS_PATH."nav-bar.php");
+            require_once(LIST_PATH."listCategories.php");
+            require_once(VIEWS_PATH."footerViejo.php");
         }
         public function addCategory($Description)
         {
@@ -25,14 +33,11 @@
                 $this->CategoryData->Add($CategoryObject);
                 $this->listCategories();
             } else {
-                require("view/newCategory.php");
                 echo '<script language="javascript">';
                 echo 'alert("Esa categoria ya existe")';
                 echo '</script>';
+                $this->newCategory();
+
             }
-        }
-        public function listCategories()
-        {
-            require_once("View/listCategories.php");
         }
     }
