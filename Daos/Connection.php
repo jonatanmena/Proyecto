@@ -37,14 +37,12 @@
             try
             {
                 $this->Prepare($query);
-                
+
                 foreach($parameters as $parameterName => $value)
                 {
                     $this->pdoStatement->bindParam(":".$parameterName, $parameters[$parameterName]);
                 }
-
                 $this->pdoStatement->execute();
-
                 return $this->pdoStatement->fetchAll();
             }
             catch(Exception $ex)

@@ -15,7 +15,6 @@
     {
         private $connection;
         private $tableName = "calendars";
-        private $CalendarXArtistsTable = "calendarxartist";
 
 
         public function Add(Calendar $Calendar)
@@ -34,16 +33,17 @@
         public function GetAll()
         {
             try {
+                $Square_EventData = new Square_EventDaoPdo();
                 $Place_EventData = new Place_EventDaoPdo();
                 $EventData = new EventDaoPdo();
                 $CalendarXArtistData = new CalendarXArtistDaoPdo();
                 $ArtistData = new ArtistDaoPdo();
-                $Square_EventData = new Square_EventDaoPdo();
 
                 $CalendarList = array();
                 $query = "SELECT * FROM ".$this->tableName;
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
+
                 foreach ($resultSet as $row) {
                     $calendarObject = new Calendar( $row["CalendarDate"],
                                                     $EventData->GetByEventCode($row["ID_Event"]),
@@ -81,11 +81,7 @@
               $parameters["CalendarDate"] = $Date;
               $parameters["ID_Event"] = $EventCode;
               $parameters["ID_Place_Event"] = $PlaceEventCode;
-              /*
-              var_dump($parameters);
-              echo "<br>";
-              var_dump($query);
-              */
+
               $this->connection = Connection::GetInstance();
               $resultSet = $this->connection->Execute($query, $parameters);
 

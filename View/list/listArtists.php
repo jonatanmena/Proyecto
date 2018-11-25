@@ -70,7 +70,7 @@
                   <?php
                     } else {
                         ?>
-                  <input type="submit"  name="activateArtist" style="background:url(<?php echo FRONT_ROOT.VIEWS_PATH; ?>img/enable.png) no-repeat center;" value="<?php echo $Artist->getID(); ?>" form="activateForm" />
+                  <input type="button" onclick="location.href='<?php echo FRONT_ROOT;?>Artist/activateArtist/<?php echo $Artist->getID();?>;'" value="Activar" />
                   <?php
                     } ?>
                 </td>
@@ -81,11 +81,11 @@
                   <?php
                     } else {
                         ?>
-                  <input type="submit" name="deleteArtist" style="background:url(<?php echo FRONT_ROOT.VIEWS_PATH; ?>img/disable.png) no-repeat center;"  value="<?php echo $Artist->getID(); ?>" form="deleteForm" />
+                  <input type="button" onclick="location.href='<?php echo FRONT_ROOT;?>Artist/deleteArtist/<?php echo $Artist->getID();?>;'" value="Desactivar" />
                   <?php
                     } ?>
                 <td>
-                  <input type="submit" name="updateArtist" value="<?php echo $Artist->getID(); ?>" form="updateForm" />
+                  <input type="button" onclick="location.href='<?php echo FRONT_ROOT;?>Artist/modifyArtist/<?php echo $Artist->getID();?>;'" value="Modificar" />
                 </td>
 
                 </td>

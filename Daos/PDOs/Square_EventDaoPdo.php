@@ -62,6 +62,8 @@
         {
             try
             {
+                $Square_KindData = new Square_kindDaoPdo();
+                $CalendarData = new CalendarDaoPdo();
                 $Square_EventObject = null;
                 $query = "SELECT * FROM ".$this->tableName." WHERE ID_Square_Event = :ID_Square_Event";
                 $parameters["ID_Square_Event"] = $Square_EventCode;
@@ -75,7 +77,6 @@
 
                     $Square_EventObject->setID($row["ID_Square_Event"]);
                 }
-                var_dump($Square_EventObject);
                 return $Square_EventObject;
             }
             catch (Exception $ex)

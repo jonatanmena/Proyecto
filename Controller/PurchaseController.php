@@ -15,7 +15,6 @@
         public function __construct()
         {
             $this->ClientData = new ClientDaoPdo();
-            //$this->ClientData->getAll();
             $this->PurchaseData = new PurchaseDaoPdo();
         }
         public function newPurchase()

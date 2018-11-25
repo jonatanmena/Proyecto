@@ -37,7 +37,7 @@
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row)
-                {
+                {   
                     $Purchase_LinesObject = new Purchase_Lines( $row["Quantity"],
                                                                 $row["Price"],
                                                                 $PurchaseData->GetByPurchaseCode($row["ID_Purchase"]));

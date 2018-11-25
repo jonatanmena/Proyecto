@@ -45,14 +45,12 @@ include("header.php");
                   <li>
                     <a class="page-scroll" href="#portfolio">Recitales</a>
                   </li>
-                  <!--
                   <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">ABM<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                       <li><a href=#>Listas de ABM</a></li>
                       <li><a href=#>Listas de ABM</a></li>
                     </ul>
                   </li>
-                -->
                   <li>
                     <a class="page-scroll" href="#blog">Blog</a>
                   </li>
@@ -142,7 +140,7 @@ include("header.php");
             {
              ?>
             <div class="container">
-              <div class="shopping-cart">
+              <div class="shopping-cart" style="display: none;">
                 <div class="shopping-cart-header">
                   <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
                   <div class="shopping-cart-total">

@@ -13,7 +13,6 @@
         public function __construct()
         {
             $this->CategoryData = new CategoryDaoPdo();
-            //$this->CategoryData->getAll();
             $this->EventData = new EventDaoPdo();
         }
         public function newEvent()
@@ -23,7 +22,7 @@
                 echo 'alert("No hay Categorias cargadas ingresa al menos una")';
                 echo '</script>';
                 require_once(VIEWS_PATH."nav-bar.php");
-                require_once(ADD_PATH."newCategory.php");                
+                require_once(ADD_PATH."newCategory.php");
                 require_once(VIEWS_PATH."footerViejo.php");
             }else {
                 require_once(VIEWS_PATH."nav-bar.php");

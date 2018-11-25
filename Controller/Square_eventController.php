@@ -5,21 +5,22 @@
     use Daos\PDOs\CalendarDaoPdo as CalendarDaoPdo;
     use Daos\PDOs\Square_kindDaoPdo as Square_kindDaoPdo;
     use Daos\PDOs\Square_EventDaoPdo as Square_EventDaoPdo;
+    use Daos\PDOs\CalendarXArtistDaoPdo as CalendarXArtistDaoPdo;
 
     class Square_EventController
     {
         private $Square_EventData;
         private $Square_KindData;
         private $CalendarData;
+        private $CalendarXArtistData;
 
 
         public function __construct()
         {
             $this->CalendarData = new CalendarDaoPdo();
-            $this->CalendarData->getAll();
             $this->Square_KindData = new Square_kindDaoPdo();
-            $this->Square_KindData->getAll();
             $this->Square_EventData = new Square_EventDaoPdo();
+            $this->CalendarXArtistData = new CalendarXArtistDaoPdo();
         }
         public function newSquare_Event()
         {
@@ -36,7 +37,14 @@
                 require_once(VIEWS_PATH."nav-bar.php");
                 require_once(ADD_PATH."newSquare_Kind.php");
                 require_once(VIEWS_PATH."footerViejo.php");
-            }else {
+            } elseif (empty($this->CalendarXArtistData->getAll())) {
+                echo '<script language="javascript">';
+                echo 'alert("Asigna al menos un artista a un calendario")';
+                echo '</script>';
+                require_once(VIEWS_PATH."nav-bar.php");
+                require_once(VIEWS_PATH."footerViejo.php");
+            }
+            else {
                 require_once(VIEWS_PATH."nav-bar.php");
                 require_once(ADD_PATH."newSquare_Event.php");
                 require_once(VIEWS_PATH."footerViejo.php");
