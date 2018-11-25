@@ -47,7 +47,7 @@ include("header.php");
                   </li>
                   <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">ABM<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href=#>Listas de ABM</a></li>
+                      <li><a href="<?php echo FRONT_ROOT;?>main/purchase">Comprar Tickets</a></li>
                       <li><a href=#>Listas de ABM</a></li>
                     </ul>
                   </li>
@@ -325,7 +325,6 @@ include("header.php");
     </div>
   </div>
   <!-- End About area -->
-
   <!-- Start Service area -->
   <div id="services" class="services-area area-padding">
     <div class="container">
