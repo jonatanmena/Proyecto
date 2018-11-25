@@ -151,20 +151,30 @@ require_once("header.php");
                   </div>
                 </div>
                 <!--end shopping-cart-header -->
+
+                <?php
+                foreach ($_SESSION["Purchase_Lines"] as $Lines)
+                {
+                ?>
                 <ul class="shopping-cart-items">
                   <li class="clearfix">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
-                    <span class="item-name">Sony DSC-RX100M III</span>
-                    <span class="item-price">$849.99</span>
-                    <span class="item-quantity">Quantity: 01</span>
+
+                    <img src="<?php $Lines->getSquareEvent()->getEvent()->getImage();?>" alt="item1" />
+                    <span class="item-name"><?php $Lines->getSquareEvent()->getTitle();?></span>
+                    <span class="item-price"><?php $Lines->getPrice();?></span>
+                    <span class="item-quantity"><?php $Lines->getQuantity();?></span>
+
                   </li>
 
-                  <li class="clearfix">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
-                    <span class="item-name">KS Automatic Mechanic...</span>
-                    <span class="item-price">$1,249.99</span>
-                    <span class="item-quantity">Quantity: 01</span>
-                  </li>
+                  <!--
+
+                  private $Quantity;
+                  private $Price;
+                  private $ID;
+                  private $Purchase;
+                  private $Square_Event;
+                  private $Ticket;
+                  private $Status;
 
                   <li class="clearfix">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
@@ -172,13 +182,21 @@ require_once("header.php");
                     <span class="item-price">$129.99</span>
                     <span class="item-quantity">Quantity: 01</span>
                   </li>
+                -->
+
+                <?php
+                }
+                 ?>
+
+
 
                 </ul>
                 <a href="#" class="button">Checkout</a>
               </div>
+
               <!--end shopping-cart -->
               <?php
-           }
+              }
               ?>
             </div>
             <!--end container -->
@@ -198,28 +216,47 @@ require_once("header.php");
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>Eventos Disponibles</h2>
+            <h2>Calendarios Disponibles</h2>
           </div>
         </div>
       </div>
       <div class="row">
         <table class="table">
             <tr>
-              <th scope="col" style="text-align:center">Nombre</th>
-              <th scope="col" style="text-align:center">Categoria</th>
+              <th scope="col" style="text-align:center">Fecha</th>
+              <th scope="col" style="text-align:center">Evento</th>
+              <th scope="col" style="text-align:center">Lugar</th>
               <th scope="col" style="text-align:center">Imagen</th>
+              <th scope="col" style="text-align:center">Plazas</th>
               <th scope="col" style="text-align:center">Comprar</th>
             </tr>
           </thead>
           <tbody align="center">
-            <?php foreach ($EventData->getAll() as $Event)
+            <?php foreach ($CalendarList as $Calendar)
             {
             ?>
+
             <tr>
-              <td style="vertical-align: middle;"><?php echo $Event->getTitle(); ?></td>
-              <td style="vertical-align: middle;"><?php echo $Event->getCategory()->getDescription(); ?></td>
-              <td style="vertical-align: middle;"><img src="<?php echo FRONT_ROOT .$Event->getImage();?>" style="max-width:250px; min-width:249px; max-height:150px;"></td>
-              <td style="vertical-align: middle;"><input type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/purchaseByEvent/<?php echo $Event->getID();?>;'" value="Comprar" /></td>
+              <td style="vertical-align: middle;"><?php echo $Calendar->getDate(); ?></td>
+              <td style="vertical-align: middle;"><?php echo $Calendar->getEvent()->getTitle(); ?></td>
+              <td style="vertical-align: middle;"><?php echo $Calendar->getPlaceEvent()->getDescription(); ?></td>
+              <td style="vertical-align: middle;"><img src="<?php echo FRONT_ROOT .$Calendar->getEvent()->getImage();?>" style="max-width:250px; min-width:249px; max-height:150px;"></td>
+              <td style="vertical-align: middle;">
+                <select name="Place_Event">
+
+                  <?php foreach ($Calendar->getSquareEvent() as $Square_Event)
+                  {
+                  ?>
+                  <option value="<?php echo $Square_Event->getID(); ?>">
+                    <?php echo $Square_Event->getSquareKind()->getDescription(); ?>
+                  </option>
+                  <?php
+                  }
+                  ?>
+
+                </select>
+            </td>
+            <td style="vertical-align: middle;"><input type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/purchaseByEvent/<?php echo $Square_Event->getID();?>;'" value="Comprar" /></td>
             </tr>
             <?php
             }

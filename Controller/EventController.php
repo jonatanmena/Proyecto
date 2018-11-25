@@ -42,8 +42,7 @@
             $EventObject=new Event($title, $this->CategoryData->GetByCategoryCode($category), $Image);
             $this->EventData->add($EventObject);
             $this->listEvents();
-        }
-
+        }        
         public function moveImage($name){
             $imageDirectory = VIEWS_PATH.'img/events/';
 

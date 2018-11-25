@@ -1,6 +1,9 @@
 <?php
     namespace Controller;
+
+
     use Daos\PDOs\EventDaoPdo as EventDaoPdo;
+    use Daos\PDOs\CalendarDaoPdo as CalendarDaoPdo;
 
     class Maincontroller
     {
@@ -23,13 +26,19 @@
         require_once(VIEWS_PATH.'\nav-bar.php');
       }
       public function purchase(){
-        $EventData = new EventDaoPdo();        
+        $EventData = new EventDaoPdo();
         require_once(VIEWS_PATH."purchase.php");
+      }
+      public function purchaseByEvent($EventCode){
+        $CalendarData = new CalendarDaoPdo();
+        $CalendarList = $CalendarData->GetByEventCode($EventCode);
+        require_once(VIEWS_PATH."purchaseByEvent.php");
       }
 
       public function logout()
       {
       unset($_SESSION["userLogged"]);
+      unset($_SESSION["Purchase_Lines"]);
       session_destroy();
       $this->index();
       }

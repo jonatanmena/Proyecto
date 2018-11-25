@@ -34,10 +34,8 @@
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row) {
-                    $CalendarXArtistObject = new CalendarXArtist(
-                        $ArtistData->GetByArtistCode($row["ID_Artist"]),
-                                                                  $CalendarData->getByCalendarCode($row["ID_Calendar"])
-                    );
+                    $CalendarXArtistObject = new CalendarXArtist( $ArtistData->GetByArtistCode($row["ID_Artist"]),
+                                                                  $CalendarData->getByCalendarCode($row["ID_Calendar"]));
                     array_push($CalendarXArtistList, $CalendarXArtistObject);
                 }
                 return $CalendarXArtistList;
@@ -93,7 +91,7 @@
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) {
-                    array_push($CalendarCodeArray, $row["ID_Artist"]);
+                    array_push($CalendarCodeArray, $row["ID_Calendar"]);
                 }
 
                 return $CalendarCodeArray;

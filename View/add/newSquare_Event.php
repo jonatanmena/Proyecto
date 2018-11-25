@@ -46,11 +46,19 @@
                   </td>
                   <td>
                     <select name="Calendar">
-                      <?php foreach ($this->CalendarData->getAll() as $Calendar) : ?>
-                      <option value="<?php echo $Calendar->getID(); ?>">
-                        <?php echo $Calendar->getDate(); ?>
-                      </option>
-                      <?php endforeach; ?>
+                      <?php foreach ($this->CalendarData->getAll() as $Calendar)
+                      {
+                          if($Calendar->getArtist()!=NULL){
+                        ?>
+                          <option value="<?php echo $Calendar->getID(); ?>">
+                          <?php echo $Calendar->getDate(); ?>
+                          </option>
+                      <?php
+                        }
+                      }
+                       ?>
+
+
                     </select>
                   </td>
                 </tr>

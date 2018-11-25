@@ -62,21 +62,33 @@
         {
             try
             {
+
                 $Square_KindData = new Square_kindDaoPdo();
                 $CalendarData = new CalendarDaoPdo();
                 $Square_EventObject = null;
                 $query = "SELECT * FROM ".$this->tableName." WHERE ID_Square_Event = :ID_Square_Event";
                 $parameters["ID_Square_Event"] = $Square_EventCode;
+                /*
+                echo $query;
+                echo "<br>";
+                var_dump($parameters);
+                */
+
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row)
                 {
                     $Square_EventObject = new Square_Event( $row["Price"],$row["Remainder"],$row["Quantity_available"],
                                                             $Square_KindData->GetBySquare_kindCode($row["ID_Square_Kind"]),
-                                                            $CalendarData->GetByCalendarCode($row["ID_Calendar"]));
+                                                            $CalendarData->GetByCalendarCodeDos($row["ID_Calendar"]));
 
                     $Square_EventObject->setID($row["ID_Square_Event"]);
+                    /*
+                    var_dump($Square_EventObject);
+                    exit();
+                    */
                 }
+                //exit();
                 return $Square_EventObject;
             }
             catch (Exception $ex)
@@ -84,19 +96,23 @@
                 throw $ex;
             }
         }
-        public function allSquareEventByCalendarcode($Square_EventCode)
+        public function allSquareEventByCalendarcode($CalendarCode)
         {
             try {
-                $Square_EventCodeArray= array();
-
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Square_Event = :ID_Square_Event";
-                $parameters["ID_Square_Event"] = $Square_EventCode;
+                $SquareEventCodeArray= array();
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_Calendar = :ID_Calendar";
+                $parameters["ID_Calendar"] = $CalendarCode;
+                /*
+                echo $query;
+                echo "<br>";
+                var_dump($parameters);
+                */
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) {
-                    array_push($Square_EventCodeArray,$row["ID_Square_Event"]);
+                    array_push($SquareEventCodeArray,$row["ID_Square_Event"]);
                 }
-                return $Square_EventCodeArray;
+                return $SquareEventCodeArray;
             } catch (Exception $ex) {
                 throw $ex;
             }

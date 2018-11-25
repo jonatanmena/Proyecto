@@ -20,7 +20,7 @@
         {
           if ( empty($this->CalendarData->getAll()) || empty($this->ArtistData->getAll()) ) {
               echo '<script language="javascript">';
-              echo 'alert("No hay Artistas o Categorias cargadas ingresa al menos uno de cada uno")';
+              echo 'alert("No hay Artistas o Calendarios cargadas ingresa al menos uno de cada uno")';
               echo '</script>';
               require_once(VIEWS_PATH."nav-bar.php");
               require_once(VIEWS_PATH."footerViejo.php");
