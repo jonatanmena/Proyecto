@@ -18,7 +18,7 @@
             require_once(ADD_PATH."newArtist.php");
             require_once(VIEWS_PATH."footerViejo.php");
         }
-        public function modifyArtist(){
+        public function modifyArtist($ArtistCode){
 
             require_once(VIEWS_PATH."nav-bar.php");
             require_once(UPDATE_PATH."updateArtist.php");

@@ -1,5 +1,5 @@
 <?php
-    $Artist=$this->ArtistData->GetByArtistCode($_POST["updateArtist"]);
+    $Artist=$this->ArtistData->GetByArtistCode($ArtistCode);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
