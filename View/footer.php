@@ -50,12 +50,12 @@
             <div class="footer-head">
               <h4>Instagram</h4>
               <div class="flicker-img">
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/1.jpg" alt=""></a>
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/2.jpg" alt=""></a>
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/3.jpg" alt=""></a>
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/4.jpg" alt=""></a>
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/5.jpg" alt=""></a>
-                <a href="#"><img src="<?php echo VIEWS_PATH?>img/portfolio/6.jpg" alt=""></a>
+                <a href="#"><img src="<?php echo FRONT_ROOT.VIEWS_PATH?>img/portfolio/1.jpg" alt=""></a>
+                <a href="#"><img src="<?php echo FRONT_ROOT.VIEWS_PATH?>img/portfolio/2.jpg" alt=""></a>
+                <a href="#"><img src="<?php echo FRONT_ROOT.VIEWS_PATH?>img/portfolio/3.jpg" alt=""></a>
+                <a href="#"><img src="<?php echo FRONT_ROOT.VIEWS_PATH?>img/portfolio/4.jpg" alt=""></a>
+                <a href="#"><img src="<?php echo FRONT_ROOT.VIEWS_PATH?>img/portfolio/5.jpg" alt=""></a>
+                <a href="#"><img src="<?php echo FRONT_ROOT.VIEWS_PATH?>img/portfolio/6.jpg" alt=""></a>
               </div>
             </div>
           </div>

@@ -26,9 +26,7 @@ require_once("header.php");
                 </button>
                 <!-- Brand -->
                 <a class="navbar-brand page-scroll sticky-logo" href="<?php echo FRONT_ROOT;?>main/index">
-                  <h1><span>e</span>Ticket</h1>
-                  <!-- Uncomment below if you prefer to use an image logo -->
-                  <!-- <img src="img/logo.png" alt="" title=""> -->
+                  <h1><span>e</span>Ticket</h1>                  
                 </a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,14 +58,11 @@ require_once("header.php");
                     <a class="page-scroll" href="#contact">Contacto</a>
                   </li>
                   <?php
-                   //$_SESSION["userLogged"] = "asd";
-                   //session_destroy();
                    if(isset($_SESSION["userLogged"]))
                    {
                    ?>
-
                   <li>
-                    <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
+                    <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"><?php echo count($_SESSION["Purchase_Lines"]); ?></span></a>
                   </li>
                   <?php
                    }
@@ -144,45 +139,35 @@ require_once("header.php");
             <div class="container">
               <div class="shopping-cart" style="display: none;">
                 <div class="shopping-cart-header">
-                  <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+                  <i class="fa fa-shopping-cart cart-icon"></i><span class="badge"><?php echo count($_SESSION["Purchase_Lines"]); ?></span>
                   <div class="shopping-cart-total">
                     <span class="lighter-text">Total:</span>
-                    <span class="main-color-text">$2,229.97</span>
+                    <span class="main-color-text"><?php
+                                                        if(isset($_SESSION["TotalPurchase"])){
+                                                            echo number_format((float)$_SESSION["TotalPurchase"], 2, '.', '')."$";
+                                                          }else{
+                                                            echo "0$";
+                                                          } ?></span>
                   </div>
                 </div>
                 <!--end shopping-cart-header -->
 
                 <?php
+
                 foreach ($_SESSION["Purchase_Lines"] as $Lines)
                 {
                 ?>
                 <ul class="shopping-cart-items">
                   <li class="clearfix">
+                    <?php
 
-                    <img src="<?php $Lines->getSquareEvent()->getEvent()->getImage();?>" alt="item1" />
-                    <span class="item-name"><?php $Lines->getSquareEvent()->getTitle();?></span>
-                    <span class="item-price"><?php $Lines->getPrice();?></span>
-                    <span class="item-quantity"><?php $Lines->getQuantity();?></span>
+                    ?>
+                    <span class="item-price"><?php echo $Lines->getPrice();?> $</span>
+                    <span class="item-quantity">Cantidad:<?php echo $Lines->getQuantity();?></span>
+                    <img src="<?php echo FRONT_ROOT.$Lines->getSquareEvent()->getCalendar()->getEvent()->getImage();?>" alt="item1" style="max-width: 70px;min-width: 70px;max-height: 70px;min-height: 70px;"/>
+                    <span class="item-name">Nombre:<?php echo $Lines->getSquareEvent()->getCalendar()->getEvent()->getTitle();?></span>
 
                   </li>
-
-                  <!--
-
-                  private $Quantity;
-                  private $Price;
-                  private $ID;
-                  private $Purchase;
-                  private $Square_Event;
-                  private $Ticket;
-                  private $Status;
-
-                  <li class="clearfix">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
-                    <span class="item-name">Kindle, 6" Glare-Free To...</span>
-                    <span class="item-price">$129.99</span>
-                    <span class="item-quantity">Quantity: 01</span>
-                  </li>
-                -->
 
                 <?php
                 }
@@ -256,7 +241,7 @@ require_once("header.php");
 
                 </select>
             </td>
-            <td style="vertical-align: middle;"><input type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/purchaseByEvent/<?php echo $Square_Event->getID();?>;'" value="Comprar" /></td>
+            <td style="vertical-align: middle;"><input type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/addPurchaseToCart/<?php echo $Square_Event->getID();?>;'" value="Comprar" /></td>
             </tr>
             <?php
             }
@@ -271,7 +256,11 @@ require_once("header.php");
   </div>
   </div>
   <!-- End About area -->
-
+  <div id="purchase" class="about-area area-padding">
+  </div>
+  <div id="purchase" class="about-area area-padding">
+  </div>
   <?php
+
  require_once("footer.php");
   ?>

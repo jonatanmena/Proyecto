@@ -23,7 +23,9 @@
                 throw $ex;
             }
         }
-
+        public function getPdo(){
+          return $this->pdo;
+        }
         public static function GetInstance()
         {
             if(self::$instance == null)

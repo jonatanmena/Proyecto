@@ -45,12 +45,21 @@ include("header.php");
                   <li>
                     <a class="page-scroll" href="#portfolio">Recitales</a>
                   </li>
+                  <?php
+
+                  if(isset($_SESSION["userLogged"]))
+                  {
+                  ?>
                   <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">ABM<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                       <li><a href="<?php echo FRONT_ROOT;?>main/purchase">Comprar Tickets</a></li>
                       <li><a href=#>Listas de ABM</a></li>
                     </ul>
                   </li>
+                  
+                  <?php
+                  }
+                   ?>
                   <li>
                     <a class="page-scroll" href="#blog">Blog</a>
                   </li>
@@ -59,20 +68,14 @@ include("header.php");
                     <a class="page-scroll" href="#contact">Contacto</a>
                   </li>
                   <?php
-                  //$_SESSION["userLogged"] = "asd";
-                  //session_destroy();
-                  if(isset($_SESSION["userLogged"]))
+                  if(isset($_SESSION["userLogged"]) && isset($_SESSION["Purchase_Lines"]))
                   {
                   ?>
-
-                  <li>
-                    <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
-                  </li>
+                 <li>
+                   <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"><?php echo count($_SESSION["Purchase_Lines"]); ?></span></a>
+                 </li>
                   <?php
                   }
-                   ?>
-
-                  <?php
 
                   if(!isset($_SESSION["userLogged"]))
                   {
@@ -120,7 +123,8 @@ include("header.php");
                       <?php
                 }else {
                   ?>
-                    <li class="dropdown"><a id="afterLinea" href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <?php echo $_SESSION["userLogged"]->getUser(); ?><b class="caret"></b></a>
+                    <li class="dropdown"><a id="afterLinea" href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome,
+                        <?php echo $_SESSION["userLogged"]->getUser(); ?><b class="caret"></b></a>
                       <ul id="login-dp" class="dropdown-menu">
                         <li><a id="aColor" href="/user/preferences"><i class="icon-cog"></i> <b>Preferences</b></a></li>
                         <li><a id="aColor" href="/help/support"><i class="icon-envelope"></i> <b>Contact Support</b></a></li>
@@ -132,54 +136,56 @@ include("header.php");
               <?php
                 }
                  ?>
-
               <!-- navbar-collapse -->
             </nav>
             <?php
-            if(isset($_SESSION["userLogged"]))
-            {
-             ?>
+             if(isset($_SESSION["userLogged"]))
+             {
+              ?>
             <div class="container">
               <div class="shopping-cart" style="display: none;">
                 <div class="shopping-cart-header">
-                  <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+                  <i class="fa fa-shopping-cart cart-icon"></i><span class="badge"><?php echo count($_SESSION["Purchase_Lines"]); ?></span>
                   <div class="shopping-cart-total">
                     <span class="lighter-text">Total:</span>
-                    <span class="main-color-text">$2,229.97</span>
+                    <span class="main-color-text"><?php
+                                                        if(isset($_SESSION["TotalPurchase"])){
+                                                            echo number_format((float)$_SESSION["TotalPurchase"], 2, '.', '')."$";
+                                                          }else{
+                                                            echo "0$";
+                                                          } ?></span>
                   </div>
                 </div>
                 <!--end shopping-cart-header -->
+                <!--Carrito de compras una vez logeado-->
+                <?php
+                foreach ($_SESSION["Purchase_Lines"] as $Lines)
+                {
+                ?>
                 <ul class="shopping-cart-items">
                   <li class="clearfix">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
-                    <span class="item-name">Sony DSC-RX100M III</span>
-                    <span class="item-price">$849.99</span>
-                    <span class="item-quantity">Quantity: 01</span>
-                  </li>
 
-                  <li class="clearfix">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
-                    <span class="item-name">KS Automatic Mechanic...</span>
-                    <span class="item-price">$1,249.99</span>
-                    <span class="item-quantity">Quantity: 01</span>
-                  </li>
+                    <span class="item-price"><?php echo $Lines->getPrice();?> $</span>
+                    <span class="item-quantity">Cantidad:<?php echo $Lines->getQuantity();?></span>
+                    <img src="<?php echo FRONT_ROOT.$Lines->getSquareEvent()->getCalendar()->getEvent()->getImage();?>" alt="item1" style="max-width: 70px;min-width: 70px;max-height: 70px;min-height: 70px;"/>
+                    <span class="item-name">Nombre:<?php echo $Lines->getSquareEvent()->getCalendar()->getEvent()->getTitle();?></span>
 
-                  <li class="clearfix">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
-                    <span class="item-name">Kindle, 6" Glare-Free To...</span>
-                    <span class="item-price">$129.99</span>
-                    <span class="item-quantity">Quantity: 01</span>
                   </li>
+                <?php
+                }
+                ?>
 
                 </ul>
                 <a href="#" class="button">Checkout</a>
               </div>
+
               <!--end shopping-cart -->
               <?php
-          }
-             ?>
+              }
+              ?>
             </div>
             <!--end container -->
+
             <!-- END: Navigation -->
           </div>
         </div>

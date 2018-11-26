@@ -17,3 +17,10 @@ Remanente no va como dato ingresado a mano, solo un c�lculo para la base
 Copiar valor del precio en la linea de compra
 
 Cumplir todos los requisitos funcionales del carrito.
+
+implementar elimar del carrito una linea de compra con un boton o algo
+
+
+Checkout -> Fijarse si existe o no el cliente asociado al user mediante el id_user = id_client , si no darle formulario de carga,
+            Instanciar compra cargar en base de datos retornar el ultimo id
+            cargar todas las lineas de compras en base al id recibido anterior mente en la base de datos

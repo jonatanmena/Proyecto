@@ -15,11 +15,14 @@
         private $Ticket;
         private $Status;
 
-        public function __construct($Quantity,$Price,$Purchase,$Status = NULL)
+        public function __construct($Quantity,$Price,$Purchase = NULL,$Status = NULL)
         {
           $this->Quantity = $Quantity;
           $this->Price = $Price;
           $this->Purchase = $Purchase;
+          if(NULL === $Purchase){
+            $Purchase = "Sin asignar";
+          }
           if(NULL === $Status){
             $Status = "Activo";
           }

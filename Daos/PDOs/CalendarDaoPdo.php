@@ -25,7 +25,9 @@
                 $parameters["ID_Event"] = $Calendar->getEvent()->getID();
                 $parameters["ID_Place_Event"] = $Calendar->getPlaceEvent()->getID();
                 $this->connection = Connection::GetInstance();
+
                 $this->connection->ExecuteNonQuery($query, $parameters);
+
             } catch (Exception $ex) {
                 throw $ex;
             }
