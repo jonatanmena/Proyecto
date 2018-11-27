@@ -24,7 +24,7 @@
         }
 
       }
-      public function adminPage()
+      public function adminPage() 
       {
         require_once(VIEWS_PATH.'\nav-bar.php');
       }
@@ -37,7 +37,12 @@
         $CalendarList = $CalendarData->GetByEventCode($EventCode);
         require_once(VIEWS_PATH."purchaseByEvent.php");
       }
-      public function addPurchaseToCart($SquareEventCode){
+      public function addPurchaseToCart($SquareEventCode,$Otro){
+        /*
+        var_dump($Otro);
+        var_dump($SquareEventCode);
+        exit();
+        */
         if(count($_SESSION["Purchase_Lines"])<5){
 
           $Square_EventData = new Square_EventDaoPdo();

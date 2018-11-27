@@ -32,30 +32,10 @@ require_once("header.php");
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                 <ul class="nav navbar-nav navbar-right">
-                  <li>
-                    <a class="page-scroll" href="#purchase">Comprar</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#services">Servicios</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#team">Equipo</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#portfolio">Recitales</a>
-                  </li>
-                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">ABM<span class="caret"></span></a>
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Buy<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="<?php echo FRONT_ROOT;?>main/purchase">Comprar Tickets</a></li>
-                      <li><a href=#>Listas de ABM</a></li>
+                      <li><a href="<?php echo FRONT_ROOT;?>main/purchase">Tickets</a></li>
                     </ul>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#blog">Blog</a>
-                  </li>
-
-                  <li>
-                    <a class="page-scroll" href="#contact">Contacto</a>
                   </li>
                   <?php
                    if(isset($_SESSION["userLogged"]))
@@ -69,7 +49,6 @@ require_once("header.php");
                    }
                     ?>
                   <?php
-
                    if(!isset($_SESSION["userLogged"]))
                    {
                    ?>

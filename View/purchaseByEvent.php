@@ -26,36 +26,16 @@ require_once("header.php");
                 </button>
                 <!-- Brand -->
                 <a class="navbar-brand page-scroll sticky-logo" href="<?php echo FRONT_ROOT;?>main/index">
-                  <h1><span>e</span>Ticket</h1>                  
+                  <h1><span>e</span>Ticket</h1>
                 </a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                 <ul class="nav navbar-nav navbar-right">
-                  <li>
-                    <a class="page-scroll" href="#purchase">Comprar</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#services">Servicios</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#team">Equipo</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#portfolio">Recitales</a>
-                  </li>
-                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">ABM<span class="caret"></span></a>
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Buy<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="<?php echo FRONT_ROOT;?>main/purchase">Comprar Tickets</a></li>
-                      <li><a href=#>Listas de ABM</a></li>
+                      <li><a href="<?php echo FRONT_ROOT;?>main/purchase">Tickets</a></li>
                     </ul>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#blog">Blog</a>
-                  </li>
-
-                  <li>
-                    <a class="page-scroll" href="#contact">Contacto</a>
                   </li>
                   <?php
                    if(isset($_SESSION["userLogged"]))
@@ -66,7 +46,7 @@ require_once("header.php");
                   </li>
                   <?php
                    }
-                    ?>
+                  ?>
 
                   <?php
 
@@ -172,11 +152,11 @@ require_once("header.php");
                 <?php
                 }
                  ?>
-
-
-
                 </ul>
-                <a href="#" class="button">Checkout</a>
+                <a href="<?php echo FRONT_ROOT;?>user/verifyClient/<?php echo $_SESSION["userLogged"]->getID(); ?>'" class="button">Checkout</a>
+                <!--<a href="#"> <input class="button" type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/addPurchaseToCart/'" value="Checkout" /></a>
+                <input class="button" type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/addPurchaseToCart/'" value="Checkout" />-->
+
               </div>
 
               <!--end shopping-cart -->
@@ -213,6 +193,7 @@ require_once("header.php");
               <th scope="col" style="text-align:center">Lugar</th>
               <th scope="col" style="text-align:center">Imagen</th>
               <th scope="col" style="text-align:center">Plazas</th>
+              <th scope="col" style="text-align:center">Cantidad</th>
               <th scope="col" style="text-align:center">Comprar</th>
             </tr>
           </thead>
@@ -220,12 +201,14 @@ require_once("header.php");
             <?php foreach ($CalendarList as $Calendar)
             {
             ?>
+            <form class="" action="<?php echo FRONT_ROOT;?>main/addPurchaseToCart" method="post">
 
             <tr>
               <td style="vertical-align: middle;"><?php echo $Calendar->getDate(); ?></td>
               <td style="vertical-align: middle;"><?php echo $Calendar->getEvent()->getTitle(); ?></td>
               <td style="vertical-align: middle;"><?php echo $Calendar->getPlaceEvent()->getDescription(); ?></td>
               <td style="vertical-align: middle;"><img src="<?php echo FRONT_ROOT .$Calendar->getEvent()->getImage();?>" style="max-width:250px; min-width:249px; max-height:150px;"></td>
+
               <td style="vertical-align: middle;">
                 <select name="Place_Event">
 
@@ -238,11 +221,31 @@ require_once("header.php");
                   <?php
                   }
                   ?>
-
                 </select>
+
             </td>
-            <td style="vertical-align: middle;"><input type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/addPurchaseToCart/<?php echo $Square_Event->getID();?>;'" value="Comprar" /></td>
-            </tr>
+
+              <td style="vertical-align: middle;">
+                <select name="Cantidad">
+                  <?php $i=0;?>
+                  <?php while($i<=10)
+                  {
+                  ?>
+                  <option value="<?php echo $i ?>">
+                    <?php echo $i;?>
+                  </option>
+                  <?php
+                  $i++;
+                  }
+                  ?>
+                </select>
+
+            </td>
+
+            <td style="vertical-align: middle;"><input type="submit" value="Comprar" /></td>
+            <!-- <td style="vertical-align: middle;"><input type="button" onclick="location.href='<?php /*echo FRONT_ROOT;?>main/addPurchaseToCart/<?php echo $Square_Event->getID().'/'.$i;*/?>;'" value="Comprar" /></td>
+            </tr> -->
+            </form>
             <?php
             }
             ?>

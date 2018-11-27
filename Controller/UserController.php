@@ -6,6 +6,8 @@
     use Model\Purchase as Purchase;
     use Model\Client as Client;
     use Daos\PDOs\UserDaoPdo as UserDaoPdo;
+    use Daos\PDOs\PurchaseDaoPdo as PurchaseDaoPdo;
+    use Daos\PDOs\Purchase_LinesDaoPdo as Purchase_LinesDaoPdo;
 
     class UserController
     {
@@ -28,6 +30,44 @@
             require_once(VIEWS_PATH."nav-bar.php");
             require_once(LIST_PATH."listUsers.php");
             require_once(VIEWS_PATH."footerViejo.php");
+        }
+        public function verifyClient($UserCode){
+          $ClientObject=$this->UserData->GetClientByUserCode($UserCode);
+          if($ClientObject==NULL){
+            //Aca iria a dar de alta el usuario
+            //require_once()
+          }else {
+            $PurchaseData = new PurchaseDaoPdo();
+            $Purchase_LinesData = new Purchase_LinesDaoPdo();
+
+            $Date = new DateTime("Now");
+            $Date=date_format($Date, 'Y-m-d H:i:s');
+
+            $PurchaseObject = new Purchase($Date,$ClientObject,$Status = "Activo");
+            $LastPurchaseID=$PurchaseData->Add($PurchaseObject);
+
+            $PurchaseObject->setID($LastPurchaseID);
+
+              foreach ($_SESSION["Purchase_Lines"] as $Lines) {
+                $Lines->setPurchase($PurchaseObject);
+                $Lines->getPurchase()->setID($LastPurchaseID);
+                $Purchase_LinesData->Add($Lines);
+              }
+
+            $PurchaseList=$PurchaseData->GetAllPurchaseByClientCode($ClientObject->getID());
+            var_dump($PurchaseList);
+            exit();
+
+            /*
+            echo '
+            <script type="text/javascript">
+            alert("Se compro correctamente.");
+            location="'.FRONT_ROOT.'main/purchase";
+            </script>
+            ';
+            */
+
+          }
         }
         public function Login($Email, $Password)
         {

@@ -1,6 +1,7 @@
 <?php
     namespace Daos\PDOs ;
 
+    use Daos\PDOs\ClientDaoPdo as ClientDaoPdo;
     use Daos\Interfaces\IUserDao as IUserDao;
     use Model\User as User;
     use Daos\Connection as Connection;
@@ -10,6 +11,7 @@
     {
         private $connection;
         private $tableName = "Users";
+        private $clientTable = "Clients";
 
         public function Add(User $User)
         {
@@ -44,6 +46,32 @@
                     array_push($UserList, $UserObject);
                 }
                 return $UserList;
+            }
+            catch (Exception $ex)
+            {
+                throw $ex;
+            }
+        }
+        public function GetClientByUserCode($UserCode)
+        {
+            try
+            {
+                $ClientObject = null;
+                $query = "SELECT * FROM ".$this->clientTable." WHERE ID_Client = :ID_Client";
+                $parameters["ID_Client"] = $UserCode;
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query, $parameters);
+                foreach ($resultSet as $row)
+                {
+                    $ClientObject = new User( $row["Name"],
+                                              $row["Surname"],
+                                              $row["DNI"],
+                                              $row["Status"]);
+
+                    $ClientObject->setID($row["ID_Client"]);
+                }
+
+                return $ClientObject;
             }
             catch (Exception $ex)
             {

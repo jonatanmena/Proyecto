@@ -29,12 +29,6 @@
                 require_once(VIEWS_PATH."footerViejo.php");
             }
         }
-        public function pushToCart($Square_EventCode){
-
-
-
-
-        }
         public function listPurchase_Lines()
         {
             require_once(VIEWS_PATH."nav-bar.php");

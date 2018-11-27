@@ -24,48 +24,44 @@ include("header.php");
                   <span class="icon-bar"></span>
                 </button>
                 <!-- Brand -->
-                <a class="navbar-brand page-scroll sticky-logo" href="index.html">
+                <a class="navbar-brand page-scroll sticky-logo" href="<?php echo FRONT_ROOT;?>main/index">
                   <h1><span>e</span>Ticket</h1>
-                  <!-- Uncomment below if you prefer to use an image logo -->
-                  <!-- <img src="img/logo.png" alt="" title=""> -->
                 </a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                 <ul class="nav navbar-nav navbar-right">
                   <li>
-                    <a class="page-scroll" href="#about">Sobre la app</a>
+                    <a class="page-scroll" href="#about">About</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#services">Servicios</a>
+                    <a class="page-scroll" href="#services">Services</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#team">Equipo</a>
+                    <a class="page-scroll" href="#team">Team</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#portfolio">Recitales</a>
+                    <a class="page-scroll" href="#portfolio">Artists</a>
                   </li>
                   <?php
-
                   if(isset($_SESSION["userLogged"]))
                   {
                   ?>
-                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">ABM<span class="caret"></span></a>
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Buy<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="<?php echo FRONT_ROOT;?>main/purchase">Comprar Tickets</a></li>
-                      <li><a href=#>Listas de ABM</a></li>
+                      <li><a href="<?php echo FRONT_ROOT;?>main/purchase">Tickets</a></li>
                     </ul>
                   </li>
-                  
+
                   <?php
                   }
                    ?>
                   <li>
-                    <a class="page-scroll" href="#blog">Blog</a>
+                    <a class="page-scroll" href="#blog">News</a>
                   </li>
 
                   <li>
-                    <a class="page-scroll" href="#contact">Contacto</a>
+                    <a class="page-scroll" href="#contact">Contact</a>
                   </li>
                   <?php
                   if(isset($_SESSION["userLogged"]) && isset($_SESSION["Purchase_Lines"]))
@@ -629,7 +625,7 @@ include("header.php");
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>Bandas</h2>
+            <h2>Artits</h2>
           </div>
         </div>
       </div>
