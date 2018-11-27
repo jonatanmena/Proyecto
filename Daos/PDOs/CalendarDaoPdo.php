@@ -107,7 +107,7 @@
                 }
 
                 return $calendarObject;
-            } catch (Exception $ex) {
+             } catch (Exception $ex) {
                 throw $ex;
             }
         }
