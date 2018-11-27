@@ -155,7 +155,7 @@ require_once("header.php");
                  ?>
 
                 </ul>
-                <a href="#" class="button">Checkout</a>
+                <a href="<?php echo FRONT_ROOT;?>user/verifyClient/<?php echo $_SESSION["userLogged"]->getID(); ?>'" class="button">Checkout</a>
               </div>
 
               <!--end shopping-cart -->

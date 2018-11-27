@@ -24,7 +24,7 @@
         }
 
       }
-      public function adminPage() 
+      public function adminPage()
       {
         require_once(VIEWS_PATH.'\nav-bar.php');
       }
@@ -37,19 +37,19 @@
         $CalendarList = $CalendarData->GetByEventCode($EventCode);
         require_once(VIEWS_PATH."purchaseByEvent.php");
       }
-      public function addPurchaseToCart($SquareEventCode,$Otro){
-        /*
-        var_dump($Otro);
-        var_dump($SquareEventCode);
-        exit();
-        */
+      public function makeClient()
+      {
+        require_once(VIEWS_PATH."addClient.php");
+      }
+      public function addPurchaseToCart($SquareEventCode,$Cantidad){
+
         if(count($_SESSION["Purchase_Lines"])<5){
 
           $Square_EventData = new Square_EventDaoPdo();
           $EventData = new EventDaoPdo();
           $SquareEventObject = $Square_EventData->GetBySquare_EventCode($SquareEventCode);
 
-          $Purchase_Lines = new Purchase_Lines( 1,
+          $Purchase_Lines = new Purchase_Lines( $Cantidad,
                                                 $SquareEventObject->getPrice());
           $Purchase_Lines->setSquareEvent($SquareEventObject);
 
@@ -62,28 +62,19 @@
           if(!isset($_SESSION["TotalPurchase"])){
             $_SESSION["TotalPurchase"] = 0.00;
             $TotalPurchase = $_SESSION["TotalPurchase"];
-            $TotalPurchase = $TotalPurchase + $Purchase_Lines->getPrice();
+            $TotalPurchase = $TotalPurchase + ($Purchase_Lines->getPrice()*$Cantidad);
             $_SESSION["TotalPurchase"] = $TotalPurchase;
           }else {
             $TotalPurchase = $_SESSION["TotalPurchase"];
-            $TotalPurchase = $TotalPurchase + $Purchase_Lines->getPrice();
+            $TotalPurchase = $TotalPurchase + ($Purchase_Lines->getPrice()*$Cantidad);
             $_SESSION["TotalPurchase"] = $TotalPurchase;
           }
-          /*
-          echo '<script language="javascript">';
-          echo 'alert("'.$SquareEventObject->getCalendar()->getEvent()->getTitle().' se agrego al carrito correctamente.")';
-          echo '</script>';
-          echo ";
-          */
           echo '
           <script type="text/javascript">
           alert("Se agrego al carrito correctamente.");
           location="'.FRONT_ROOT.'main/purchase";
           </script>
           ';
-
-          //header("location:/Proyecto/Main/purhcase");
-          //$this->purchase();
         }else {
           echo '
           <script type="text/javascript">

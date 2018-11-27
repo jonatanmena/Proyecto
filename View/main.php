@@ -64,18 +64,21 @@ include("header.php");
                     <a class="page-scroll" href="#contact">Contact</a>
                   </li>
                   <?php
-                  if(isset($_SESSION["userLogged"]) && isset($_SESSION["Purchase_Lines"]))
-                  {
-                  ?>
-                 <li>
-                   <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"><?php echo count($_SESSION["Purchase_Lines"]); ?></span></a>
-                 </li>
+                   if(isset($_SESSION["userLogged"]))
+                   {
+                   ?>
+                  <li>
+                    <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge"><?php echo count($_SESSION["Purchase_Lines"]); ?></span></a>
+                  </li>
                   <?php
-                  }
-
-                  if(!isset($_SESSION["userLogged"]))
-                  {
+                   }
                   ?>
+
+                  <?php
+
+                   if(!isset($_SESSION["userLogged"]))
+                   {
+                   ?>
                   <ul id="LoginForm" class="nav navbar-nav navbar-righ">
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
@@ -117,8 +120,8 @@ include("header.php");
                         </li>
                       </ul>
                       <?php
-                }else {
-                  ?>
+                 }else {
+                   ?>
                     <li class="dropdown"><a id="afterLinea" href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome,
                         <?php echo $_SESSION["userLogged"]->getUser(); ?><b class="caret"></b></a>
                       <ul id="login-dp" class="dropdown-menu">
@@ -130,8 +133,9 @@ include("header.php");
                     </li>
               </div>
               <?php
-                }
-                 ?>
+                 }
+                  ?>
+
               <!-- navbar-collapse -->
             </nav>
             <?php
@@ -153,26 +157,30 @@ include("header.php");
                   </div>
                 </div>
                 <!--end shopping-cart-header -->
-                <!--Carrito de compras una vez logeado-->
+
                 <?php
+
                 foreach ($_SESSION["Purchase_Lines"] as $Lines)
                 {
                 ?>
                 <ul class="shopping-cart-items">
                   <li class="clearfix">
+                    <?php
 
+                    ?>
                     <span class="item-price"><?php echo $Lines->getPrice();?> $</span>
                     <span class="item-quantity">Cantidad:<?php echo $Lines->getQuantity();?></span>
                     <img src="<?php echo FRONT_ROOT.$Lines->getSquareEvent()->getCalendar()->getEvent()->getImage();?>" alt="item1" style="max-width: 70px;min-width: 70px;max-height: 70px;min-height: 70px;"/>
                     <span class="item-name">Nombre:<?php echo $Lines->getSquareEvent()->getCalendar()->getEvent()->getTitle();?></span>
 
                   </li>
+
                 <?php
                 }
-                ?>
-
+                 ?>
                 </ul>
-                <a href="#" class="button">Checkout</a>
+                <a href="<?php echo FRONT_ROOT;?>user/verifyClient/<?php echo $_SESSION["userLogged"]->getID(); ?>'" class="button">Checkout</a>
+                
               </div>
 
               <!--end shopping-cart -->

@@ -44,6 +44,7 @@
                                                                 $PurchaseData->GetByPurchaseCode($row["ID_Purchase"]));
                     $Purchase_LinesObject->setID($row["ID_Purchase_Line"]);
                     array_push($Purchase_LinesList, $Purchase_LinesObject);
+                    
                 }
                 return $Purchase_LinesList;
             }

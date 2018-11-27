@@ -139,9 +139,7 @@ require_once("header.php");
                 ?>
                 <ul class="shopping-cart-items">
                   <li class="clearfix">
-                    <?php
 
-                    ?>
                     <span class="item-price"><?php echo $Lines->getPrice();?> $</span>
                     <span class="item-quantity">Cantidad:<?php echo $Lines->getQuantity();?></span>
                     <img src="<?php echo FRONT_ROOT.$Lines->getSquareEvent()->getCalendar()->getEvent()->getImage();?>" alt="item1" style="max-width: 70px;min-width: 70px;max-height: 70px;min-height: 70px;"/>
@@ -154,6 +152,8 @@ require_once("header.php");
                  ?>
                 </ul>
                 <a href="<?php echo FRONT_ROOT;?>user/verifyClient/<?php echo $_SESSION["userLogged"]->getID(); ?>'" class="button">Checkout</a>
+                <!--<a href="#"> <input class="button" type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/addPurchaseToCart/'" value="Checkout" /></a>
+                <input class="button" type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/addPurchaseToCart/'" value="Checkout" />-->
 
               </div>
 
@@ -179,73 +179,27 @@ require_once("header.php");
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>Calendarios Disponibles</h2>
+            <h2>Registro Cliente</h2>
           </div>
         </div>
       </div>
       <div class="row">
         <table class="table">
             <tr>
-              <th scope="col" style="text-align:center">Fecha</th>
-              <th scope="col" style="text-align:center">Evento</th>
-              <th scope="col" style="text-align:center">Lugar</th>
-              <th scope="col" style="text-align:center">Imagen</th>
-              <th scope="col" style="text-align:center">Plazas</th>
-              <th scope="col" style="text-align:center">Cantidad</th>
-              <th scope="col" style="text-align:center">Comprar</th>
+              <th scope="col" style="text-align:center">Nombre</th>
+              <th scope="col" style="text-align:center">Apellido</th>
+              <th scope="col" style="text-align:center">DNI</th>
             </tr>
           </thead>
           <tbody align="center">
-            <?php foreach ($CalendarList as $Calendar)
-            {
-            ?>
-            <form class="" action="<?php echo FRONT_ROOT;?>main/addPurchaseToCart" method="post">
-
+            <form action="<?php echo FRONT_ROOT;?>Client/generateClient" method="post">
             <tr>
-              <td style="vertical-align: middle;"><?php echo $Calendar->getDate(); ?></td>
-              <td style="vertical-align: middle;"><?php echo $Calendar->getEvent()->getTitle(); ?></td>
-              <td style="vertical-align: middle;"><?php echo $Calendar->getPlaceEvent()->getDescription(); ?></td>
-              <td style="vertical-align: middle;"><img src="<?php echo FRONT_ROOT .$Calendar->getEvent()->getImage();?>" style="max-width:250px; min-width:249px; max-height:150px;"></td>
-
-              <td style="vertical-align: middle;">
-                <select name="Place_Event">
-
-                  <?php foreach ($Calendar->getSquareEvent() as $Square_Event)
-                  {
-                  ?>
-                  <option value="<?php echo $Square_Event->getID(); ?>">
-                    <?php echo $Square_Event->getSquareKind()->getDescription(); ?>
-                  </option>
-                  <?php
-                  }
-                  ?>
-                </select>
-
-            </td>
-
-              <td style="vertical-align: middle;">
-                <select name="Cantidad">
-                  <?php $i=1;?>
-                  <?php while($i<=10)
-                  {
-                  ?>
-                  <option value="<?php echo $i ?>">
-                    <?php echo $i;?>
-                  </option>
-                  <?php
-                  $i++;
-                  }
-                  ?>
-                </select>
-
-            </td>
-
-            <td style="vertical-align: middle;"><input type="submit" value="Comprar" /></td>
-            
+              <td style="vertical-align: middle;"><input type="text" name="ClientName" value="" required></td>
+              <td style="vertical-align: middle;"><input type="text" name="ClientSurname" value="" required></td>
+              <td style="vertical-align: middle;"><input type="number" name="ClientDNI" value="" required></td>
+              <td style="vertical-align: middle;"><input type="submit" value="Registrar" /></td>
+            </tr>
             </form>
-            <?php
-            }
-            ?>
           </tbody>
         </table>
       </div>

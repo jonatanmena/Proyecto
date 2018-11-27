@@ -34,8 +34,12 @@
         public function verifyClient($UserCode){
           $ClientObject=$this->UserData->GetClientByUserCode($UserCode);
           if($ClientObject==NULL){
-            //Aca iria a dar de alta el usuario
-            //require_once()
+              echo '
+              <script type="text/javascript">
+              alert("No tienes un cliente asignado por favor completa los datos.");
+              location="'.FRONT_ROOT.'main/makeClient";
+              </script>
+              ';
           }else {
             $PurchaseData = new PurchaseDaoPdo();
             $Purchase_LinesData = new Purchase_LinesDaoPdo();
@@ -47,7 +51,14 @@
             $LastPurchaseID=$PurchaseData->Add($PurchaseObject);
 
             $PurchaseObject->setID($LastPurchaseID);
-
+            if(count($_SESSION["Purchase_Lines"])==0){
+                echo '
+                <script type="text/javascript">
+                alert("Agrega algo al carrito no me quieras romper el programa.");
+                location="'.FRONT_ROOT.'main/purchase";
+                </script>
+                ';
+            }
               foreach ($_SESSION["Purchase_Lines"] as $Lines) {
                 $Lines->setPurchase($PurchaseObject);
                 $Lines->getPurchase()->setID($LastPurchaseID);
@@ -55,18 +66,20 @@
               }
 
             $PurchaseList=$PurchaseData->GetAllPurchaseByClientCode($ClientObject->getID());
-            var_dump($PurchaseList);
-            exit();
 
-            /*
             echo '
             <script type="text/javascript">
             alert("Se compro correctamente.");
             location="'.FRONT_ROOT.'main/purchase";
             </script>
             ';
-            */
 
+            $i=0;
+            foreach ($_SESSION["Purchase_Lines"] as $Lines) {
+              unset($_SESSION["Purchase_Lines"][$i]);
+              $i++;
+            }
+            $_SESSION["TotalPurchase"] = 0;
           }
         }
         public function Login($Email, $Password)
