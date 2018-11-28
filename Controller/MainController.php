@@ -3,7 +3,9 @@
 
     use Model\SquareEvent as SquareEvent;
     use Model\Purchase_Lines as Purchase_Lines;
+    use Daos\PDOs\Purchase_LinesDaoPdo as Purchase_LinesDaoPdo;
     use Daos\PDOs\Square_EventDaoPdo as Square_EventDaoPdo;
+    use Daos\PDOs\PurchaseDaoPdo as PurchaseDaoPdo;
     use Daos\PDOs\EventDaoPdo as EventDaoPdo;
     use Daos\PDOs\CalendarDaoPdo as CalendarDaoPdo;
 
@@ -24,6 +26,13 @@
         }
 
       }
+      public function purchaseList()
+      {
+        $PurchaseData = new PurchaseDaoPdo();
+        $Purchase_LinesData = new Purchase_LinesDaoPdo();
+        $userPurchase = $PurchaseData->GetAllPurchaseByClientCode($_SESSION["userLogged"]->getID());
+        require_once(VIEWS_PATH."listPurchase.php");
+      }
       public function adminPage()
       {
         require_once(VIEWS_PATH.'\nav-bar.php');
@@ -40,6 +49,23 @@
       public function makeClient()
       {
         require_once(VIEWS_PATH."addClient.php");
+      }
+      public function deleteFromCart($index)
+      {
+        $index=str_replace(",", "", $index);
+        $_SESSION["Purchase_Lines"] = array_values($_SESSION["Purchase_Lines"]);
+
+        $TotalPurchase = $_SESSION["TotalPurchase"];
+        $TotalPurchase = $TotalPurchase - ($_SESSION["Purchase_Lines"][$index]->getPrice()*$_SESSION["Purchase_Lines"][$index]->getQuantity());        
+        $_SESSION["TotalPurchase"] = $TotalPurchase;
+
+        unset($_SESSION["Purchase_Lines"][$index]);
+        echo '
+        <script type="text/javascript">
+        alert("Se elimino del carrito correctamente.");
+        location="'.FRONT_ROOT.'main/purchase";
+        </script>
+        ';
       }
       public function addPurchaseToCart($SquareEventCode,$Cantidad){
 
@@ -59,6 +85,7 @@
 
 
           array_push($_SESSION["Purchase_Lines"],$Purchase_Lines);
+
           if(!isset($_SESSION["TotalPurchase"])){
             $_SESSION["TotalPurchase"] = 0.00;
             $TotalPurchase = $_SESSION["TotalPurchase"];

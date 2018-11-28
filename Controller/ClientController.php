@@ -25,7 +25,7 @@
 
           if ($Client == null) {
               $ClientObject=new Client($Name, $Surname, $DNI);
-              $this->ClientData->add($ClientObject);
+              $this->ClientData->AddFromUser($ClientObject,$_SESSION["userLogged"]->getID());
               echo '
               <script type="text/javascript">
               alert("Cliente asignado con exito.");

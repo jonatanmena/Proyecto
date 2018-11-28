@@ -125,8 +125,7 @@ include("header.php");
                     <li class="dropdown"><a id="afterLinea" href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome,
                         <?php echo $_SESSION["userLogged"]->getUser(); ?><b class="caret"></b></a>
                       <ul id="login-dp" class="dropdown-menu">
-                        <li><a id="aColor" href="/user/preferences"><i class="icon-cog"></i> <b>Preferences</b></a></li>
-                        <li><a id="aColor" href="/help/support"><i class="icon-envelope"></i> <b>Contact Support</b></a></li>
+                        <li><a id="aColor" href="<?php echo FRONT_ROOT;?>main/purchaseList"><i class="icon-cog"></i> <b>List Purchases</b></a></li>
                         <li class="divider"></li>
                         <li><a id="aColor" href="<?php echo FRONT_ROOT;?>main/logout"><i class="icon-off"></i> <b>Logout</a></b></li>
                       </ul>
@@ -159,7 +158,7 @@ include("header.php");
                 <!--end shopping-cart-header -->
 
                 <?php
-
+                $i=0;
                 foreach ($_SESSION["Purchase_Lines"] as $Lines)
                 {
                 ?>
@@ -168,19 +167,22 @@ include("header.php");
                     <?php
 
                     ?>
+
                     <span class="item-price"><?php echo $Lines->getPrice();?> $</span>
                     <span class="item-quantity">Cantidad:<?php echo $Lines->getQuantity();?></span>
+                    <a href="<?php echo FRONT_ROOT;?>main/deleteFromCart/<?php echo ",".$i;?>"><span style="float:right;">X</span></a>
                     <img src="<?php echo FRONT_ROOT.$Lines->getSquareEvent()->getCalendar()->getEvent()->getImage();?>" alt="item1" style="max-width: 70px;min-width: 70px;max-height: 70px;min-height: 70px;"/>
                     <span class="item-name">Nombre:<?php echo $Lines->getSquareEvent()->getCalendar()->getEvent()->getTitle();?></span>
 
                   </li>
 
                 <?php
+                $i++;
                 }
                  ?>
                 </ul>
                 <a href="<?php echo FRONT_ROOT;?>user/verifyClient/<?php echo $_SESSION["userLogged"]->getID(); ?>'" class="button">Checkout</a>
-                
+
               </div>
 
               <!--end shopping-cart -->

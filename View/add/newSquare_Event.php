@@ -18,7 +18,6 @@
               <thead>
                 <tr>
                   <th>Precio</th>
-                  <th>Remanente</th>
                   <th>Cantidad Disponible</th>
                   <th>Tipo de Plaza</th>
                   <th>Calendario</th>
@@ -29,9 +28,7 @@
                   <td>
                     <input type="number" name="Square_eventPrice" value="" required><br>
                   </td>
-                  <td>
-                    <input type="text" name="Square_eventRemainder" value="" required><br>
-                  </td>
+                  
                   <td>
                     <input type="number" name="Square_eventQuantityAvailable" value="" required><br>
                   </td>

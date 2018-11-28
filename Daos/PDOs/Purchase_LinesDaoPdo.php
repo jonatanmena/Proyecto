@@ -44,7 +44,7 @@
                                                                 $PurchaseData->GetByPurchaseCode($row["ID_Purchase"]));
                     $Purchase_LinesObject->setID($row["ID_Purchase_Line"]);
                     array_push($Purchase_LinesList, $Purchase_LinesObject);
-                    
+
                 }
                 return $Purchase_LinesList;
             }
@@ -52,6 +52,33 @@
             {
                 throw $ex;
             }
+        }
+        public function GetAllPurchase_LinesByPurchaseCode($PurchaseCode)
+        {
+          try
+          {
+              $PurchaseData = new PurchaseDaoPdo();
+              $Purchase_LinesList = array();
+              $query = "SELECT * FROM ".$this->tableName." WHERE ID_Purchase = :ID_Purchase";
+              $parameters["ID_Purchase"] = $PurchaseCode;
+              $this->connection = Connection::GetInstance();
+              $resultSet = $this->connection->Execute($query, $parameters);
+              foreach ($resultSet as $row)
+              {
+                  $Purchase_LinesObject = new Purchase_Lines( $row["Quantity"],
+                                                              $row["Price"],
+                                                              $PurchaseData->GetByPurchaseCode($row["ID_Purchase"]));
+                  $Purchase_LinesObject->setID($row["ID_Purchase_Line"]);
+
+                  array_push($Purchase_LinesList, $Purchase_LinesObject);
+              }
+
+              return $Purchase_LinesList;
+          }
+          catch (Exception $ex)
+          {
+              throw $ex;
+          }
         }
         public function GetByPurchase_LinesCode($Purchase_LinesCode)
         {

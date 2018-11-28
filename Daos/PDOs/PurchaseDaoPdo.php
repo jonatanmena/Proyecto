@@ -47,7 +47,7 @@
                     array_push($PurchaseList, $PurchaseObject);
                 }
 
-                return $PurchaseObject;
+                return $PurchaseList;
             }
             catch (Exception $ex)
             {

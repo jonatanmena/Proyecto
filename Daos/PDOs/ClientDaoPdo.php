@@ -27,6 +27,23 @@
                 throw $ex;
             }
         }
+        public function AddFromUser(Client $Client,$UserCode)
+        {
+            try
+            {
+                $query = "INSERT INTO ".$this->tableName." (Name,Surname,DNI,ID_Client) VALUES (:Name,:Surname,:DNI,:ID_Client);";
+                $parameters["Name"] = $Client->getName();
+                $parameters["Surname"] = $Client->getSurname();
+                $parameters["DNI"] = $Client->getDNI();
+                $parameters["ID_Client"] = $UserCode;
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query, $parameters);
+            }
+            catch (Exception $ex)
+            {
+                throw $ex;
+            }
+        }
         public function GetAll()
         {
             try

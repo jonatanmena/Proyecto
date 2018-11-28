@@ -123,7 +123,8 @@ CREATE TABLE `clients` (
   `Name` varchar(20) NOT NULL,
   `Surname` varchar(20) NOT NULL,
   `Status` varchar(20) NOT NULL,
-  `DNI` int(10) NOT NULL
+  `DNI` int(10) NOT NULL,
+  primary key (ID_Client)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -320,7 +321,6 @@ ALTER TABLE `categories`
 -- Indices de la tabla `clients`
 --
 ALTER TABLE `clients`
-  ADD PRIMARY KEY (`ID_Client`),
   ADD UNIQUE KEY `DNI` (`DNI`);
 
 --
@@ -400,12 +400,6 @@ ALTER TABLE `calendars`
 --
 ALTER TABLE `categories`
   MODIFY `ID_Category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `clients`
---
-ALTER TABLE `clients`
-  MODIFY `ID_Client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `events`

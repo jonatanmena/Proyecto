@@ -58,8 +58,9 @@
             require_once(VIEWS_PATH."footerViejo.php");
 
         }
-        public function addSquare_Event($Price, $Remainder, $Quantity_available, $Square_KindCode, $CalendarCode)
+        public function addSquare_Event($Price, $Quantity_available, $Square_KindCode, $CalendarCode)
         {
+            $Remainder = NULL;
             $Square_EventObject=new Square_Event( $Price,$Remainder,$Quantity_available,
                                                   $this->Square_KindData->GetBySquare_kindCode($Square_KindCode),
                                                   $this->CalendarData->GetByCalendarCode($CalendarCode));

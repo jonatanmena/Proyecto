@@ -132,29 +132,27 @@ require_once("header.php");
                 <!--end shopping-cart-header -->
 
                 <?php
-                $i=0;
+
                 foreach ($_SESSION["Purchase_Lines"] as $Lines)
                 {
                 ?>
                 <ul class="shopping-cart-items">
                   <li class="clearfix">
-                    <?php
 
-                    ?>
                     <span class="item-price"><?php echo $Lines->getPrice();?> $</span>
                     <span class="item-quantity">Cantidad:<?php echo $Lines->getQuantity();?></span>
-                    <a href="<?php echo FRONT_ROOT;?>main/deleteFromCart/<?php echo ",".$i;?>"><span style="float:right;">X</span></a>
                     <img src="<?php echo FRONT_ROOT.$Lines->getSquareEvent()->getCalendar()->getEvent()->getImage();?>" alt="item1" style="max-width: 70px;min-width: 70px;max-height: 70px;min-height: 70px;"/>
                     <span class="item-name">Nombre:<?php echo $Lines->getSquareEvent()->getCalendar()->getEvent()->getTitle();?></span>
 
                   </li>
 
                 <?php
-                $i++;
                 }
                  ?>
                 </ul>
                 <a href="<?php echo FRONT_ROOT;?>user/verifyClient/<?php echo $_SESSION["userLogged"]->getID(); ?>'" class="button">Checkout</a>
+                <!--<a href="#"> <input class="button" type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/addPurchaseToCart/'" value="Checkout" /></a>
+                <input class="button" type="button" onclick="location.href='<?php echo FRONT_ROOT;?>main/addPurchaseToCart/'" value="Checkout" />-->
 
               </div>
 
@@ -180,7 +178,7 @@ require_once("header.php");
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>Calendarios Disponibles</h2>
+            <h2>Listado de compras</h2>
           </div>
         </div>
       </div>
@@ -188,65 +186,47 @@ require_once("header.php");
         <table class="table">
             <tr>
               <th scope="col" style="text-align:center">Fecha</th>
-              <th scope="col" style="text-align:center">Evento</th>
-              <th scope="col" style="text-align:center">Lugar</th>
-              <th scope="col" style="text-align:center">Imagen</th>
-              <th scope="col" style="text-align:center">Plazas</th>
+              <th scope="col" style="text-align:center">Precio</th>
               <th scope="col" style="text-align:center">Cantidad</th>
-              <th scope="col" style="text-align:center">Comprar</th>
+              <th scope="col" style="text-align:center">Total</th>
             </tr>
           </thead>
           <tbody align="center">
-            <?php foreach ($CalendarList as $Calendar)
-            {
-            ?>
-            <form class="" action="<?php echo FRONT_ROOT;?>main/addPurchaseToCart" method="post">
-
             <tr>
-              <td style="vertical-align: middle;"><?php echo $Calendar->getDate(); ?></td>
-              <td style="vertical-align: middle;"><?php echo $Calendar->getEvent()->getTitle(); ?></td>
-              <td style="vertical-align: middle;"><?php echo $Calendar->getPlaceEvent()->getDescription(); ?></td>
-              <td style="vertical-align: middle;"><img src="<?php echo FRONT_ROOT .$Calendar->getEvent()->getImage();?>" style="max-width:250px; min-width:249px; max-height:150px;"></td>
-
-              <td style="vertical-align: middle;">
-                <select name="Place_Event">
-
-                  <?php foreach ($Calendar->getSquareEvent() as $Square_Event)
-                  {
-                  ?>
-                  <option value="<?php echo $Square_Event->getID(); ?>">
-                    <?php echo $Square_Event->getSquareKind()->getDescription(); ?>
-                  </option>
-                  <?php
-                  }
-                  ?>
-                </select>
-
-            </td>
-
-              <td style="vertical-align: middle;">
-                <select name="Cantidad">
-                  <?php $i=1;?>
-                  <?php while($i<=10)
-                  {
-                  ?>
-                  <option value="<?php echo $i ?>">
-                    <?php echo $i;?>
-                  </option>
-                  <?php
-                  $i++;
-                  }
-                  ?>
-                </select>
-
-            </td>
-
-            <td style="vertical-align: middle;"><input type="submit" value="Comprar" /></td>
-
-            </form>
             <?php
-            }
+                  if(count($userPurchase)>0)
+                  {
+
+                      foreach ($userPurchase as $Purchase)
+                      {
+
+                        $userPurchase_Lines = $Purchase_LinesData->GetAllPurchase_LinesByPurchaseCode($Purchase->getID());
+                            foreach ($userPurchase_Lines as $Purchase_Lines)
+                            {
+
+                              // echo "<pre>";
+                              // var_dump($Purchase_Lines);
+                              // echo "</pre>";
+                              // exit();
             ?>
+                            <td style="vertical-align: middle;"><?php echo $Purchase->getDate(); ?></td>
+                            <td style="vertical-align: middle;"><?php echo $Purchase_Lines->getPrice(); ?></td>
+                            <td style="vertical-align: middle;"><?php echo $Purchase_Lines->getQuantity(); ?></td>
+                            <td style="vertical-align: middle;"><?php echo ($Purchase_Lines->getQuantity()*$Purchase_Lines->getPrice())."$"; ?></td>
+
+            <?php
+                            echo "</tr>";
+                            }
+
+                      }
+
+                  }else {
+            ?>
+                <td colspan="3" style="vertical-align: middle;">Todavia no compraste nada :(</td>
+            <?php
+              }
+            ?>
+
           </tbody>
         </table>
       </div>
